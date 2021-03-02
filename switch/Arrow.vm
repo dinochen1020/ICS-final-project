@@ -1,0 +1,240 @@
+function Arrow.new 0
+push constant 2
+call Memory.alloc 1
+pop pointer 0
+push argument 0
+pop this 0
+push argument 1
+pop this 1
+push pointer 0
+call Arrow.draw 1
+pop temp 0
+push pointer 0
+return
+function Arrow.old 0
+push constant 2
+call Memory.alloc 1
+pop pointer 0
+push argument 0
+pop this 0
+push argument 1
+pop this 1
+push pointer 0
+call Arrow.erase 1
+pop temp 0
+push pointer 0
+return
+function Arrow.dis 0
+push constant 2
+call Memory.alloc 1
+pop pointer 0
+push pointer 0
+call Arrow.dispose 1
+pop temp 0
+push pointer 0
+return
+function Arrow.dispose 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return
+function Arrow.draw 0
+push argument 0
+pop pointer 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push this 0
+push constant 25
+add
+push this 1
+push this 0
+push this 1
+push constant 25
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 26
+add
+push this 1
+push this 0
+push constant 51
+add
+push this 1
+push constant 25
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push this 1
+push constant 25
+add
+push this 0
+push constant 14
+add
+push this 1
+push constant 25
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 51
+add
+push this 1
+push constant 25
+add
+push this 0
+push constant 37
+add
+push this 1
+push constant 25
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 14
+add
+push this 1
+push constant 25
+add
+push this 0
+push constant 14
+add
+push this 1
+push constant 46
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 37
+add
+push this 1
+push constant 25
+add
+push this 0
+push constant 37
+add
+push this 1
+push constant 46
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 14
+add
+push this 1
+push constant 46
+add
+push this 0
+push constant 37
+add
+push this 1
+push constant 46
+add
+call Screen.drawLine 4
+pop temp 0
+push constant 0
+return
+function Arrow.erase 0
+push argument 0
+pop pointer 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push this 0
+push constant 25
+add
+push this 1
+push this 0
+push this 1
+push constant 25
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 26
+add
+push this 1
+push this 0
+push constant 51
+add
+push this 1
+push constant 25
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push this 1
+push constant 25
+add
+push this 0
+push constant 14
+add
+push this 1
+push constant 25
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 51
+add
+push this 1
+push constant 25
+add
+push this 0
+push constant 37
+add
+push this 1
+push constant 25
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 14
+add
+push this 1
+push constant 25
+add
+push this 0
+push constant 14
+add
+push this 1
+push constant 46
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 37
+add
+push this 1
+push constant 25
+add
+push this 0
+push constant 37
+add
+push this 1
+push constant 46
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 14
+add
+push this 1
+push constant 46
+add
+push this 0
+push constant 37
+add
+push this 1
+push constant 46
+add
+call Screen.drawLine 4
+pop temp 0
+push constant 0
+return

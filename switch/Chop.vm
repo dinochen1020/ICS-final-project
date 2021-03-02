@@ -1,0 +1,162 @@
+function Chop.new 0
+push constant 2
+call Memory.alloc 1
+pop pointer 0
+push argument 0
+pop this 0
+push argument 1
+pop this 1
+push pointer 0
+call Chop.draw 1
+pop temp 0
+push pointer 0
+return
+function Chop.old 0
+push constant 2
+call Memory.alloc 1
+pop pointer 0
+push argument 0
+pop this 0
+push argument 1
+pop this 1
+push pointer 0
+call Chop.erase 1
+pop temp 0
+push pointer 0
+return
+function Chop.dis 0
+push constant 2
+call Memory.alloc 1
+pop pointer 0
+push pointer 0
+call Chop.dispose 1
+pop temp 0
+push pointer 0
+return
+function Chop.dispose 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return
+function Chop.draw 0
+push argument 0
+pop pointer 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push this 0
+push constant 20
+add
+push this 1
+push constant 20
+add
+push constant 20
+call Screen.drawCircle 3
+pop temp 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push this 0
+push constant 20
+add
+push this 1
+push constant 20
+add
+push constant 19
+call Screen.drawCircle 3
+pop temp 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push this 0
+push constant 20
+add
+push this 1
+push this 0
+push constant 20
+add
+push this 1
+push constant 40
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 20
+add
+push this 1
+push constant 20
+add
+push this 0
+push constant 6
+add
+push this 1
+push constant 34
+add
+call Screen.drawLine 4
+pop temp 0
+push constant 0
+return
+function Chop.erase 0
+push argument 0
+pop pointer 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push this 0
+push constant 20
+add
+push this 1
+push constant 20
+add
+push constant 20
+call Screen.drawCircle 3
+pop temp 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push this 0
+push constant 20
+add
+push this 1
+push constant 20
+add
+push constant 19
+call Screen.drawCircle 3
+pop temp 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push this 0
+push constant 20
+add
+push this 1
+push this 0
+push constant 20
+add
+push this 1
+push constant 40
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 20
+add
+push this 1
+push constant 20
+add
+push this 0
+push constant 6
+add
+push this 1
+push constant 34
+add
+call Screen.drawLine 4
+pop temp 0
+push constant 0
+return

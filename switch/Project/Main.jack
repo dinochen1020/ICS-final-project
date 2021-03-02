@@ -1,0 +1,46 @@
+class Main
+{
+	function int size() { return 30; }
+    function int maxx() { return 512 / Main.size(); }
+    function int maxy() { return 256 / Main.size(); }
+    function void main() {
+        var int yourChoice;
+    	var Switch game;
+        var FlappyBirdGame game1;
+        var PlantVSZombieGame game2;
+        var SnakeGame game3;
+        let yourChoice = 0;
+
+        while(true){
+            if(yourChoice = 0){
+            let game = Switch.new();
+            do game.choose();
+            let yourChoice = game.FindID();
+            do game.dispose();
+            }
+            
+            if(yourChoice = 1){
+                let game1 = FlappyBirdGame.new();
+                do game1.execute();
+                do game1.dispose();
+                let yourChoice = 0;
+                }
+        
+            if(yourChoice = 2){
+                let game2 = PlantVSZombieGame.new();
+                do game2.run();
+                do game2.dispose();
+                let yourChoice = 0;
+            }
+        
+            if(yourChoice = 3){
+                let game3 = SnakeGame.new();
+                do MyMath.init(2);
+                do game3.run();
+                do game3.dispose(); 
+                let yourChoice = 0;
+            }
+        }
+    return;    
+    }
+}

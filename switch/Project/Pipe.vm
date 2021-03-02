@@ -1,0 +1,1519 @@
+function Pipe.new 0
+push constant 8
+call Memory.alloc 1
+pop pointer 0
+push constant 15
+pop this 0
+push constant 1
+pop this 1
+push constant 509
+pop this 2
+push constant 512
+pop this 6
+push constant 256
+pop this 7
+push constant 95
+pop this 3
+push pointer 0
+push argument 0
+call Pipe.calculateGapTop 2
+pop this 4
+push this 4
+push this 3
+add
+pop this 5
+push pointer 0
+return
+function Pipe.calculateGapTop 1
+push argument 0
+pop pointer 0
+push argument 1
+push constant 6
+call Mod.mod 2
+pop local 0
+push local 0
+push constant 25
+call Math.multiply 2
+push constant 10
+add
+return
+function Pipe.erasePipe 0
+push argument 0
+pop pointer 0
+push this 2
+push this 6
+push this 0
+sub
+lt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 0
+push this 2
+push this 1
+sub
+push this 4
+push constant 5
+sub
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 11
+add
+push constant 0
+push this 2
+push this 1
+sub
+push constant 11
+add
+push this 4
+push constant 5
+sub
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 2
+sub
+push this 4
+push constant 4
+sub
+push this 2
+push this 1
+sub
+push constant 13
+add
+push this 4
+push constant 4
+sub
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 2
+sub
+push this 4
+push this 2
+push this 1
+sub
+push constant 13
+add
+push this 4
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 2
+sub
+push this 4
+push constant 3
+sub
+push this 2
+push this 1
+sub
+push constant 2
+sub
+push this 4
+push constant 1
+sub
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 13
+add
+push this 4
+push constant 3
+sub
+push this 2
+push this 1
+sub
+push constant 13
+add
+push this 4
+push constant 1
+sub
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 3
+add
+push this 4
+push constant 1
+sub
+call Screen.drawPixel 2
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 4
+add
+push this 4
+push constant 2
+sub
+push this 2
+push this 1
+sub
+push constant 4
+add
+push this 4
+push constant 3
+sub
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 6
+add
+push this 4
+push constant 1
+sub
+call Screen.drawPixel 2
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 7
+add
+push this 4
+push constant 2
+sub
+push this 2
+push this 1
+sub
+push constant 7
+add
+push this 4
+push constant 3
+sub
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 255
+push this 2
+push this 1
+sub
+push this 5
+push constant 5
+add
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 11
+add
+push constant 255
+push this 2
+push this 1
+sub
+push constant 11
+add
+push this 5
+push constant 5
+add
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 2
+sub
+push this 5
+push constant 4
+add
+push this 2
+push this 1
+sub
+push constant 13
+add
+push this 5
+push constant 4
+add
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 2
+sub
+push this 5
+push this 2
+push this 1
+sub
+push constant 13
+add
+push this 5
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 2
+sub
+push this 5
+push constant 3
+add
+push this 2
+push this 1
+sub
+push constant 2
+sub
+push this 5
+push constant 1
+add
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 13
+add
+push this 5
+push constant 3
+add
+push this 2
+push this 1
+sub
+push constant 13
+add
+push this 5
+push constant 1
+add
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 3
+add
+push this 5
+push constant 1
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 4
+add
+push this 5
+push constant 2
+add
+push this 2
+push this 1
+sub
+push constant 4
+add
+push this 5
+push constant 3
+add
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 6
+add
+push this 5
+push constant 1
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 7
+add
+push this 5
+push constant 2
+add
+push this 2
+push this 1
+sub
+push constant 7
+add
+push this 5
+push constant 3
+add
+call Screen.drawLine 4
+pop temp 0
+label IF_FALSE0
+push constant 0
+return
+function Pipe.moveLeft 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Pipe.erasePipe 1
+pop temp 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push constant 490
+push constant 0
+push constant 511
+push constant 255
+call Screen.drawRectangle 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 490
+gt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 2
+push this 1
+sub
+push constant 511
+lt
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 511
+lt
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push this 2
+push this 1
+sub
+push constant 0
+push this 2
+push this 1
+sub
+push this 4
+push constant 5
+sub
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 255
+push this 2
+push this 1
+sub
+push this 5
+push constant 5
+add
+call Screen.drawLine 4
+pop temp 0
+label IF_FALSE2
+push this 2
+push this 1
+sub
+push constant 500
+lt
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push this 2
+push this 1
+sub
+push constant 11
+add
+push constant 0
+push this 2
+push this 1
+sub
+push constant 11
+add
+push this 4
+push constant 5
+sub
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 11
+add
+push constant 255
+push this 2
+push this 1
+sub
+push constant 11
+add
+push this 5
+push constant 5
+add
+call Screen.drawLine 4
+pop temp 0
+label IF_FALSE3
+push this 2
+push this 1
+sub
+push constant 507
+lt
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push this 2
+push this 1
+sub
+push constant 4
+add
+push this 4
+push constant 2
+sub
+push this 2
+push this 1
+sub
+push constant 4
+add
+push this 4
+push constant 3
+sub
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 4
+add
+push this 5
+push constant 2
+add
+push this 2
+push this 1
+sub
+push constant 4
+add
+push this 5
+push constant 3
+add
+call Screen.drawLine 4
+pop temp 0
+label IF_FALSE4
+push this 2
+push this 1
+sub
+push constant 508
+lt
+if-goto IF_TRUE5
+goto IF_FALSE5
+label IF_TRUE5
+push this 2
+push this 1
+sub
+push constant 3
+add
+push this 4
+push constant 1
+sub
+call Screen.drawPixel 2
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 3
+add
+push this 5
+push constant 1
+add
+call Screen.drawPixel 2
+pop temp 0
+label IF_FALSE5
+push this 2
+push this 1
+sub
+push constant 498
+lt
+if-goto IF_TRUE6
+goto IF_FALSE6
+label IF_TRUE6
+push this 2
+push this 1
+sub
+push constant 13
+add
+push this 4
+push constant 3
+sub
+push this 2
+push this 1
+sub
+push constant 13
+add
+push this 4
+push constant 1
+sub
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 13
+add
+push this 5
+push constant 3
+add
+push this 2
+push this 1
+sub
+push constant 13
+add
+push this 5
+push constant 1
+add
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 2
+sub
+push this 4
+push constant 4
+sub
+push this 2
+push this 1
+sub
+push constant 13
+add
+push this 4
+push constant 4
+sub
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 2
+sub
+push this 4
+push this 2
+push this 1
+sub
+push constant 13
+add
+push this 4
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 2
+sub
+push this 5
+push constant 4
+add
+push this 2
+push this 1
+sub
+push constant 13
+add
+push this 5
+push constant 4
+add
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 2
+sub
+push this 5
+push this 2
+push this 1
+sub
+push constant 13
+add
+push this 5
+call Screen.drawLine 4
+pop temp 0
+goto IF_END6
+label IF_FALSE6
+push this 2
+push this 1
+sub
+push constant 2
+sub
+push this 4
+push constant 4
+sub
+push constant 511
+push this 4
+push constant 4
+sub
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 2
+sub
+push this 4
+push constant 511
+push this 4
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 2
+sub
+push this 5
+push constant 4
+add
+push constant 511
+push this 5
+push constant 4
+add
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 2
+sub
+push this 5
+push constant 511
+push this 5
+call Screen.drawLine 4
+pop temp 0
+label IF_END6
+push this 2
+push this 1
+sub
+push constant 505
+lt
+if-goto IF_TRUE7
+goto IF_FALSE7
+label IF_TRUE7
+push this 2
+push this 1
+sub
+push constant 6
+add
+push this 4
+push constant 1
+sub
+call Screen.drawPixel 2
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 6
+add
+push this 5
+push constant 1
+add
+call Screen.drawPixel 2
+pop temp 0
+label IF_FALSE7
+push this 2
+push this 1
+sub
+push constant 504
+lt
+if-goto IF_TRUE8
+goto IF_FALSE8
+label IF_TRUE8
+push this 2
+push this 1
+sub
+push constant 7
+add
+push this 4
+push constant 2
+sub
+push this 2
+push this 1
+sub
+push constant 7
+add
+push this 4
+push constant 3
+sub
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 7
+add
+push this 5
+push constant 2
+add
+push this 2
+push this 1
+sub
+push constant 7
+add
+push this 5
+push constant 3
+add
+call Screen.drawLine 4
+pop temp 0
+label IF_FALSE8
+push this 2
+push this 1
+sub
+push constant 2
+sub
+push this 4
+push constant 3
+sub
+push this 2
+push this 1
+sub
+push constant 2
+sub
+push this 4
+push constant 1
+sub
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 2
+sub
+push this 5
+push constant 3
+add
+push this 2
+push this 1
+sub
+push constant 2
+sub
+push this 5
+push constant 1
+add
+call Screen.drawLine 4
+pop temp 0
+label IF_FALSE1
+label IF_FALSE0
+push this 2
+push this 1
+sub
+pop this 2
+push this 2
+push this 1
+sub
+push constant 490
+lt
+if-goto IF_TRUE9
+goto IF_FALSE9
+label IF_TRUE9
+push this 2
+push this 1
+sub
+push constant 100
+gt
+if-goto IF_TRUE10
+goto IF_FALSE10
+label IF_TRUE10
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 0
+push this 2
+push this 1
+sub
+push this 4
+push constant 5
+sub
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 11
+add
+push constant 0
+push this 2
+push this 1
+sub
+push constant 11
+add
+push this 4
+push constant 5
+sub
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 2
+sub
+push this 4
+push constant 4
+sub
+push this 2
+push this 1
+sub
+push constant 13
+add
+push this 4
+push constant 4
+sub
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 2
+sub
+push this 4
+push this 2
+push this 1
+sub
+push constant 13
+add
+push this 4
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 2
+sub
+push this 4
+push constant 3
+sub
+push this 2
+push this 1
+sub
+push constant 2
+sub
+push this 4
+push constant 1
+sub
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 13
+add
+push this 4
+push constant 3
+sub
+push this 2
+push this 1
+sub
+push constant 13
+add
+push this 4
+push constant 1
+sub
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 3
+add
+push this 4
+push constant 1
+sub
+call Screen.drawPixel 2
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 4
+add
+push this 4
+push constant 2
+sub
+push this 2
+push this 1
+sub
+push constant 4
+add
+push this 4
+push constant 3
+sub
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 6
+add
+push this 4
+push constant 1
+sub
+call Screen.drawPixel 2
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 7
+add
+push this 4
+push constant 2
+sub
+push this 2
+push this 1
+sub
+push constant 7
+add
+push this 4
+push constant 3
+sub
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 255
+push this 2
+push this 1
+sub
+push this 5
+push constant 5
+add
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 11
+add
+push constant 255
+push this 2
+push this 1
+sub
+push constant 11
+add
+push this 5
+push constant 5
+add
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 2
+sub
+push this 5
+push constant 4
+add
+push this 2
+push this 1
+sub
+push constant 13
+add
+push this 5
+push constant 4
+add
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 2
+sub
+push this 5
+push this 2
+push this 1
+sub
+push constant 13
+add
+push this 5
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 2
+sub
+push this 5
+push constant 3
+add
+push this 2
+push this 1
+sub
+push constant 2
+sub
+push this 5
+push constant 1
+add
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 13
+add
+push this 5
+push constant 3
+add
+push this 2
+push this 1
+sub
+push constant 13
+add
+push this 5
+push constant 1
+add
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 3
+add
+push this 5
+push constant 1
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 4
+add
+push this 5
+push constant 2
+add
+push this 2
+push this 1
+sub
+push constant 4
+add
+push this 5
+push constant 3
+add
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 6
+add
+push this 5
+push constant 1
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 7
+add
+push this 5
+push constant 2
+add
+push this 2
+push this 1
+sub
+push constant 7
+add
+push this 5
+push constant 3
+add
+call Screen.drawLine 4
+pop temp 0
+label IF_FALSE10
+label IF_FALSE9
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push constant 100
+push constant 0
+push constant 120
+push constant 255
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+return
+function Pipe.GetWidth 0
+push argument 0
+pop pointer 0
+push this 0
+return
+function Pipe.GetAmounttoShiftLeft 0
+push argument 0
+pop pointer 0
+push this 1
+return
+function Pipe.Getxcoordinate 0
+push argument 0
+pop pointer 0
+push this 2
+return
+function Pipe.GetGapTop 0
+push argument 0
+pop pointer 0
+push this 4
+return
+function Pipe.GetGapBottom 0
+push argument 0
+pop pointer 0
+push this 5
+return
+function Pipe.draw 0
+push argument 0
+pop pointer 0
+push this 2
+push this 1
+sub
+push constant 0
+gt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 2
+push this 1
+sub
+push constant 450
+lt
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 0
+push this 2
+push this 1
+sub
+push this 4
+push constant 5
+sub
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 11
+add
+push constant 0
+push this 2
+push this 1
+sub
+push constant 11
+add
+push this 4
+push constant 5
+sub
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 2
+sub
+push this 4
+push constant 4
+sub
+push this 2
+push this 1
+sub
+push constant 13
+add
+push this 4
+push constant 4
+sub
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 2
+sub
+push this 4
+push this 2
+push this 1
+sub
+push constant 13
+add
+push this 4
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 2
+sub
+push this 4
+push constant 3
+sub
+push this 2
+push this 1
+sub
+push constant 2
+sub
+push this 4
+push constant 1
+sub
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 13
+add
+push this 4
+push constant 3
+sub
+push this 2
+push this 1
+sub
+push constant 13
+add
+push this 4
+push constant 1
+sub
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 3
+add
+push this 4
+push constant 1
+sub
+call Screen.drawPixel 2
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 4
+add
+push this 4
+push constant 2
+sub
+push this 2
+push this 1
+sub
+push constant 4
+add
+push this 4
+push constant 3
+sub
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 6
+add
+push this 4
+push constant 1
+sub
+call Screen.drawPixel 2
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 7
+add
+push this 4
+push constant 2
+sub
+push this 2
+push this 1
+sub
+push constant 7
+add
+push this 4
+push constant 3
+sub
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 255
+push this 2
+push this 1
+sub
+push this 5
+push constant 5
+add
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 11
+add
+push constant 255
+push this 2
+push this 1
+sub
+push constant 11
+add
+push this 5
+push constant 5
+add
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 2
+sub
+push this 5
+push constant 4
+add
+push this 2
+push this 1
+sub
+push constant 13
+add
+push this 5
+push constant 4
+add
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 2
+sub
+push this 5
+push this 2
+push this 1
+sub
+push constant 13
+add
+push this 5
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 2
+sub
+push this 5
+push constant 3
+add
+push this 2
+push this 1
+sub
+push constant 2
+sub
+push this 5
+push constant 1
+add
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 13
+add
+push this 5
+push constant 3
+add
+push this 2
+push this 1
+sub
+push constant 13
+add
+push this 5
+push constant 1
+add
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 3
+add
+push this 5
+push constant 1
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 4
+add
+push this 5
+push constant 2
+add
+push this 2
+push this 1
+sub
+push constant 4
+add
+push this 5
+push constant 3
+add
+call Screen.drawLine 4
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 6
+add
+push this 5
+push constant 1
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 2
+push this 1
+sub
+push constant 7
+add
+push this 5
+push constant 2
+add
+push this 2
+push this 1
+sub
+push constant 7
+add
+push this 5
+push constant 3
+add
+call Screen.drawLine 4
+pop temp 0
+label IF_FALSE1
+label IF_FALSE0
+push constant 0
+return
+function Pipe.dispose 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return

@@ -1,0 +1,49 @@
+class Chop {
+
+   field int x, y; 
+
+   constructor Chop new(int Ax, int Ay) {
+      let x = Ax;
+      let y = Ay;
+      do draw();
+      return this;
+   }
+
+   constructor Chop old(int Ax, int Ay) {
+      let x = Ax;
+      let y = Ay;
+      do erase();
+      return this;
+   }
+
+   constructor Chop dis(){
+      do dispose();
+      return this;
+   }
+
+   method void dispose() {
+      do Memory.deAlloc(this);
+      return;
+   }
+
+   method void draw() {
+      do Screen.setColor(true);
+      do Screen.drawCircle(x + 20, y + 20, 20);
+      do Screen.setColor(false);
+      do Screen.drawCircle(x + 20, y + 20, 19);
+      do Screen.setColor(true);
+      do Screen.drawLine(x + 20, y, x + 20, y + 40);
+      do Screen.drawLine(x + 20, y + 20, x + 6, y + 34);
+      return;
+   }
+   method void erase() {
+      do Screen.setColor(false);
+      do Screen.drawCircle(x + 20, y + 20, 20);
+      do Screen.setColor(true);
+      do Screen.drawCircle(x + 20, y + 20, 19);
+      do Screen.setColor(false);
+      do Screen.drawLine(x + 20, y, x + 20, y + 40);
+      do Screen.drawLine(x + 20, y + 20, x + 6, y + 34);
+      return;
+   }
+} 

@@ -1,0 +1,207 @@
+function Pea.new 0
+push constant 2
+call Memory.alloc 1
+pop pointer 0
+push argument 0
+pop this 0
+push argument 1
+push constant 2
+add
+pop this 1
+push pointer 0
+call Pea.draw 1
+pop temp 0
+push pointer 0
+return
+function Pea.dispose 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return
+function Pea.draw 0
+push argument 0
+pop pointer 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push this 0
+push constant 2
+add
+push this 1
+push this 0
+push constant 5
+add
+push this 1
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 1
+add
+push this 1
+push constant 1
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push constant 6
+add
+push this 1
+push constant 1
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push this 1
+push constant 2
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push constant 7
+add
+push this 1
+push constant 2
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push constant 1
+add
+push this 1
+push constant 3
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push constant 6
+add
+push this 1
+push constant 3
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push constant 2
+add
+push this 1
+push constant 4
+add
+push this 0
+push constant 5
+add
+push this 1
+push constant 4
+add
+call Screen.drawLine 4
+pop temp 0
+push constant 0
+return
+function Pea.erase 0
+push argument 0
+pop pointer 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push this 0
+push constant 2
+add
+push this 1
+push this 0
+push constant 5
+add
+push this 1
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 1
+add
+push this 1
+push constant 1
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push constant 6
+add
+push this 1
+push constant 1
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push this 1
+push constant 2
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push constant 7
+add
+push this 1
+push constant 2
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push constant 1
+add
+push this 1
+push constant 3
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push constant 6
+add
+push this 1
+push constant 3
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push constant 2
+add
+push this 1
+push constant 4
+add
+push this 0
+push constant 5
+add
+push this 1
+push constant 4
+add
+call Screen.drawLine 4
+pop temp 0
+push constant 0
+return
+function Pea.Move 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Pea.erase 1
+pop temp 0
+push this 0
+push constant 1
+add
+pop this 0
+push pointer 0
+call Pea.draw 1
+pop temp 0
+push constant 0
+return
+function Pea.GetXoffset 0
+push argument 0
+pop pointer 0
+push this 0
+return
+function Pea.GetYoffset 0
+push argument 0
+pop pointer 0
+push this 1
+push constant 2
+sub
+return

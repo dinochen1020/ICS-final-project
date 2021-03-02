@@ -1,0 +1,654 @@
+function Apple.new 0
+push constant 4
+call Memory.alloc 1
+pop pointer 0
+push constant 0
+pop this 0
+push constant 0
+pop this 1
+push argument 0
+pop this 2
+push argument 1
+pop this 3
+push pointer 0
+call Apple.show 1
+pop temp 0
+push pointer 0
+return
+function Apple.setPrev 0
+push argument 0
+pop pointer 0
+push argument 1
+pop this 0
+push constant 0
+return
+function Apple.setNext 0
+push argument 0
+pop pointer 0
+push argument 1
+pop this 1
+push constant 0
+return
+function Apple.x 0
+push argument 0
+pop pointer 0
+push this 2
+return
+function Apple.y 0
+push argument 0
+pop pointer 0
+push this 3
+return
+function Apple.next 0
+push argument 0
+pop pointer 0
+push this 1
+return
+function Apple.prev 0
+push argument 0
+pop pointer 0
+push this 0
+return
+function Apple.setPosition 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Apple.hide 1
+pop temp 0
+push argument 1
+pop this 2
+push argument 2
+pop this 3
+push pointer 0
+call Apple.show 1
+pop temp 0
+push constant 0
+return
+function Apple.dispose 0
+push argument 0
+pop pointer 0
+push this 1
+push constant 0
+eq
+not
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 1
+call Apple.dispose 1
+pop temp 0
+label IF_FALSE0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return
+function Apple.paint 0
+push argument 0
+pop pointer 0
+push argument 1
+call Screen.setColor 1
+pop temp 0
+push this 2
+call Main.size 0
+call Math.multiply 2
+push constant 17
+add
+push this 3
+call Main.size 0
+call Math.multiply 2
+push constant 1
+add
+push this 2
+call Main.size 0
+call Math.multiply 2
+push constant 21
+add
+push this 3
+call Main.size 0
+call Math.multiply 2
+push constant 1
+add
+call Screen.drawLine 4
+pop temp 0
+push this 2
+call Main.size 0
+call Math.multiply 2
+push constant 23
+add
+push this 3
+call Main.size 0
+call Math.multiply 2
+push constant 2
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 2
+call Main.size 0
+call Math.multiply 2
+push constant 9
+add
+push this 3
+call Main.size 0
+call Math.multiply 2
+push constant 12
+add
+push this 2
+call Main.size 0
+call Math.multiply 2
+push constant 12
+add
+push this 3
+call Main.size 0
+call Math.multiply 2
+push constant 14
+add
+call Screen.drawLine 4
+pop temp 0
+push this 2
+call Main.size 0
+call Math.multiply 2
+push constant 17
+add
+push this 3
+call Main.size 0
+call Math.multiply 2
+push constant 12
+add
+push this 2
+call Main.size 0
+call Math.multiply 2
+push constant 13
+add
+push this 3
+call Main.size 0
+call Math.multiply 2
+push constant 14
+add
+call Screen.drawLine 4
+pop temp 0
+push this 2
+call Main.size 0
+call Math.multiply 2
+push constant 4
+add
+push this 3
+call Main.size 0
+call Math.multiply 2
+push constant 8
+add
+push this 2
+call Main.size 0
+call Math.multiply 2
+push constant 7
+add
+push this 3
+call Main.size 0
+call Math.multiply 2
+push constant 7
+add
+call Screen.drawLine 4
+pop temp 0
+push this 2
+call Main.size 0
+call Math.multiply 2
+push constant 19
+add
+push this 3
+call Main.size 0
+call Math.multiply 2
+push constant 5
+add
+push this 2
+call Main.size 0
+call Math.multiply 2
+push constant 22
+add
+push this 3
+call Main.size 0
+call Math.multiply 2
+push constant 2
+add
+call Screen.drawLine 4
+pop temp 0
+push this 2
+call Main.size 0
+call Math.multiply 2
+push constant 18
+add
+push this 3
+call Main.size 0
+call Math.multiply 2
+push constant 5
+add
+push this 2
+call Main.size 0
+call Math.multiply 2
+push constant 15
+add
+push this 3
+call Main.size 0
+call Math.multiply 2
+push constant 4
+add
+call Screen.drawLine 4
+pop temp 0
+push this 2
+call Main.size 0
+call Math.multiply 2
+push constant 16
+add
+push this 3
+call Main.size 0
+call Math.multiply 2
+push constant 2
+add
+push this 2
+call Main.size 0
+call Math.multiply 2
+push constant 15
+add
+push this 3
+call Main.size 0
+call Math.multiply 2
+push constant 3
+add
+call Screen.drawLine 4
+pop temp 0
+push this 2
+call Main.size 0
+call Math.multiply 2
+push constant 16
+add
+push this 3
+call Main.size 0
+call Math.multiply 2
+push constant 6
+add
+push this 2
+call Main.size 0
+call Math.multiply 2
+push constant 15
+add
+push this 3
+call Main.size 0
+call Math.multiply 2
+push constant 5
+add
+call Screen.drawLine 4
+pop temp 0
+push this 2
+call Main.size 0
+call Math.multiply 2
+push constant 14
+add
+push this 3
+call Main.size 0
+call Math.multiply 2
+push constant 6
+add
+push this 2
+call Main.size 0
+call Math.multiply 2
+push constant 14
+add
+push this 3
+call Main.size 0
+call Math.multiply 2
+push constant 9
+add
+call Screen.drawLine 4
+pop temp 0
+push this 2
+call Main.size 0
+call Math.multiply 2
+push constant 8
+add
+push this 3
+call Main.size 0
+call Math.multiply 2
+push constant 7
+add
+push this 2
+call Main.size 0
+call Math.multiply 2
+push constant 11
+add
+push this 3
+call Main.size 0
+call Math.multiply 2
+push constant 9
+add
+call Screen.drawLine 4
+pop temp 0
+push this 2
+call Main.size 0
+call Math.multiply 2
+push constant 15
+add
+push this 3
+call Main.size 0
+call Math.multiply 2
+push constant 9
+add
+push this 2
+call Main.size 0
+call Math.multiply 2
+push constant 18
+add
+push this 3
+call Main.size 0
+call Math.multiply 2
+push constant 7
+add
+call Screen.drawLine 4
+pop temp 0
+push this 2
+call Main.size 0
+call Math.multiply 2
+push constant 19
+add
+push this 3
+call Main.size 0
+call Math.multiply 2
+push constant 7
+add
+push this 2
+call Main.size 0
+call Math.multiply 2
+push constant 23
+add
+push this 3
+call Main.size 0
+call Math.multiply 2
+push constant 9
+add
+call Screen.drawLine 4
+pop temp 0
+push this 2
+call Main.size 0
+call Math.multiply 2
+push constant 13
+add
+push this 3
+call Main.size 0
+call Math.multiply 2
+push constant 10
+add
+push this 2
+call Main.size 0
+call Math.multiply 2
+push constant 13
+add
+push this 3
+call Main.size 0
+call Math.multiply 2
+push constant 11
+add
+call Screen.drawLine 4
+pop temp 0
+push this 2
+call Main.size 0
+call Math.multiply 2
+push constant 2
+add
+push this 3
+call Main.size 0
+call Math.multiply 2
+push constant 10
+add
+push this 2
+call Main.size 0
+call Math.multiply 2
+push constant 1
+add
+push this 3
+call Main.size 0
+call Math.multiply 2
+push constant 14
+add
+call Screen.drawLine 4
+pop temp 0
+push this 2
+call Main.size 0
+call Math.multiply 2
+push constant 24
+add
+push this 3
+call Main.size 0
+call Math.multiply 2
+push constant 10
+add
+push this 2
+call Main.size 0
+call Math.multiply 2
+push constant 25
+add
+push this 3
+call Main.size 0
+call Math.multiply 2
+push constant 15
+add
+call Screen.drawLine 4
+pop temp 0
+push this 2
+call Main.size 0
+call Math.multiply 2
+push constant 1
+add
+push this 3
+call Main.size 0
+call Math.multiply 2
+push constant 15
+add
+push this 2
+call Main.size 0
+call Math.multiply 2
+push constant 2
+add
+push this 3
+call Main.size 0
+call Math.multiply 2
+push constant 18
+add
+call Screen.drawLine 4
+pop temp 0
+push this 2
+call Main.size 0
+call Math.multiply 2
+push constant 22
+add
+push this 3
+call Main.size 0
+call Math.multiply 2
+push constant 23
+add
+push this 2
+call Main.size 0
+call Math.multiply 2
+push constant 24
+add
+push this 3
+call Main.size 0
+call Math.multiply 2
+push constant 18
+add
+call Screen.drawLine 4
+pop temp 0
+push this 2
+call Main.size 0
+call Math.multiply 2
+push constant 2
+add
+push this 3
+call Main.size 0
+call Math.multiply 2
+push constant 19
+add
+push this 2
+call Main.size 0
+call Math.multiply 2
+push constant 5
+add
+push this 3
+call Main.size 0
+call Math.multiply 2
+push constant 24
+add
+call Screen.drawLine 4
+pop temp 0
+push this 2
+call Main.size 0
+call Math.multiply 2
+push constant 6
+add
+push this 3
+call Main.size 0
+call Math.multiply 2
+push constant 24
+add
+push this 2
+call Main.size 0
+call Math.multiply 2
+push constant 8
+add
+push this 3
+call Main.size 0
+call Math.multiply 2
+push constant 26
+add
+call Screen.drawLine 4
+pop temp 0
+push this 2
+call Main.size 0
+call Math.multiply 2
+push constant 9
+add
+push this 3
+call Main.size 0
+call Math.multiply 2
+push constant 26
+add
+push this 2
+call Main.size 0
+call Math.multiply 2
+push constant 13
+add
+push this 3
+call Main.size 0
+call Math.multiply 2
+push constant 24
+add
+call Screen.drawLine 4
+pop temp 0
+push this 2
+call Main.size 0
+call Math.multiply 2
+push constant 14
+add
+push this 3
+call Main.size 0
+call Math.multiply 2
+push constant 25
+add
+push this 2
+call Main.size 0
+call Math.multiply 2
+push constant 17
+add
+push this 3
+call Main.size 0
+call Math.multiply 2
+push constant 26
+add
+call Screen.drawLine 4
+pop temp 0
+push this 2
+call Main.size 0
+call Math.multiply 2
+push constant 18
+add
+push this 3
+call Main.size 0
+call Math.multiply 2
+push constant 26
+add
+push this 2
+call Main.size 0
+call Math.multiply 2
+push constant 20
+add
+push this 3
+call Main.size 0
+call Math.multiply 2
+push constant 24
+add
+call Screen.drawLine 4
+pop temp 0
+push this 2
+call Main.size 0
+call Math.multiply 2
+push constant 3
+add
+push this 3
+call Main.size 0
+call Math.multiply 2
+push constant 9
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 2
+call Main.size 0
+call Math.multiply 2
+push constant 24
+add
+push this 3
+call Main.size 0
+call Math.multiply 2
+push constant 17
+add
+push this 2
+call Main.size 0
+call Math.multiply 2
+push constant 25
+add
+push this 3
+call Main.size 0
+call Math.multiply 2
+push constant 16
+add
+call Screen.drawLine 4
+pop temp 0
+push this 2
+call Main.size 0
+call Math.multiply 2
+push constant 21
+add
+push this 3
+call Main.size 0
+call Math.multiply 2
+push constant 24
+add
+call Screen.drawPixel 2
+pop temp 0
+push constant 0
+return
+function Apple.hide 0
+push argument 0
+pop pointer 0
+push pointer 0
+push constant 0
+call Apple.paint 2
+pop temp 0
+push constant 0
+return
+function Apple.show 0
+push argument 0
+pop pointer 0
+push pointer 0
+push constant 0
+not
+call Apple.paint 2
+pop temp 0
+push constant 0
+return

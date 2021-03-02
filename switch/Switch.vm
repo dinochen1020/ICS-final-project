@@ -1,0 +1,240 @@
+function Switch.new 0
+push constant 9
+call Memory.alloc 1
+pop pointer 0
+push constant 74
+pop this 0
+push constant 44
+pop this 1
+push constant 79
+pop this 2
+push constant 190
+pop this 3
+push constant 44
+pop this 4
+push constant 124
+pop this 5
+push constant 0
+pop this 6
+push constant 0
+pop this 7
+push pointer 0
+return
+function Switch.choose 1
+push argument 0
+pop pointer 0
+push constant 0
+push constant 0
+call GameSwitcher.new 2
+pop temp 0
+push this 1
+push this 4
+call ChooseRectangle.new 2
+pop temp 0
+push this 0
+push this 3
+call Arrow.new 2
+pop temp 0
+push constant 1
+pop this 8
+label WHILE_EXP0
+push local 0
+push constant 81
+eq
+not
+not
+if-goto WHILE_END0
+call Keyboard.keyPressed 0
+pop local 0
+push local 0
+push constant 68
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 8
+push constant 3
+eq
+not
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push this 1
+push this 8
+push constant 1
+sub
+push constant 156
+call Math.multiply 2
+add
+push this 4
+call ChooseRectangle.old 2
+pop temp 0
+push this 0
+push this 8
+push constant 1
+sub
+push constant 156
+call Math.multiply 2
+add
+push this 3
+call Arrow.old 2
+pop temp 0
+push this 8
+push constant 1
+add
+pop this 8
+push this 1
+push this 8
+push constant 1
+sub
+push constant 156
+call Math.multiply 2
+add
+push this 4
+call ChooseRectangle.new 2
+pop temp 0
+push this 0
+push this 8
+push constant 1
+sub
+push constant 156
+call Math.multiply 2
+add
+push this 3
+call Arrow.new 2
+pop temp 0
+push constant 100
+call Sys.wait 1
+pop temp 0
+label IF_FALSE1
+label IF_FALSE0
+push local 0
+push constant 65
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push this 8
+push constant 1
+eq
+not
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push this 1
+push this 8
+push constant 1
+sub
+push constant 156
+call Math.multiply 2
+add
+push this 4
+call ChooseRectangle.old 2
+pop temp 0
+push this 0
+push this 8
+push constant 1
+sub
+push constant 156
+call Math.multiply 2
+add
+push this 3
+call Arrow.old 2
+pop temp 0
+push this 8
+push constant 1
+sub
+pop this 8
+push this 1
+push this 8
+push constant 1
+sub
+push constant 156
+call Math.multiply 2
+add
+push this 4
+call ChooseRectangle.new 2
+pop temp 0
+push this 0
+push this 8
+push constant 1
+sub
+push constant 156
+call Math.multiply 2
+add
+push this 3
+call Arrow.new 2
+pop temp 0
+push constant 100
+call Sys.wait 1
+pop temp 0
+label IF_FALSE3
+label IF_FALSE2
+push local 0
+push constant 83
+eq
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push this 2
+push this 8
+push constant 1
+sub
+push constant 156
+call Math.multiply 2
+add
+push this 5
+call Chop.new 2
+pop temp 0
+push constant 500
+call Sys.wait 1
+pop temp 0
+push pointer 0
+call Switch.whiteout 1
+pop temp 0
+push constant 0
+return
+label IF_FALSE4
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
+function Switch.whiteout 0
+push argument 0
+pop pointer 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push this 6
+push this 7
+push this 6
+push constant 511
+add
+push this 7
+push constant 255
+add
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+return
+function Switch.FindID 0
+push argument 0
+pop pointer 0
+push this 8
+return
+function Switch.dispose 0
+push argument 0
+pop pointer 0
+call GameSwitcher.dis 0
+pop temp 0
+call Chop.dis 0
+pop temp 0
+call Arrow.dis 0
+pop temp 0
+call ChooseRectangle.dis 0
+pop temp 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return

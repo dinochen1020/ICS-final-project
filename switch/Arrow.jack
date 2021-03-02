@@ -1,0 +1,51 @@
+class Arrow {
+
+   field int x, y; 
+
+   constructor Arrow new(int Ax, int Ay) {
+      let x = Ax;
+      let y = Ay;
+      do draw();
+      return this;
+   }
+
+   constructor Arrow old(int Ax, int Ay) {
+      let x = Ax;
+      let y = Ay;
+      do erase();
+      return this;
+   }
+
+   constructor Arrow dis(){
+      do dispose();
+      return this;
+   }
+
+   method void dispose() {
+      do Memory.deAlloc(this);
+      return;
+   }
+
+   method void draw() {
+      do Screen.setColor(true);
+      do Screen.drawLine(x + 25, y, x, y + 25);
+      do Screen.drawLine(x + 26, y, x + 51, y + 25);
+      do Screen.drawLine(x, y + 25, x + 14, y + 25);
+      do Screen.drawLine(x + 51, y + 25, x + 37, y + 25);
+      do Screen.drawLine(x + 14, y + 25, x + 14, y + 46);
+      do Screen.drawLine(x + 37, y + 25, x + 37, y + 46);
+      do Screen.drawLine(x + 14, y + 46, x + 37, y + 46);
+      return;
+   }
+   method void erase() {
+      do Screen.setColor(false);
+      do Screen.drawLine(x + 25, y, x, y + 25);
+      do Screen.drawLine(x + 26, y, x + 51, y + 25);
+      do Screen.drawLine(x, y + 25, x + 14, y + 25);
+      do Screen.drawLine(x + 51, y + 25, x + 37, y + 25);
+      do Screen.drawLine(x + 14, y + 25, x + 14, y + 46);
+      do Screen.drawLine(x + 37, y + 25, x + 37, y + 46);
+      do Screen.drawLine(x + 14, y + 46, x + 37, y + 46);
+      return;
+   }
+} 

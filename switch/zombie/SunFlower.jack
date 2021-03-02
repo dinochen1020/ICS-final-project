@@ -1,0 +1,154 @@
+class SunFlower {
+
+   field int x, y; 
+
+   constructor SunFlower new(int x_offset, int y_offset) {
+      let x = x_offset*35+6;
+      let y = y_offset*35+76;
+      do draw();
+      return this;
+   }
+
+   method void dispose() {
+      do Memory.deAlloc(this);
+      return;
+   }
+
+   method void draw() {
+      do Screen.setColor(true);
+      do Screen.drawLine(x+15, y+3, x+16, y+3);
+      do Screen.drawPixel(x+14,y+4);
+      do Screen.drawPixel(x+17,y+4);
+      do Screen.drawPixel(x+13,y+5);
+      do Screen.drawPixel(x+18,y+5);
+      do Screen.drawLine(x+12, y+6, x+19, y+6);
+      do Screen.drawPixel(x+11,y+7);
+      do Screen.drawPixel(x+20,y+7);
+      do Screen.drawLine(x+10,y+8,x+10,y+12);
+      do Screen.drawLine(x+21,y+8,x+21,y+12);
+      do Screen.drawPixel(x+11,y+13);
+      do Screen.drawPixel(x+20,y+13);
+      do Screen.drawLine(x+12, y+14, x+19, y+14);
+      do Screen.drawLine(x+13, y+8, x+13, y+9);
+      do Screen.drawLine(x+18, y+8, x+18, y+9);
+      do Screen.drawPixel(x+13,y+11);
+      do Screen.drawPixel(x+18,y+11);
+      do Screen.drawLine(x+14, y+12, x+17, y+12);
+      do Screen.drawRectangle(x+15,y+15,x+16,y+25);
+      do Screen.drawPixel(x+22,y+8);
+      do Screen.drawPixel(x+23,y+9);
+      do Screen.drawPixel(x+24,y+10);
+      do Screen.drawPixel(x+23,y+11);
+      do Screen.drawPixel(x+22,y+12);
+      do Screen.drawPixel(x+9,y+8);
+      do Screen.drawPixel(x+8,y+9);
+      do Screen.drawPixel(x+7,y+10);
+      do Screen.drawPixel(x+8,y+11);
+      do Screen.drawPixel(x+9,y+12);
+      do Screen.drawPixel(x+19,y+5);
+      do Screen.drawPixel(x+22,y+5);
+      do Screen.drawLine(x+20, y+4, x+21, y+4);
+      do Screen.drawLine(x+23, y+6, x+23, y+7);
+      do Screen.drawPixel(x+12,y+5);
+      do Screen.drawPixel(x+9,y+5);
+      do Screen.drawLine(x+10, y+4, x+11, y+4);
+      do Screen.drawLine(x+8, y+6, x+8, y+7);
+      do Screen.drawPixel(x+18,y+15);
+      do Screen.drawPixel(x+22,y+15);
+      do Screen.drawLine(x+19, y+16, x+21, y+16);
+      do Screen.drawLine(x+23, y+13, x+23, y+14);
+      do Screen.drawPixel(x+13,y+15);
+      do Screen.drawPixel(x+9,y+15);
+      do Screen.drawLine(x+10, y+16, x+12, y+16);
+      do Screen.drawLine(x+8, y+13, x+8, y+14);
+      do Screen.drawPixel(x+17,y+24);
+      do Screen.drawPixel(x+18,y+23);
+      do Screen.drawPixel(x+18,y+25);
+      do Screen.drawPixel(x+24,y+24);
+      do Screen.drawPixel(x+23,y+23);
+      do Screen.drawPixel(x+23,y+25);
+      do Screen.drawLine(x+19, y+22, x+22, y+22);
+      do Screen.drawLine(x+19, y+24, x+22, y+24);
+      do Screen.drawLine(x+19, y+26, x+22, y+26);
+      do Screen.drawPixel(x+14,y+24);
+      do Screen.drawPixel(x+13,y+23);
+      do Screen.drawPixel(x+13,y+25);
+      do Screen.drawPixel(x+7,y+24);
+      do Screen.drawPixel(x+8,y+23);
+      do Screen.drawPixel(x+8,y+25);
+      do Screen.drawLine(x+10, y+22, x+12, y+22);
+      do Screen.drawLine(x+10, y+24, x+12, y+24);
+      do Screen.drawLine(x+10, y+26, x+12, y+26);
+      return;
+   }
+
+   method void erase() {
+      do Screen.setColor(false);
+      do Screen.drawLine(x+15, y+3, x+16, y+3);
+      do Screen.drawPixel(x+14,y+4);
+      do Screen.drawPixel(x+17,y+4);
+      do Screen.drawPixel(x+13,y+5);
+      do Screen.drawPixel(x+18,y+5);
+      do Screen.drawLine(x+12, y+6, x+19, y+6);
+      do Screen.drawPixel(x+11,y+7);
+      do Screen.drawPixel(x+20,y+7);
+      do Screen.drawLine(x+10,y+8,x+10,y+12);
+      do Screen.drawLine(x+21,y+8,x+21,y+12);
+      do Screen.drawPixel(x+11,y+13);
+      do Screen.drawPixel(x+20,y+13);
+      do Screen.drawLine(x+12, y+14, x+19, y+14);
+      do Screen.drawLine(x+13, y+8, x+13, y+9);
+      do Screen.drawLine(x+18, y+8, x+18, y+9);
+      do Screen.drawPixel(x+13,y+11);
+      do Screen.drawPixel(x+18,y+11);
+      do Screen.drawLine(x+14, y+12, x+17, y+12);
+      do Screen.drawRectangle(x+15,y+15,x+16,y+25);
+      do Screen.drawPixel(x+22,y+8);
+      do Screen.drawPixel(x+23,y+9);
+      do Screen.drawPixel(x+24,y+10);
+      do Screen.drawPixel(x+23,y+11);
+      do Screen.drawPixel(x+22,y+12);
+      do Screen.drawPixel(x+9,y+8);
+      do Screen.drawPixel(x+8,y+9);
+      do Screen.drawPixel(x+7,y+10);
+      do Screen.drawPixel(x+8,y+11);
+      do Screen.drawPixel(x+9,y+12);
+      do Screen.drawPixel(x+19,y+5);
+      do Screen.drawPixel(x+22,y+5);
+      do Screen.drawLine(x+20, y+4, x+21, y+4);
+      do Screen.drawLine(x+23, y+6, x+23, y+7);
+      do Screen.drawPixel(x+12,y+5);
+      do Screen.drawPixel(x+9,y+5);
+      do Screen.drawLine(x+10, y+4, x+11, y+4);
+      do Screen.drawLine(x+8, y+6, x+8, y+7);
+      do Screen.drawPixel(x+18,y+15);
+      do Screen.drawPixel(x+22,y+15);
+      do Screen.drawLine(x+19, y+16, x+21, y+16);
+      do Screen.drawLine(x+23, y+13, x+23, y+14);
+      do Screen.drawPixel(x+13,y+15);
+      do Screen.drawPixel(x+9,y+15);
+      do Screen.drawLine(x+10, y+16, x+12, y+16);
+      do Screen.drawLine(x+8, y+13, x+8, y+14);
+      do Screen.drawPixel(x+17,y+24);
+      do Screen.drawPixel(x+18,y+23);
+      do Screen.drawPixel(x+18,y+25);
+      do Screen.drawPixel(x+24,y+24);
+      do Screen.drawPixel(x+23,y+23);
+      do Screen.drawPixel(x+23,y+25);
+      do Screen.drawLine(x+19, y+22, x+22, y+22);
+      do Screen.drawLine(x+19, y+24, x+22, y+24);
+      do Screen.drawLine(x+19, y+26, x+22, y+26);
+      do Screen.drawPixel(x+14,y+24);
+      do Screen.drawPixel(x+13,y+23);
+      do Screen.drawPixel(x+13,y+25);
+      do Screen.drawPixel(x+7,y+24);
+      do Screen.drawPixel(x+8,y+23);
+      do Screen.drawPixel(x+8,y+25);
+      do Screen.drawLine(x+10, y+22, x+12, y+22);
+      do Screen.drawLine(x+10, y+24, x+12, y+24);
+      do Screen.drawLine(x+10, y+26, x+12, y+26);
+      return;
+   }
+
+   
+}

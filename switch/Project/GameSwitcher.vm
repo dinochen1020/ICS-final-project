@@ -1,0 +1,3111 @@
+function GameSwitcher.new 0
+push constant 2
+call Memory.alloc 1
+pop pointer 0
+push argument 0
+pop this 0
+push argument 1
+pop this 1
+push pointer 0
+call GameSwitcher.draw 1
+pop temp 0
+push pointer 0
+return
+function GameSwitcher.dis 0
+push constant 2
+call Memory.alloc 1
+pop pointer 0
+push pointer 0
+call GameSwitcher.dispose 1
+pop temp 0
+push pointer 0
+return
+function GameSwitcher.dispose 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return
+function GameSwitcher.draw 0
+push argument 0
+pop pointer 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push this 0
+push constant 49
+add
+push this 1
+push constant 49
+add
+push this 0
+push constant 49
+add
+push this 1
+push constant 174
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 149
+add
+push this 1
+push constant 49
+add
+push this 0
+push constant 149
+add
+push this 1
+push constant 174
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 49
+add
+push this 1
+push constant 49
+add
+push this 0
+push constant 149
+add
+push this 1
+push constant 49
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 49
+add
+push this 1
+push constant 174
+add
+push this 0
+push constant 149
+add
+push this 1
+push constant 174
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 54
+add
+push this 1
+push constant 54
+add
+push this 0
+push constant 54
+add
+push this 1
+push constant 114
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 144
+add
+push this 1
+push constant 54
+add
+push this 0
+push constant 144
+add
+push this 1
+push constant 114
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 54
+add
+push this 1
+push constant 54
+add
+push this 0
+push constant 144
+add
+push this 1
+push constant 54
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 54
+add
+push this 1
+push constant 114
+add
+push this 0
+push constant 144
+add
+push this 1
+push constant 114
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 205
+add
+push this 1
+push constant 49
+add
+push this 0
+push constant 205
+add
+push this 1
+push constant 174
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 305
+add
+push this 1
+push constant 49
+add
+push this 0
+push constant 305
+add
+push this 1
+push constant 174
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 205
+add
+push this 1
+push constant 49
+add
+push this 0
+push constant 305
+add
+push this 1
+push constant 49
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 205
+add
+push this 1
+push constant 174
+add
+push this 0
+push constant 305
+add
+push this 1
+push constant 174
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 210
+add
+push this 1
+push constant 54
+add
+push this 0
+push constant 210
+add
+push this 1
+push constant 114
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 300
+add
+push this 1
+push constant 54
+add
+push this 0
+push constant 300
+add
+push this 1
+push constant 114
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 210
+add
+push this 1
+push constant 54
+add
+push this 0
+push constant 300
+add
+push this 1
+push constant 54
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 210
+add
+push this 1
+push constant 114
+add
+push this 0
+push constant 300
+add
+push this 1
+push constant 114
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 361
+add
+push this 1
+push constant 49
+add
+push this 0
+push constant 361
+add
+push this 1
+push constant 174
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 461
+add
+push this 1
+push constant 49
+add
+push this 0
+push constant 461
+add
+push this 1
+push constant 174
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 361
+add
+push this 1
+push constant 49
+add
+push this 0
+push constant 461
+add
+push this 1
+push constant 49
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 361
+add
+push this 1
+push constant 174
+add
+push this 0
+push constant 461
+add
+push this 1
+push constant 174
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 366
+add
+push this 1
+push constant 54
+add
+push this 0
+push constant 366
+add
+push this 1
+push constant 114
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 456
+add
+push this 1
+push constant 54
+add
+push this 0
+push constant 456
+add
+push this 1
+push constant 114
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 366
+add
+push this 1
+push constant 54
+add
+push this 0
+push constant 456
+add
+push this 1
+push constant 54
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 366
+add
+push this 1
+push constant 114
+add
+push this 0
+push constant 456
+add
+push this 1
+push constant 114
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 91
+add
+push this 1
+push constant 64
+add
+push this 0
+push constant 95
+add
+push this 1
+push constant 65
+add
+call Screen.drawRectangle 4
+pop temp 0
+push this 0
+push constant 96
+add
+push this 1
+push constant 66
+add
+push this 0
+push constant 97
+add
+push this 1
+push constant 68
+add
+call Screen.drawRectangle 4
+pop temp 0
+push this 0
+push constant 90
+add
+push this 1
+push constant 66
+add
+push this 0
+push constant 91
+add
+push this 1
+push constant 68
+add
+call Screen.drawRectangle 4
+pop temp 0
+push this 0
+push constant 85
+add
+push this 1
+push constant 68
+add
+push this 0
+push constant 90
+add
+push this 1
+push constant 69
+add
+call Screen.drawRectangle 4
+pop temp 0
+push this 0
+push constant 83
+add
+push this 1
+push constant 70
+add
+push this 0
+push constant 84
+add
+push this 1
+push constant 72
+add
+call Screen.drawRectangle 4
+pop temp 0
+push this 0
+push constant 85
+add
+push this 1
+push constant 73
+add
+push this 0
+push constant 89
+add
+push this 1
+push constant 74
+add
+call Screen.drawRectangle 4
+pop temp 0
+push this 0
+push constant 83
+add
+push this 1
+push constant 75
+add
+push this 0
+push constant 84
+add
+push this 1
+push constant 76
+add
+call Screen.drawRectangle 4
+pop temp 0
+push this 0
+push constant 81
+add
+push this 1
+push constant 76
+add
+push this 0
+push constant 82
+add
+push this 1
+push constant 78
+add
+call Screen.drawRectangle 4
+pop temp 0
+push this 0
+push constant 79
+add
+push this 1
+push constant 79
+add
+push this 0
+push constant 81
+add
+push this 1
+push constant 82
+add
+call Screen.drawRectangle 4
+pop temp 0
+push this 0
+push constant 76
+add
+push this 1
+push constant 83
+add
+push this 0
+push constant 78
+add
+push this 1
+push constant 85
+add
+call Screen.drawRectangle 4
+pop temp 0
+push this 0
+push constant 82
+add
+push this 1
+push constant 86
+add
+push this 0
+push constant 86
+add
+push this 1
+push constant 87
+add
+call Screen.drawRectangle 4
+pop temp 0
+push this 0
+push constant 88
+add
+push this 1
+push constant 101
+add
+push this 0
+push constant 105
+add
+push this 1
+push constant 102
+add
+call Screen.drawRectangle 4
+pop temp 0
+push this 0
+push constant 91
+add
+push this 1
+push constant 70
+add
+push this 0
+push constant 92
+add
+push this 1
+push constant 71
+add
+call Screen.drawRectangle 4
+pop temp 0
+push this 0
+push constant 93
+add
+push this 1
+push constant 72
+add
+push this 0
+push constant 95
+add
+push this 1
+push constant 73
+add
+call Screen.drawRectangle 4
+pop temp 0
+push this 0
+push constant 96
+add
+push this 1
+push constant 73
+add
+push this 0
+push constant 97
+add
+push this 1
+push constant 75
+add
+call Screen.drawRectangle 4
+pop temp 0
+push this 0
+push constant 90
+add
+push this 1
+push constant 82
+add
+push this 0
+push constant 99
+add
+push this 1
+push constant 84
+add
+call Screen.drawRectangle 4
+pop temp 0
+push this 0
+push constant 90
+add
+push this 1
+push constant 89
+add
+push this 0
+push constant 91
+add
+push this 1
+push constant 94
+add
+call Screen.drawRectangle 4
+pop temp 0
+push this 0
+push constant 75
+add
+push this 1
+push constant 85
+add
+push this 0
+push constant 76
+add
+push this 1
+push constant 88
+add
+call Screen.drawRectangle 4
+pop temp 0
+push this 0
+push constant 112
+add
+push this 1
+push constant 83
+add
+push this 0
+push constant 113
+add
+push this 1
+push constant 95
+add
+call Screen.drawRectangle 4
+pop temp 0
+push this 0
+push constant 98
+add
+push this 1
+push constant 68
+add
+push this 0
+push constant 108
+add
+push this 1
+push constant 78
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 98
+add
+push this 1
+push constant 69
+add
+push this 0
+push constant 107
+add
+push this 1
+push constant 78
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 100
+add
+push this 1
+push constant 69
+add
+push this 0
+push constant 109
+add
+push this 1
+push constant 78
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 109
+add
+push this 1
+push constant 79
+add
+push this 0
+push constant 111
+add
+push this 1
+push constant 85
+add
+call Screen.drawRectangle 4
+pop temp 0
+push this 0
+push constant 109
+add
+push this 1
+push constant 92
+add
+push this 0
+push constant 111
+add
+push this 1
+push constant 94
+add
+call Screen.drawRectangle 4
+pop temp 0
+push this 0
+push constant 85
+add
+push this 1
+push constant 95
+add
+push this 0
+push constant 89
+add
+push this 1
+push constant 96
+add
+call Screen.drawRectangle 4
+pop temp 0
+push this 0
+push constant 76
+add
+push this 1
+push constant 89
+add
+push this 0
+push constant 77
+add
+push this 1
+push constant 90
+add
+call Screen.drawRectangle 4
+pop temp 0
+push this 0
+push constant 77
+add
+push this 1
+push constant 91
+add
+push this 0
+push constant 82
+add
+push this 1
+push constant 92
+add
+call Screen.drawRectangle 4
+pop temp 0
+push this 0
+push constant 83
+add
+push this 1
+push constant 92
+add
+push this 0
+push constant 84
+add
+push this 1
+push constant 94
+add
+call Screen.drawRectangle 4
+pop temp 0
+push this 0
+push constant 79
+add
+push this 1
+push constant 85
+add
+push this 0
+push constant 81
+add
+push this 1
+push constant 85
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 87
+add
+push this 1
+push constant 88
+add
+push this 0
+push constant 89
+add
+push this 1
+push constant 88
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 103
+add
+push this 1
+push constant 95
+add
+push this 0
+push constant 108
+add
+push this 1
+push constant 95
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 98
+add
+push this 1
+push constant 85
+add
+push this 0
+push constant 108
+add
+push this 1
+push constant 85
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 100
+add
+push this 1
+push constant 83
+add
+push this 0
+push constant 100
+add
+push this 1
+push constant 87
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 108
+add
+push this 1
+push constant 82
+add
+push this 0
+push constant 108
+add
+push this 1
+push constant 88
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 101
+add
+push this 1
+push constant 88
+add
+push this 0
+push constant 103
+add
+push this 1
+push constant 88
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 78
+add
+push this 1
+push constant 93
+add
+push this 0
+push constant 79
+add
+push this 1
+push constant 95
+add
+call Screen.drawRectangle 4
+pop temp 0
+push this 0
+push constant 109
+add
+push this 1
+push constant 96
+add
+push this 0
+push constant 111
+add
+push this 1
+push constant 97
+add
+call Screen.drawRectangle 4
+pop temp 0
+push this 0
+push constant 104
+add
+push this 1
+push constant 83
+add
+push this 0
+push constant 105
+add
+push this 1
+push constant 97
+add
+call Screen.drawRectangle 4
+pop temp 0
+push this 0
+push constant 79
+add
+push this 1
+push constant 95
+add
+push this 0
+push constant 81
+add
+push this 1
+push constant 96
+add
+call Screen.drawRectangle 4
+pop temp 0
+push this 0
+push constant 93
+add
+push this 1
+push constant 85
+add
+push this 0
+push constant 94
+add
+push this 1
+push constant 87
+add
+call Screen.drawRectangle 4
+pop temp 0
+push this 0
+push constant 106
+add
+push this 1
+push constant 82
+add
+push this 0
+push constant 107
+add
+push this 1
+push constant 84
+add
+call Screen.drawRectangle 4
+pop temp 0
+push this 0
+push constant 104
+add
+push this 1
+push constant 89
+add
+push this 0
+push constant 107
+add
+push this 1
+push constant 90
+add
+call Screen.drawRectangle 4
+pop temp 0
+push this 0
+push constant 100
+add
+push this 1
+push constant 92
+add
+push this 0
+push constant 102
+add
+push this 1
+push constant 94
+add
+call Screen.drawRectangle 4
+pop temp 0
+push this 0
+push constant 96
+add
+push this 1
+push constant 86
+add
+push this 0
+push constant 97
+add
+push this 1
+push constant 87
+add
+call Screen.drawRectangle 4
+pop temp 0
+push this 0
+push constant 100
+add
+push this 1
+push constant 96
+add
+push this 0
+push constant 103
+add
+push this 1
+push constant 97
+add
+call Screen.drawRectangle 4
+pop temp 0
+push this 0
+push constant 106
+add
+push this 1
+push constant 100
+add
+push this 0
+push constant 107
+add
+push this 1
+push constant 101
+add
+call Screen.drawRectangle 4
+pop temp 0
+push this 0
+push constant 107
+add
+push this 1
+push constant 98
+add
+push this 0
+push constant 108
+add
+push this 1
+push constant 99
+add
+call Screen.drawRectangle 4
+pop temp 0
+push this 0
+push constant 96
+add
+push this 1
+push constant 89
+add
+push this 0
+push constant 99
+add
+push this 1
+push constant 90
+add
+call Screen.drawRectangle 4
+pop temp 0
+push this 0
+push constant 96
+add
+push this 1
+push constant 91
+add
+push this 0
+push constant 97
+add
+push this 1
+push constant 94
+add
+call Screen.drawRectangle 4
+pop temp 0
+push this 0
+push constant 85
+add
+push this 1
+push constant 100
+add
+push this 0
+push constant 87
+add
+push this 1
+push constant 101
+add
+call Screen.drawRectangle 4
+pop temp 0
+push this 0
+push constant 82
+add
+push this 1
+push constant 96
+add
+push this 0
+push constant 85
+add
+push this 1
+push constant 99
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 82
+add
+push this 1
+push constant 97
+add
+push this 0
+push constant 85
+add
+push this 1
+push constant 100
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 98
+add
+push this 1
+push constant 95
+add
+push this 0
+push constant 99
+add
+push this 1
+push constant 95
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 95
+add
+push this 1
+push constant 88
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push constant 108
+add
+push this 1
+push constant 91
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push constant 86
+add
+push this 1
+push constant 99
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push constant 262
+add
+push this 1
+push constant 54
+add
+push this 0
+push constant 247
+add
+push this 1
+push constant 113
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 218
+add
+push this 1
+push constant 70
+add
+push this 0
+push constant 219
+add
+push this 1
+push constant 70
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 225
+add
+push this 1
+push constant 71
+add
+push this 0
+push constant 230
+add
+push this 1
+push constant 71
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 225
+add
+push this 1
+push constant 85
+add
+push this 0
+push constant 230
+add
+push this 1
+push constant 85
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 217
+add
+push this 1
+push constant 71
+add
+push this 0
+push constant 220
+add
+push this 1
+push constant 71
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 237
+add
+push this 1
+push constant 75
+add
+push this 0
+push constant 239
+add
+push this 1
+push constant 75
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 219
+add
+push this 1
+push constant 72
+add
+push this 0
+push constant 221
+add
+push this 1
+push constant 72
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 226
+add
+push this 1
+push constant 86
+add
+push this 0
+push constant 226
+add
+push this 1
+push constant 96
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 229
+add
+push this 1
+push constant 86
+add
+push this 0
+push constant 229
+add
+push this 1
+push constant 96
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 219
+add
+push this 1
+push constant 76
+add
+push this 0
+push constant 219
+add
+push this 1
+push constant 80
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 220
+add
+push this 1
+push constant 81
+add
+push this 0
+push constant 222
+add
+push this 1
+push constant 83
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 220
+add
+push this 1
+push constant 75
+add
+push this 0
+push constant 223
+add
+push this 1
+push constant 72
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 232
+add
+push this 1
+push constant 72
+add
+push this 0
+push constant 235
+add
+push this 1
+push constant 75
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 232
+add
+push this 1
+push constant 84
+add
+push this 0
+push constant 235
+add
+push this 1
+push constant 81
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 227
+add
+push this 1
+push constant 77
+add
+push this 0
+push constant 227
+add
+push this 1
+push constant 78
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 230
+add
+push this 1
+push constant 77
+add
+push this 0
+push constant 230
+add
+push this 1
+push constant 78
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 228
+add
+push this 1
+push constant 76
+add
+push this 0
+push constant 229
+add
+push this 1
+push constant 76
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 228
+add
+push this 1
+push constant 79
+add
+push this 0
+push constant 239
+add
+push this 1
+push constant 79
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 242
+add
+push this 1
+push constant 78
+add
+push this 0
+push constant 242
+add
+push this 1
+push constant 80
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 240
+add
+push this 1
+push constant 76
+add
+push this 0
+push constant 241
+add
+push this 1
+push constant 77
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 240
+add
+push this 1
+push constant 82
+add
+push this 0
+push constant 241
+add
+push this 1
+push constant 81
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 232
+add
+push this 1
+push constant 84
+add
+push this 0
+push constant 232
+add
+push this 1
+push constant 85
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 231
+add
+push this 1
+push constant 93
+add
+push this 0
+push constant 234
+add
+push this 1
+push constant 93
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 231
+add
+push this 1
+push constant 97
+add
+push this 0
+push constant 234
+add
+push this 1
+push constant 97
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 225
+add
+push this 1
+push constant 96
+add
+push this 0
+push constant 230
+add
+push this 1
+push constant 96
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 237
+add
+push this 1
+push constant 83
+add
+push this 0
+push constant 239
+add
+push this 1
+push constant 83
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 221
+add
+push this 1
+push constant 93
+add
+push this 0
+push constant 224
+add
+push this 1
+push constant 93
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 221
+add
+push this 1
+push constant 97
+add
+push this 0
+push constant 224
+add
+push this 1
+push constant 97
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 234
+add
+push this 1
+push constant 78
+add
+push this 0
+push constant 234
+add
+push this 1
+push constant 80
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 236
+add
+push this 1
+push constant 76
+add
+push this 0
+push constant 236
+add
+push this 1
+push constant 80
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 235
+add
+push this 1
+push constant 76
+add
+push this 0
+push constant 235
+add
+push this 1
+push constant 77
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 220
+add
+push this 1
+push constant 94
+add
+push this 0
+push constant 219
+add
+push this 1
+push constant 95
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 235
+add
+push this 1
+push constant 94
+add
+push this 0
+push constant 236
+add
+push this 1
+push constant 95
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 231
+add
+push this 1
+push constant 95
+add
+push this 0
+push constant 234
+add
+push this 1
+push constant 95
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 221
+add
+push this 1
+push constant 95
+add
+push this 0
+push constant 224
+add
+push this 1
+push constant 95
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 224
+add
+push this 1
+push constant 72
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push constant 231
+add
+push this 1
+push constant 72
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push constant 235
+add
+push this 1
+push constant 94
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push constant 220
+add
+push this 1
+push constant 96
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push constant 225
+add
+push this 1
+push constant 94
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push constant 230
+add
+push this 1
+push constant 94
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push constant 236
+add
+push this 1
+push constant 82
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push constant 221
+add
+push this 1
+push constant 73
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push constant 231
+add
+push this 1
+push constant 84
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push constant 273
+add
+push this 1
+push constant 69
+add
+push this 0
+push constant 278
+add
+push this 1
+push constant 69
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 278
+add
+push this 1
+push constant 98
+add
+push this 0
+push constant 281
+add
+push this 1
+push constant 98
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 271
+add
+push this 1
+push constant 71
+add
+push this 0
+push constant 271
+add
+push this 1
+push constant 74
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 288
+add
+push this 1
+push constant 81
+add
+push this 0
+push constant 288
+add
+push this 1
+push constant 89
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 282
+add
+push this 1
+push constant 75
+add
+push this 0
+push constant 285
+add
+push this 1
+push constant 75
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 273
+add
+push this 1
+push constant 76
+add
+push this 0
+push constant 278
+add
+push this 1
+push constant 76
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 283
+add
+push this 1
+push constant 98
+add
+push this 0
+push constant 287
+add
+push this 1
+push constant 98
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 282
+add
+push this 1
+push constant 80
+add
+push this 0
+push constant 282
+add
+push this 1
+push constant 85
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 280
+add
+push this 1
+push constant 71
+add
+push this 0
+push constant 280
+add
+push this 1
+push constant 74
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 287
+add
+push this 1
+push constant 89
+add
+push this 0
+push constant 287
+add
+push this 1
+push constant 91
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 279
+add
+push this 1
+push constant 88
+add
+push this 0
+push constant 279
+add
+push this 1
+push constant 93
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 274
+add
+push this 1
+push constant 79
+add
+push this 0
+push constant 274
+add
+push this 1
+push constant 85
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 273
+add
+push this 1
+push constant 77
+add
+push this 0
+push constant 273
+add
+push this 1
+push constant 78
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 286
+add
+push this 1
+push constant 76
+add
+push this 0
+push constant 286
+add
+push this 1
+push constant 78
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 274
+add
+push this 1
+push constant 79
+add
+push this 0
+push constant 279
+add
+push this 1
+push constant 79
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 283
+add
+push this 1
+push constant 86
+add
+push this 0
+push constant 287
+add
+push this 1
+push constant 86
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 278
+add
+push this 1
+push constant 82
+add
+push this 0
+push constant 278
+add
+push this 1
+push constant 85
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 275
+add
+push this 1
+push constant 86
+add
+push this 0
+push constant 277
+add
+push this 1
+push constant 86
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 287
+add
+push this 1
+push constant 79
+add
+push this 0
+push constant 287
+add
+push this 1
+push constant 80
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 273
+add
+push this 1
+push constant 87
+add
+push this 0
+push constant 274
+add
+push this 1
+push constant 87
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 280
+add
+push this 1
+push constant 82
+add
+push this 0
+push constant 280
+add
+push this 1
+push constant 85
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 279
+add
+push this 1
+push constant 86
+add
+push this 0
+push constant 278
+add
+push this 1
+push constant 87
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 281
+add
+push this 1
+push constant 86
+add
+push this 0
+push constant 280
+add
+push this 1
+push constant 87
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 281
+add
+push this 1
+push constant 88
+add
+push this 0
+push constant 281
+add
+push this 1
+push constant 89
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 275
+add
+push this 1
+push constant 77
+add
+push this 0
+push constant 275
+add
+push this 1
+push constant 79
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 277
+add
+push this 1
+push constant 77
+add
+push this 0
+push constant 277
+add
+push this 1
+push constant 79
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 279
+add
+push this 1
+push constant 77
+add
+push this 0
+push constant 279
+add
+push this 1
+push constant 79
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 273
+add
+push this 1
+push constant 72
+add
+push this 0
+push constant 273
+add
+push this 1
+push constant 73
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 278
+add
+push this 1
+push constant 72
+add
+push this 0
+push constant 273
+add
+push this 1
+push constant 73
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 281
+add
+push this 1
+push constant 95
+add
+push this 0
+push constant 285
+add
+push this 1
+push constant 87
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 279
+add
+push this 1
+push constant 94
+add
+push this 0
+push constant 281
+add
+push this 1
+push constant 94
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 288
+add
+push this 1
+push constant 96
+add
+push this 0
+push constant 288
+add
+push this 1
+push constant 97
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 275
+add
+push this 1
+push constant 88
+add
+push this 0
+push constant 277
+add
+push this 1
+push constant 89
+add
+call Screen.drawRectangle 4
+pop temp 0
+push this 0
+push constant 283
+add
+push this 1
+push constant 87
+add
+push this 0
+push constant 285
+add
+push this 1
+push constant 95
+add
+call Screen.drawRectangle 4
+pop temp 0
+push this 0
+push constant 275
+add
+push this 1
+push constant 96
+add
+push this 0
+push constant 277
+add
+push this 1
+push constant 97
+add
+call Screen.drawRectangle 4
+pop temp 0
+push this 0
+push constant 272
+add
+push this 1
+push constant 70
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push constant 272
+add
+push this 1
+push constant 75
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push constant 279
+add
+push this 1
+push constant 70
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push constant 279
+add
+push this 1
+push constant 75
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push constant 281
+add
+push this 1
+push constant 74
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push constant 282
+add
+push this 1
+push constant 78
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push constant 278
+add
+push this 1
+push constant 95
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push constant 287
+add
+push this 1
+push constant 95
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push constant 282
+add
+push this 1
+push constant 96
+add
+push this 0
+push constant 282
+add
+push this 1
+push constant 97
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 286
+add
+push this 1
+push constant 92
+add
+push this 0
+push constant 286
+add
+push this 1
+push constant 95
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 419
+add
+push this 1
+push constant 60
+add
+push this 0
+push constant 455
+add
+push this 1
+push constant 60
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 419
+add
+push this 1
+push constant 62
+add
+push this 0
+push constant 455
+add
+push this 1
+push constant 64
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 402
+add
+push this 1
+push constant 103
+add
+push this 0
+push constant 455
+add
+push this 1
+push constant 103
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 432
+add
+push this 1
+push constant 97
+add
+push this 0
+push constant 455
+add
+push this 1
+push constant 97
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 404
+add
+push this 1
+push constant 79
+add
+push this 0
+push constant 424
+add
+push this 1
+push constant 99
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 413
+add
+push this 1
+push constant 78
+add
+push this 0
+push constant 431
+add
+push this 1
+push constant 96
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 404
+add
+push this 1
+push constant 78
+add
+push this 0
+push constant 412
+add
+push this 1
+push constant 77
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 401
+add
+push this 1
+push constant 99
+add
+push this 0
+push constant 432
+add
+push this 1
+push constant 99
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 403
+add
+push this 1
+push constant 95
+add
+push this 0
+push constant 407
+add
+push this 1
+push constant 97
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 405
+add
+push this 1
+push constant 89
+add
+push this 0
+push constant 407
+add
+push this 1
+push constant 92
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 407
+add
+push this 1
+push constant 93
+add
+push this 0
+push constant 423
+add
+push this 1
+push constant 98
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 400
+add
+push this 1
+push constant 100
+add
+push this 0
+push constant 401
+add
+push this 1
+push constant 102
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 417
+add
+push this 1
+push constant 60
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push constant 418
+add
+push this 1
+push constant 61
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push constant 411
+add
+push this 1
+push constant 79
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push constant 428
+add
+push this 1
+push constant 95
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push constant 428
+add
+push this 1
+push constant 99
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push constant 427
+add
+push this 1
+push constant 96
+add
+push this 0
+push constant 427
+add
+push this 1
+push constant 98
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 429
+add
+push this 1
+push constant 96
+add
+push this 0
+push constant 429
+add
+push this 1
+push constant 98
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 390
+add
+push this 1
+push constant 70
+add
+push this 0
+push constant 392
+add
+push this 1
+push constant 68
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 389
+add
+push this 1
+push constant 70
+add
+push this 0
+push constant 387
+add
+push this 1
+push constant 82
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 393
+add
+push this 1
+push constant 68
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push constant 393
+add
+push this 1
+push constant 69
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push constant 394
+add
+push this 1
+push constant 70
+add
+push this 0
+push constant 394
+add
+push this 1
+push constant 74
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 392
+add
+push this 1
+push constant 70
+add
+push this 0
+push constant 392
+add
+push this 1
+push constant 72
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 374
+add
+push this 1
+push constant 85
+add
+push this 0
+push constant 377
+add
+push this 1
+push constant 82
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 378
+add
+push this 1
+push constant 88
+add
+push this 0
+push constant 379
+add
+push this 1
+push constant 89
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 377
+add
+push this 1
+push constant 89
+add
+push this 0
+push constant 378
+add
+push this 1
+push constant 90
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 381
+add
+push this 1
+push constant 91
+add
+push this 0
+push constant 384
+add
+push this 1
+push constant 94
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 379
+add
+push this 1
+push constant 93
+add
+push this 0
+push constant 382
+add
+push this 1
+push constant 96
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 379
+add
+push this 1
+push constant 92
+add
+push this 0
+push constant 380
+add
+push this 1
+push constant 93
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 383
+add
+push this 1
+push constant 96
+add
+push this 0
+push constant 384
+add
+push this 1
+push constant 95
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 385
+add
+push this 1
+push constant 80
+add
+push this 0
+push constant 390
+add
+push this 1
+push constant 75
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 385
+add
+push this 1
+push constant 78
+add
+push this 0
+push constant 387
+add
+push this 1
+push constant 72
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 389
+add
+push this 1
+push constant 75
+add
+push this 0
+push constant 392
+add
+push this 1
+push constant 72
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 387
+add
+push this 1
+push constant 80
+add
+push this 0
+push constant 390
+add
+push this 1
+push constant 79
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 391
+add
+push this 1
+push constant 78
+add
+push this 0
+push constant 393
+add
+push this 1
+push constant 75
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 388
+add
+push this 1
+push constant 82
+add
+push this 0
+push constant 394
+add
+push this 1
+push constant 84
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 389
+add
+push this 1
+push constant 89
+add
+push this 0
+push constant 395
+add
+push this 1
+push constant 86
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 389
+add
+push this 1
+push constant 91
+add
+push this 0
+push constant 392
+add
+push this 1
+push constant 94
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 381
+add
+push this 1
+push constant 102
+add
+push this 0
+push constant 391
+add
+push this 1
+push constant 99
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 377
+add
+push this 1
+push constant 100
+add
+push this 0
+push constant 383
+add
+push this 1
+push constant 103
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 392
+add
+push this 1
+push constant 98
+add
+push this 0
+push constant 394
+add
+push this 1
+push constant 94
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 374
+add
+push this 1
+push constant 86
+add
+push this 0
+push constant 373
+add
+push this 1
+push constant 89
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 376
+add
+push this 1
+push constant 100
+add
+push this 0
+push constant 373
+add
+push this 1
+push constant 94
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 379
+add
+push this 1
+push constant 81
+add
+push this 0
+push constant 381
+add
+push this 1
+push constant 81
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 382
+add
+push this 1
+push constant 86
+add
+push this 0
+push constant 385
+add
+push this 1
+push constant 86
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 385
+add
+push this 1
+push constant 76
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push constant 391
+add
+push this 1
+push constant 72
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push constant 393
+add
+push this 1
+push constant 76
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push constant 391
+add
+push this 1
+push constant 74
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push constant 392
+add
+push this 1
+push constant 78
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push constant 393
+add
+push this 1
+push constant 94
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push constant 389
+add
+push this 1
+push constant 90
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push constant 394
+add
+push this 1
+push constant 85
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push constant 390
+add
+push this 1
+push constant 82
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push constant 392
+add
+push this 1
+push constant 97
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push constant 372
+add
+push this 1
+push constant 90
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push constant 378
+add
+push this 1
+push constant 82
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push constant 381
+add
+push this 1
+push constant 85
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push constant 382
+add
+push this 1
+push constant 82
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+push constant 380
+add
+push this 1
+push constant 83
+add
+push this 0
+push constant 380
+add
+push this 1
+push constant 84
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 386
+add
+push this 1
+push constant 85
+add
+push this 0
+push constant 387
+add
+push this 1
+push constant 84
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 385
+add
+push this 1
+push constant 81
+add
+push this 0
+push constant 387
+add
+push this 1
+push constant 83
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 373
+add
+push this 1
+push constant 90
+add
+push this 0
+push constant 372
+add
+push this 1
+push constant 91
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 373
+add
+push this 1
+push constant 93
+add
+push this 0
+push constant 372
+add
+push this 1
+push constant 92
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 383
+add
+push this 1
+push constant 84
+add
+push this 0
+push constant 384
+add
+push this 1
+push constant 83
+add
+call Screen.drawLine 4
+pop temp 0
+push this 0
+push constant 384
+add
+push this 1
+push constant 82
+add
+push this 0
+push constant 385
+add
+push this 1
+push constant 83
+add
+call Screen.drawLine 4
+pop temp 0
+push constant 0
+return

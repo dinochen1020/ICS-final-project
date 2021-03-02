@@ -1,0 +1,211 @@
+/**
+ * The arrow keys are used to move.
+ * The 'q' key is used to quit the game.
+ */
+class SnakeGame {
+    field Apple apple;
+    
+    field Square square;
+
+    field Snake snake;
+
+    field int direction; // 0=up,1=down,2=left,3=right
+
+    /** Constructs a new Square Game. */
+    constructor SnakeGame new() {
+
+        let snake = Snake.new();
+
+        let direction = 3;
+
+        return this;
+    }
+
+    /** Deallocates the object's memory. */
+    method void dispose() {
+        do apple.dispose();
+        do square.dispose();
+        do snake.dispose();
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    /*
+    Display instructions.
+    */
+
+    method void displayInstructions()
+    {
+        var char key;
+        do Output.moveCursor(8, 6);
+        do Output.printString("Welcome to Eat Snake.");
+        do Output.moveCursor(9, 6);
+        do Output.printString("Please press up ,down, right, left arrow to control it.");
+        do Output.moveCursor(10, 6);
+        do Output.printString("Please press 'q' to quit.");
+        do Output.moveCursor(11, 6);
+        do Output.printString("Try to be the longest snake!");
+        while(key = 0){
+            let key = Keyboard.keyPressed();
+        }
+        return;
+    }
+
+    /** Starts the game. Handles inputs from the user that control
+     *  the square's movement, direction and size. */
+    method void run() {
+        var char key, key2;
+        var boolean exit;
+        var int ticks, mv;
+
+        let exit = false;
+        let ticks = 0;
+
+        do Whiteout();
+        do displayInstructions();
+        do Whiteout();
+        do createNewSquare();
+        do createNewApple();
+
+        while (~exit) {
+            do MyMath.randIntG();
+
+            do Sys.wait(10);
+            let ticks = ticks + 1;
+            let key = Keyboard.keyPressed();
+
+            if (ticks = 20) {
+                let mv = snake.move(square);
+                if (mv < 0) {
+                    let exit = true;
+                }
+                if (mv = 1) {
+                    do createNewSquare();
+                    do createNewApple();
+                }
+                let ticks = 0;
+            }
+
+            if (key = 81) {
+                let exit = true;
+            }
+            if (key = 131) {
+                let direction = 0;
+            }
+            if (key = 133) {
+                let direction = 1;
+            }
+            if (key = 130) {
+                let direction = 2;
+            }
+            if (key = 132) {
+                let direction = 3;
+            }
+            do snake.setDirection(direction);
+        }
+        do Whiteout();
+        do GameoverDisplay();
+        while (key2 = 0){
+            let key2 = Keyboard.keyPressed();
+        }
+        do Whiteout();
+        return;
+	}
+    /*
+    White out screen before starting a new game.
+    */
+
+    method void Whiteout()
+    {
+        do Screen.setColor(false);
+        do Screen.drawRectangle(0, 0, 511, 255);
+
+        return;
+    }
+    /* 
+    Display word GAME OVER
+    */
+    method void GameoverDisplay(){
+        do Screen.setColor(true);
+        // draw G
+        do Screen.drawRectangle(145, 45, 176, 52);
+        do Screen.drawRectangle(169, 53, 184, 68);
+        do Screen.drawRectangle(137, 53, 152, 108);
+        do Screen.drawRectangle(145, 109, 184, 116);
+        do Screen.drawRectangle(169, 85, 184, 108);
+        do Screen.drawRectangle(161, 85, 168, 92);
+        // draw A
+        do Screen.drawRectangle(201, 61, 216, 116);
+        do Screen.drawRectangle(209, 53, 240, 60);
+        do Screen.drawRectangle(217, 45, 232, 52);
+        do Screen.drawRectangle(233, 61, 248, 116);
+        do Screen.drawRectangle(217, 85, 232, 92);
+        // draw M
+        do Screen.drawRectangle(264, 45, 279, 116);
+        do Screen.drawRectangle(280, 61, 287, 68);
+        do Screen.drawRectangle(288, 69, 295, 92);
+        do Screen.drawRectangle(296, 61, 303, 68);
+        do Screen.drawRectangle(304, 45, 319, 116);
+        // draw E
+        do Screen.drawRectangle(335, 45, 351, 116);
+        do Screen.drawRectangle(352, 45, 383, 53);
+        do Screen.drawRectangle(352, 77, 375, 85);
+        do Screen.drawRectangle(352, 109, 383, 116);
+        // draw O
+        do Screen.drawRectangle(145, 132, 176, 139);
+        do Screen.drawRectangle(169, 140, 184, 195);
+        do Screen.drawRectangle(137, 140, 152, 195);
+        do Screen.drawRectangle(145, 196, 176, 203);
+        // draw V
+        do Screen.drawRectangle(201, 132, 216, 187);
+        do Screen.drawRectangle(209, 188, 240, 195);
+        do Screen.drawRectangle(217, 196, 232, 203);
+        do Screen.drawRectangle(233, 132, 248, 187);
+        // draw E
+        do Screen.drawRectangle(264, 132, 279, 203);
+        do Screen.drawRectangle(280, 132, 311, 139);
+        do Screen.drawRectangle(280, 164, 303, 171);
+        do Screen.drawRectangle(280, 196, 311, 203);
+        // draw R
+        do Screen.drawRectangle(335, 132, 351, 203);
+        do Screen.drawRectangle(352, 132, 375, 139);
+        do Screen.drawRectangle(369, 140, 383, 163);
+        do Screen.drawRectangle(352, 164, 375, 171);
+        do Screen.drawRectangle(360, 172, 375, 179);
+        do Screen.drawRectangle(368, 180, 383, 203);
+
+        return;
+    }
+    method void createNewSquare() {
+        let square = Square.new(MyMath.randInt(Main.maxx()), MyMath.randInt(Main.maxy()));
+        while (snake.has(square)) {
+            let square = Square.new(MyMath.randInt(Main.maxx()), MyMath.randInt(Main.maxy()));
+        }
+        do Screen.setColor(false);
+        do Screen.drawRectangle(square.x()*Main.size() + 5, square.y()*Main.size() + 5,
+                                (square.x()+1)*Main.size()-5, (square.y()+1)*Main.size()-5);
+
+        return;
+    }
+
+    method void createNewApple(){
+        let apple = Apple.new(MyMath.randInt(Main.maxx()), MyMath.randInt(Main.maxy()));
+        return;
+    }
+
+    /** Moves the square by 2 pixels in the current direction. */
+    method void moveSquare() {
+        var int nx, ny;
+
+        let nx = MyMath.randInt(Main.maxx());
+        let ny = MyMath.randInt(Main.maxy());
+
+        do square.setPosition(nx, ny);
+
+        do Sys.wait(100); // Delays the next movement.
+        return;
+    }
+    
+    
+    
+}

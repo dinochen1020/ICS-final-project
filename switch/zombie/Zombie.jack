@@ -1,0 +1,117 @@
+class Zombie
+{
+    field int y_offset;
+    field int x_offset;
+    field int size;
+    field int health;
+
+    constructor Zombie new(int y)
+    {
+        let size = 32;
+        let x_offset = 505 - size;
+        let y_offset = 76 + (35 * y);
+        let health = 3;
+        do DrawZombie();
+        return this;
+    }
+
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    method void DrawZombie()
+    {
+        do Screen.setColor(true);
+        do Screen.drawLine(x_offset+8, y_offset+3, x_offset+11, y_offset+3);
+        do Screen.drawPixel(x_offset+7, y_offset+4);
+        do Screen.drawPixel(x_offset+12, y_offset+4);
+        do Screen.drawLine(x_offset+6, y_offset+5, x_offset+6, y_offset+7);
+        do Screen.drawPixel(x_offset+8, y_offset+6);
+        do Screen.drawPixel(x_offset+11, y_offset+6);
+        do Screen.drawLine(x_offset+13, y_offset+5, x_offset+13, y_offset+7);
+        do Screen.drawPixel(x_offset+14, y_offset+7);
+        do Screen.drawPixel(x_offset+7, y_offset+8);
+        do Screen.drawPixel(x_offset+12, y_offset+8);
+        do Screen.drawLine(x_offset+15, y_offset+8, x_offset+16, y_offset+8);
+        do Screen.drawLine(x_offset+8, y_offset+9, x_offset+11, y_offset+9);
+        do Screen.drawPixel(x_offset+8, y_offset+10);
+        do Screen.drawPixel(x_offset+10, y_offset+10);
+        do Screen.drawPixel(x_offset+12, y_offset+10);
+        do Screen.drawLine(x_offset+17, y_offset+9, x_offset+17, y_offset+10);
+        do Screen.drawLine(x_offset+9, y_offset+11, x_offset+12, y_offset+11);
+        do Screen.drawLine(x_offset+9, y_offset+12, x_offset+9, y_offset+16);
+        do Screen.drawLine(x_offset+11, y_offset+14, x_offset+11, y_offset+16);
+        do Screen.drawLine(x_offset+13, y_offset+14, x_offset+13, y_offset+16);
+        do Screen.drawLine(x_offset+15, y_offset+12, x_offset+15, y_offset+16);
+        do Screen.drawLine(x_offset+18, y_offset+11, x_offset+18, y_offset+12);
+        do Screen.drawLine(x_offset+19, y_offset+13, x_offset+19, y_offset+19);
+        do Screen.drawLine(x_offset+17, y_offset+17, x_offset+18, y_offset+17);
+        do Screen.drawPixel(x_offset+10, y_offset+17);
+        do Screen.drawPixel(x_offset+12, y_offset+17);
+        do Screen.drawPixel(x_offset+14, y_offset+17);
+        do Screen.drawLine(x_offset+16, y_offset+17, x_offset+16, y_offset+21);
+        do Screen.drawLine(x_offset+8, y_offset+18, x_offset+9, y_offset+18);
+        do Screen.drawPixel(x_offset+11, y_offset+18);
+        do Screen.drawPixel(x_offset+13, y_offset+18);
+        do Screen.drawPixel(x_offset+15, y_offset+18);
+        do Screen.drawLine(x_offset+10, y_offset+19, x_offset+10, y_offset+20);
+        do Screen.drawLine(x_offset+14, y_offset+20, x_offset+14, y_offset+20);
+        do Screen.drawLine(x_offset+12, y_offset+19, x_offset+12, y_offset+24);
+        do Screen.drawLine(x_offset+18, y_offset+20, x_offset+18, y_offset+21);
+        do Screen.drawLine(x_offset+16, y_offset+22, x_offset+17, y_offset+22);
+        do Screen.drawLine(x_offset+15, y_offset+23, x_offset+17, y_offset+23);
+        do Screen.drawLine(x_offset+13, y_offset+24, x_offset+17, y_offset+24);
+        do Screen.drawLine(x_offset+18, y_offset+20, x_offset+18, y_offset+21);
+        do Screen.drawPixel(x_offset+11, y_offset+25);
+        do Screen.drawPixel(x_offset+14, y_offset+25);
+        do Screen.drawPixel(x_offset+10, y_offset+26);
+        do Screen.drawPixel(x_offset+15, y_offset+26);
+        do Screen.drawPixel(x_offset+19, y_offset+26);
+        do Screen.drawLine(x_offset+16, y_offset+25, x_offset+18, y_offset+25);
+        do Screen.drawLine(x_offset+11, y_offset+27, x_offset+14, y_offset+27);
+        do Screen.drawLine(x_offset+16, y_offset+27, x_offset+19, y_offset+27);
+        // draw zombie
+        do Screen.drawRectangle(x_offset, y_offset, x_offset + (health*2), y_offset + 2);
+        // draw
+        return;
+    }
+
+    method void EraseZombie()
+    {
+        do Screen.setColor(false);
+        do Screen.drawRectangle(x_offset, y_offset, x_offset + 32, y_offset + 32);
+        return;
+    }
+
+    method void Move()
+    {
+        do EraseZombie();
+        let x_offset = x_offset - 1;
+        do DrawZombie();
+        return;
+    }
+
+    method void GetHit()
+    {
+        do EraseZombie();
+        let health = health - 1;
+        do DrawZombie();
+        return;
+    }
+
+    method int GetXoffset()
+    {
+        return x_offset;
+    }
+   
+    method int GetYoffset()
+    {
+        return y_offset;
+    }
+
+    method int Gethealth()
+    {
+        return health;
+    }
+}

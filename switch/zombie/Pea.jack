@@ -1,0 +1,57 @@
+class Pea 
+{
+    field int x, y; 
+
+    constructor Pea new(int x_offset, int y_offset) {
+        let x = x_offset;
+        let y = y_offset+2;
+        do draw();
+        return this;
+    }
+
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    method void draw() {
+        do Screen.setColor(true);
+        do Screen.drawLine(x+2,y,x+5,y);
+        do Screen.drawPixel(x+1,y+1);
+        do Screen.drawPixel(x+6,y+1);
+        do Screen.drawPixel(x,y+2);
+        do Screen.drawPixel(x+7,y+2);
+        do Screen.drawPixel(x+1,y+3);
+        do Screen.drawPixel(x+6,y+3);
+        do Screen.drawLine(x+2,y+4,x+5,y+4);
+        return;
+    }
+
+    method void erase() {
+        do Screen.setColor(false);
+        do Screen.drawLine(x+2,y,x+5,y);
+        do Screen.drawPixel(x+1,y+1);
+        do Screen.drawPixel(x+6,y+1);
+        do Screen.drawPixel(x,y+2);
+        do Screen.drawPixel(x+7,y+2);
+        do Screen.drawPixel(x+1,y+3);
+        do Screen.drawPixel(x+6,y+3);
+        do Screen.drawLine(x+2,y+4,x+5,y+4);
+        return;
+    }
+
+    method void Move(){
+        do erase();
+        let x = x + 1;
+        do draw();
+        return;
+    }   
+
+    method int GetXoffset(){
+        return x;
+    }
+
+    method int GetYoffset(){
+        return y-2;
+    }
+}  

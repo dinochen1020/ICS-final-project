@@ -1,0 +1,258 @@
+class Pipe
+{
+    /*
+    Create pipe object and pipe image
+    */
+
+    field int width;                  // Image full-visibility width.
+    field int amount_to_shift_left;   // Amount to shift pipe for each step.
+    field int x_coordinate;           // Current x-coordinate for pipe image.
+    field int gap_size;               // Distance between top and bottom pieces.
+    field int gap_top;                // Coordinate for bottom of top piece.
+    field int gap_bottom;             // Coordinate for top of bottom piece.
+    field int screen_width;           // Screen width.
+    field int screen_height;          // Screen height.
+
+    /*
+    Construct new Pipe.
+    */
+
+    constructor Pipe new(int gap_offset) {
+        let width = 15;
+        let amount_to_shift_left = 1;
+        let x_coordinate = 509;
+        let screen_width = 512;
+        let screen_height = 256;
+        let gap_size = 95;
+        let gap_top = calculateGapTop(gap_offset);
+        let gap_bottom = (gap_top + gap_size);
+
+        return this;
+    }
+
+    /*
+    Calculate coordinate for bottom of top piece.
+    */
+
+    method int calculateGapTop(int offset)
+    {
+        var int mod;
+        let mod = Mod.mod(offset, 6);
+
+        return (mod * 25) + 10;
+    }
+
+    /*
+    Shift complete pipe image to the left.
+    */
+
+    method void erasePipe()
+    {
+        if (x_coordinate < (screen_width - width)) {
+            do Screen.setColor(false);
+            do Screen.drawLine(x_coordinate - amount_to_shift_left, 0, x_coordinate - amount_to_shift_left, gap_top - 5);
+            do Screen.drawLine(x_coordinate - amount_to_shift_left + 11, 0, x_coordinate - amount_to_shift_left + 11, gap_top - 5);
+            do Screen.drawLine(x_coordinate - amount_to_shift_left - 2, gap_top - 4, x_coordinate - amount_to_shift_left + 13, gap_top - 4);
+            do Screen.drawLine(x_coordinate - amount_to_shift_left - 2, gap_top, x_coordinate - amount_to_shift_left + 13, gap_top);
+            do Screen.drawLine(x_coordinate - amount_to_shift_left - 2, gap_top - 3, x_coordinate - amount_to_shift_left - 2, gap_top - 1);
+            do Screen.drawLine(x_coordinate - amount_to_shift_left +13, gap_top - 3, x_coordinate - amount_to_shift_left + 13, gap_top - 1);
+            do Screen.drawPixel(x_coordinate - amount_to_shift_left + 3, gap_top - 1);
+            do Screen.drawLine(x_coordinate - amount_to_shift_left + 4, gap_top - 2, x_coordinate - amount_to_shift_left + 4, gap_top - 3);
+            do Screen.drawPixel(x_coordinate - amount_to_shift_left + 6, gap_top - 1);
+            do Screen.drawLine(x_coordinate - amount_to_shift_left + 7, gap_top - 2, x_coordinate - amount_to_shift_left + 7, gap_top - 3);
+            do Screen.drawLine(x_coordinate - amount_to_shift_left, 255, x_coordinate - amount_to_shift_left, gap_bottom + 5);
+            do Screen.drawLine(x_coordinate - amount_to_shift_left + 11, 255, x_coordinate - amount_to_shift_left + 11, gap_bottom + 5);
+            do Screen.drawLine(x_coordinate - amount_to_shift_left - 2, gap_bottom + 4, x_coordinate - amount_to_shift_left + 13, gap_bottom + 4);
+            do Screen.drawLine(x_coordinate - amount_to_shift_left - 2, gap_bottom, x_coordinate - amount_to_shift_left + 13, gap_bottom);
+            do Screen.drawLine(x_coordinate - amount_to_shift_left - 2, gap_bottom + 3, x_coordinate - amount_to_shift_left - 2, gap_bottom + 1);
+            do Screen.drawLine(x_coordinate - amount_to_shift_left +13, gap_bottom + 3, x_coordinate - amount_to_shift_left + 13, gap_bottom + 1);
+            do Screen.drawPixel(x_coordinate - amount_to_shift_left + 3, gap_bottom + 1);
+            do Screen.drawLine(x_coordinate - amount_to_shift_left + 4, gap_bottom + 2, x_coordinate - amount_to_shift_left + 4, gap_bottom + 3);
+            do Screen.drawPixel(x_coordinate - amount_to_shift_left + 6, gap_bottom + 1);
+            do Screen.drawLine(x_coordinate - amount_to_shift_left + 7, gap_bottom + 2, x_coordinate - amount_to_shift_left + 7, gap_bottom + 3);
+        }
+        return;
+    }
+
+    /*
+    Move pipe to the left
+    */
+
+    method void moveLeft()
+    {
+        do erasePipe();
+        do Screen.setColor(false);
+        do Screen.drawRectangle(490, 0, 511, 255);
+
+        /*
+        If the pipe is blocked by boarders
+        */
+
+        if (x_coordinate - amount_to_shift_left > 490) {
+            if (x_coordinate - amount_to_shift_left < 511) {
+                do Screen.setColor(true);
+                if (x_coordinate - amount_to_shift_left < 511) {
+                    do Screen.drawLine(x_coordinate - amount_to_shift_left, 0, x_coordinate - amount_to_shift_left, gap_top - 5);
+                    do Screen.drawLine(x_coordinate - amount_to_shift_left, 255, x_coordinate - amount_to_shift_left, gap_bottom + 5);
+                }
+                if (x_coordinate - amount_to_shift_left < 500) {
+                    do Screen.drawLine(x_coordinate - amount_to_shift_left + 11, 0, x_coordinate - amount_to_shift_left + 11, gap_top - 5);
+                    do Screen.drawLine(x_coordinate - amount_to_shift_left + 11, 255, x_coordinate - amount_to_shift_left + 11, gap_bottom + 5);
+                }
+                if (x_coordinate - amount_to_shift_left < 507) {
+                    do Screen.drawLine(x_coordinate - amount_to_shift_left + 4, gap_top - 2, x_coordinate - amount_to_shift_left + 4, gap_top - 3);
+                    do Screen.drawLine(x_coordinate - amount_to_shift_left + 4, gap_bottom + 2, x_coordinate - amount_to_shift_left + 4, gap_bottom + 3);
+                }
+                if (x_coordinate - amount_to_shift_left< 508) {
+                    do Screen.drawPixel(x_coordinate - amount_to_shift_left + 3, gap_top - 1);
+                    do Screen.drawPixel(x_coordinate - amount_to_shift_left + 3, gap_bottom + 1);
+                }
+                if (x_coordinate - amount_to_shift_left < 498) {
+                    do Screen.drawLine(x_coordinate - amount_to_shift_left +13, gap_top - 3, x_coordinate - amount_to_shift_left + 13, gap_top - 1);
+                    do Screen.drawLine(x_coordinate - amount_to_shift_left +13, gap_bottom + 3, x_coordinate - amount_to_shift_left + 13, gap_bottom + 1);
+                    do Screen.drawLine(x_coordinate - amount_to_shift_left - 2, gap_top - 4, x_coordinate - amount_to_shift_left + 13, gap_top - 4);
+                    do Screen.drawLine(x_coordinate - amount_to_shift_left - 2, gap_top, x_coordinate - amount_to_shift_left + 13, gap_top);
+                    do Screen.drawLine(x_coordinate - amount_to_shift_left - 2, gap_bottom + 4, x_coordinate - amount_to_shift_left + 13, gap_bottom + 4);
+                    do Screen.drawLine(x_coordinate - amount_to_shift_left - 2, gap_bottom, x_coordinate - amount_to_shift_left + 13, gap_bottom);
+                }
+                else{
+                    do Screen.drawLine(x_coordinate - amount_to_shift_left - 2, gap_top - 4, 511, gap_top - 4);
+                    do Screen.drawLine(x_coordinate - amount_to_shift_left - 2, gap_top, 511, gap_top);
+                    do Screen.drawLine(x_coordinate - amount_to_shift_left - 2, gap_bottom + 4, 511, gap_bottom + 4);
+                    do Screen.drawLine(x_coordinate - amount_to_shift_left - 2, gap_bottom, 511, gap_bottom);
+                }
+                if (x_coordinate - amount_to_shift_left < 505) {
+                    do Screen.drawPixel(x_coordinate - amount_to_shift_left + 6, gap_top - 1);
+                    do Screen.drawPixel(x_coordinate - amount_to_shift_left + 6, gap_bottom + 1);
+                }
+                if (x_coordinate - amount_to_shift_left < 504) {
+                    do Screen.drawLine(x_coordinate - amount_to_shift_left + 7, gap_top - 2, x_coordinate - amount_to_shift_left + 7, gap_top - 3);
+                    do Screen.drawLine(x_coordinate - amount_to_shift_left + 7, gap_bottom + 2, x_coordinate - amount_to_shift_left + 7, gap_bottom + 3);
+                }
+                do Screen.drawLine(x_coordinate - amount_to_shift_left - 2, gap_top - 3, x_coordinate - amount_to_shift_left - 2, gap_top - 1);
+                do Screen.drawLine(x_coordinate - amount_to_shift_left - 2, gap_bottom + 3, x_coordinate - amount_to_shift_left - 2, gap_bottom + 1);
+            }
+        }
+        let x_coordinate = x_coordinate - amount_to_shift_left;
+
+        /*
+        If the block is not blocked by boarders(We can simply skip this part, but we added this part to speed up the program);
+        */
+
+        if (x_coordinate - amount_to_shift_left < 490) {
+            if (x_coordinate - amount_to_shift_left > 100) {
+                do Screen.setColor(true);
+                do Screen.drawLine(x_coordinate - amount_to_shift_left, 0, x_coordinate - amount_to_shift_left, gap_top - 5);
+                do Screen.drawLine(x_coordinate - amount_to_shift_left + 11, 0, x_coordinate - amount_to_shift_left + 11, gap_top - 5);
+                do Screen.drawLine(x_coordinate - amount_to_shift_left - 2, gap_top - 4, x_coordinate - amount_to_shift_left + 13, gap_top - 4);
+                do Screen.drawLine(x_coordinate - amount_to_shift_left - 2, gap_top, x_coordinate - amount_to_shift_left + 13, gap_top);
+                do Screen.drawLine(x_coordinate - amount_to_shift_left - 2, gap_top - 3, x_coordinate - amount_to_shift_left - 2, gap_top - 1);
+                do Screen.drawLine(x_coordinate - amount_to_shift_left +13, gap_top - 3, x_coordinate - amount_to_shift_left + 13, gap_top - 1);
+                do Screen.drawPixel(x_coordinate - amount_to_shift_left + 3, gap_top - 1);
+                do Screen.drawLine(x_coordinate - amount_to_shift_left + 4, gap_top - 2, x_coordinate - amount_to_shift_left + 4, gap_top - 3);
+                do Screen.drawPixel(x_coordinate - amount_to_shift_left + 6, gap_top - 1);
+                do Screen.drawLine(x_coordinate - amount_to_shift_left + 7, gap_top - 2, x_coordinate - amount_to_shift_left + 7, gap_top - 3);
+                do Screen.drawLine(x_coordinate - amount_to_shift_left, 255, x_coordinate - amount_to_shift_left, gap_bottom + 5);
+                do Screen.drawLine(x_coordinate - amount_to_shift_left + 11, 255, x_coordinate - amount_to_shift_left + 11, gap_bottom + 5);
+                do Screen.drawLine(x_coordinate - amount_to_shift_left - 2, gap_bottom + 4, x_coordinate - amount_to_shift_left + 13, gap_bottom + 4);
+                do Screen.drawLine(x_coordinate - amount_to_shift_left - 2, gap_bottom, x_coordinate - amount_to_shift_left + 13, gap_bottom);
+                do Screen.drawLine(x_coordinate - amount_to_shift_left - 2, gap_bottom + 3, x_coordinate - amount_to_shift_left - 2, gap_bottom + 1);
+                do Screen.drawLine(x_coordinate - amount_to_shift_left +13, gap_bottom + 3, x_coordinate - amount_to_shift_left + 13, gap_bottom + 1);
+                do Screen.drawPixel(x_coordinate - amount_to_shift_left + 3, gap_bottom + 1);
+                do Screen.drawLine(x_coordinate - amount_to_shift_left + 4, gap_bottom + 2, x_coordinate - amount_to_shift_left + 4, gap_bottom + 3);
+                do Screen.drawPixel(x_coordinate - amount_to_shift_left + 6, gap_bottom + 1);
+                do Screen.drawLine(x_coordinate - amount_to_shift_left + 7, gap_bottom + 2, x_coordinate - amount_to_shift_left + 7, gap_bottom + 3);
+            }
+        }
+        do Screen.setColor(false);
+        do Screen.drawRectangle(100, 0, 120, 255);
+        return;
+    }
+
+    /*
+    Get the width of the pipe
+    */
+    
+    method int GetWidth()
+    {
+        return width;
+    }
+
+    /*
+    Get the amount the pipe shifts left
+    */
+
+    method int GetAmounttoShiftLeft()
+    {
+        return amount_to_shift_left;
+    }
+
+    /*
+    Get current x-coordinate.
+    */
+
+    method int Getxcoordinate()
+    {
+        return x_coordinate;
+    }
+
+    /*
+    Get y-coordinate of top of gap.
+    */
+
+    method int GetGapTop()
+    {
+        return gap_top;
+    }
+
+    /*
+    Get y-coordinate of bottom of gap.
+    */
+    method int GetGapBottom()
+    {
+        return gap_bottom;
+    }
+
+    /*
+    Draw pipe at current x-coordinate.
+    */
+
+    method void draw()
+    {
+        if (x_coordinate - amount_to_shift_left > 0) {
+            if (x_coordinate - amount_to_shift_left < 450) {
+                do Screen.setColor(true);
+                do Screen.drawLine(x_coordinate - amount_to_shift_left, 0, x_coordinate - amount_to_shift_left, gap_top - 5);
+                do Screen.drawLine(x_coordinate - amount_to_shift_left + 11, 0, x_coordinate - amount_to_shift_left + 11, gap_top - 5);
+                do Screen.drawLine(x_coordinate - amount_to_shift_left - 2, gap_top - 4, x_coordinate - amount_to_shift_left + 13, gap_top - 4);
+                do Screen.drawLine(x_coordinate - amount_to_shift_left - 2, gap_top, x_coordinate - amount_to_shift_left + 13, gap_top);
+                do Screen.drawLine(x_coordinate - amount_to_shift_left - 2, gap_top - 3, x_coordinate - amount_to_shift_left - 2, gap_top - 1);
+                do Screen.drawLine(x_coordinate - amount_to_shift_left +13, gap_top - 3, x_coordinate - amount_to_shift_left + 13, gap_top - 1);
+                do Screen.drawPixel(x_coordinate - amount_to_shift_left + 3, gap_top - 1);
+                do Screen.drawLine(x_coordinate - amount_to_shift_left + 4, gap_top - 2, x_coordinate - amount_to_shift_left + 4, gap_top - 3);
+                do Screen.drawPixel(x_coordinate - amount_to_shift_left + 6, gap_top - 1);
+                do Screen.drawLine(x_coordinate - amount_to_shift_left + 7, gap_top - 2, x_coordinate - amount_to_shift_left + 7, gap_top - 3);
+                do Screen.drawLine(x_coordinate - amount_to_shift_left, 255, x_coordinate - amount_to_shift_left, gap_bottom + 5);
+                do Screen.drawLine(x_coordinate - amount_to_shift_left + 11, 255, x_coordinate - amount_to_shift_left + 11, gap_bottom + 5);
+                do Screen.drawLine(x_coordinate - amount_to_shift_left - 2, gap_bottom + 4, x_coordinate - amount_to_shift_left + 13, gap_bottom + 4);
+                do Screen.drawLine(x_coordinate - amount_to_shift_left - 2, gap_bottom, x_coordinate - amount_to_shift_left + 13, gap_bottom);
+                do Screen.drawLine(x_coordinate - amount_to_shift_left - 2, gap_bottom + 3, x_coordinate - amount_to_shift_left - 2, gap_bottom + 1);
+                do Screen.drawLine(x_coordinate - amount_to_shift_left +13, gap_bottom + 3, x_coordinate - amount_to_shift_left + 13, gap_bottom + 1);
+                do Screen.drawPixel(x_coordinate - amount_to_shift_left + 3, gap_bottom + 1);
+                do Screen.drawLine(x_coordinate - amount_to_shift_left + 4, gap_bottom + 2, x_coordinate - amount_to_shift_left + 4, gap_bottom + 3);
+                do Screen.drawPixel(x_coordinate - amount_to_shift_left + 6, gap_bottom + 1);
+                do Screen.drawLine(x_coordinate - amount_to_shift_left + 7, gap_bottom + 2, x_coordinate - amount_to_shift_left + 7, gap_bottom + 3);
+            }
+        }
+        return;
+    }
+
+    /*
+    Dispose pipe object.
+    */
+
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+}

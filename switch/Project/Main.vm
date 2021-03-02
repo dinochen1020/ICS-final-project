@@ -1,0 +1,97 @@
+function Main.size 0
+push constant 30
+return
+function Main.maxx 0
+push constant 512
+call Main.size 0
+call Math.divide 2
+return
+function Main.maxy 0
+push constant 256
+call Main.size 0
+call Math.divide 2
+return
+function Main.main 5
+push constant 0
+pop local 0
+label WHILE_EXP0
+push constant 0
+not
+not
+if-goto WHILE_END0
+push local 0
+push constant 0
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+call Switch.new 0
+pop local 1
+push local 1
+call Switch.choose 1
+pop temp 0
+push local 1
+call Switch.FindID 1
+pop local 0
+push local 1
+call Switch.dispose 1
+pop temp 0
+label IF_FALSE0
+push local 0
+push constant 1
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+call FlappyBirdGame.new 0
+pop local 2
+push local 2
+call FlappyBirdGame.execute 1
+pop temp 0
+push local 2
+call FlappyBirdGame.dispose 1
+pop temp 0
+push constant 0
+pop local 0
+label IF_FALSE1
+push local 0
+push constant 2
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+call PlantVSZombieGame.new 0
+pop local 3
+push local 3
+call PlantVSZombieGame.run 1
+pop temp 0
+push local 3
+call PlantVSZombieGame.dispose 1
+pop temp 0
+push constant 0
+pop local 0
+label IF_FALSE2
+push local 0
+push constant 3
+eq
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+call SnakeGame.new 0
+pop local 4
+push constant 2
+call MyMath.init 1
+pop temp 0
+push local 4
+call SnakeGame.run 1
+pop temp 0
+push local 4
+call SnakeGame.dispose 1
+pop temp 0
+push constant 0
+pop local 0
+label IF_FALSE3
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return

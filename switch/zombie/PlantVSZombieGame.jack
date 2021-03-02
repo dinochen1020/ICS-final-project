@@ -1,0 +1,564 @@
+class PlantVSZombieGame
+{
+    field int height;
+    field Array peas;
+    field int peacount;
+    field Array zombies;
+    field int zombiecount;
+    field Array sunflowers;
+    field int sunflowercount;
+    field Array peaarchers;
+    field int peaarchercount;
+    field Array icepeaarchers;
+    field int icepeaarchercount;
+    field Array zcount;
+    field int sun;
+    field int old_sun;
+    field int suncount;
+    field int suncountforsunflower;
+    field int first_update;
+
+    constructor PlantVSZombieGame new()
+    {
+        let height = 32;
+        let peas = Array.new(50);
+        let peacount = 0;
+        let zombies = Array.new(50);
+        let zombiecount = 0;
+        let sunflowers = Array.new(10);
+        let sunflowercount = 0;
+        let peaarchers = Array.new(10);
+        let peaarchercount = 0;
+        let icepeaarchers = Array.new(10);
+        let icepeaarchercount = 0;
+        let zcount = Array.new(5);
+        let zcount[0]=220;
+        let zcount[1]=0;
+        let zcount[2]=220;
+        let zcount[3]=220;
+        let zcount[4]=220;
+        let sun = 300;
+        let old_sun = 300;
+        let suncount = 0;
+        let suncountforsunflower = 0;
+        let first_update = 0;
+
+        return this;
+    }
+
+    method void run()
+    {
+        var int plant_x;
+        var int plant_y;
+        var int z;
+        var char key;
+        var char lastkey;
+        let plant_x = 1;
+        do Map.Map(); 
+        //do createNewZomble(0);  
+        while (~(key = 81)) {
+            let suncountforsunflower = suncountforsunflower + 1;
+            let suncount = suncount + 1;
+            do calculatesun();
+            if(~(sun = old_sun)){
+                do updatesun();
+            }
+            if(first_update = 0){
+                do updatesun();
+                let first_update = 1;
+            }
+            let old_sun = sun;
+            if (lastkey = 83){
+                if(~(key = 83)){
+                    if(sun > 50){
+                        let sun = sun - 50;
+                        do updatesun();
+                        do Screen.setColor(true);
+                        do Screen.drawRectangle(283,9,301,27);
+                        do Screen.setColor(false);
+                        do Screen.drawRectangle(286,12,301,16);
+                        do Screen.drawRectangle(283,19,298,24);
+                        do Output.moveCursor(4,35);
+                        do Output.printString("Where to plant?");
+                        let plant_x = Keyboard.readInt("");
+                        do Output.moveCursor(4,50);
+                        let plant_y = Keyboard.readInt("");
+                        do createNewsunFlower(plant_x,plant_y);
+                    }
+                }
+            }
+            if (lastkey = 80) {
+                if(~(key = 80)){
+                    if(sun > 100){
+                        let sun = sun - 100;
+                        do updatesun();
+                        do Screen.setColor(true);
+                        do Screen.drawRectangle(283,9,301,27);
+                        do Screen.setColor(false);
+                        do Screen.drawRectangle(286,12,298,16);
+                        do Screen.drawRectangle(286,19,301,27);
+                        do Output.moveCursor(4,35);
+                        do Output.printString("Where to plant?");
+                        let plant_x = Keyboard.readInt("");
+                        do Output.moveCursor(4,50);
+                        let plant_y = Keyboard.readInt("");
+                        do createNewpeaArcher(plant_x,plant_y);
+                    }
+                }
+            }
+	        if (lastkey = 73){
+                if(~(key = 73)){
+                    if(sun > 125){
+                        let sun = sun - 125;
+                        do updatesun();
+                        do Screen.setColor(true);
+                        do Screen.drawRectangle(283,9,301,27);
+                        do Screen.setColor(false);
+                        do Screen.drawRectangle(283,12,290,24);
+                        do Screen.drawRectangle(294,12,301,24);
+                        do Output.moveCursor(4,35);
+                        do Output.printString("Where to plant?");
+                        let plant_x = Keyboard.readInt("");
+                        do Output.moveCursor(4,50);
+                        let plant_y = Keyboard.readInt("");
+                        do createNewicepeaArcher(plant_x,plant_y);
+                    }
+                }
+            }
+            let lastkey = key;
+            let key = Keyboard.keyPressed();
+            do findGetHit();
+            do draw();
+            do createNewpea();
+            do checkpea();
+            do disposedeadzombies();
+            let z = 0;
+            while(z<5){
+                if(producezombie(z)){
+                    do createNewZomble(z);
+                }
+                let z = z + 1;
+            }
+            do Sys.wait(10);
+
+        }
+        return;
+    }
+    method void calculatesun(){
+        if(suncount > 50){
+            let sun = sun + 25;
+            let suncount = 0;
+        }
+        if(suncountforsunflower > 75){
+            let suncountforsunflower = 0;
+            let sun = sun + (sunflowercount * 25);
+        }
+        return;
+    }
+    method void createNewZomble(int y)
+    {
+        var Zombie zombie;
+        let zombies[zombiecount] = Zombie.new(y);  
+        let zombiecount = zombiecount + 1;
+        return;
+    }
+    
+    method void createNewsunFlower(int x, int y)
+    {
+        var SunFlower sunflower;
+        let sunflowers[sunflowercount] = SunFlower.new(x, y);
+        let sunflowercount = sunflowercount + 1;
+        return;
+    }
+
+    method void createNewicepeaArcher(int x, int y)
+    {
+        var IcePeaArcher icepeaarcher;
+        let icepeaarchers[icepeaarchercount] = IcePeaArcher.new(x, y);
+        let icepeaarchercount = icepeaarchercount + 1;
+        return;
+    }
+    
+    method void createNewpeaArcher(int x, int y)
+    {
+        var PeaArcher peaarcher;
+        let peaarchers[peaarchercount] = PeaArcher.new(x, y);
+        let peaarchercount = peaarchercount + 1;
+        return;
+    }
+
+    method void createNewpea()
+    {
+        var Pea pea;
+        var PeaArcher peaarcher;
+        var IcePeaArcher icepeaarcher;
+        var int i;
+        let i = 0;
+        while (i < peaarchercount) {
+            let peaarcher = peaarchers[i];
+            if (peaarcher.shoot()) {
+                let peas[peacount] = Pea.new(peaarcher.GetXoffset() + 32, peaarcher.GetYoffset());
+                let peacount = peacount + 1;
+            }
+            else {
+                do peaarcher.addBulletFlag();
+            }
+            let i = i + 1;
+        }
+        let i = 0;
+        while (i < icepeaarchercount) {
+            let icepeaarcher = icepeaarchers[i];
+            if (icepeaarcher.shoot()) {
+                let peas[peacount] = Pea.new(icepeaarcher.GetXoffset() + 32, icepeaarcher.GetYoffset());
+                let peacount = peacount + 1;
+            }
+            else {
+                do icepeaarcher.addBulletFlag();
+            }
+            let i = i + 1;
+        }
+        return;
+    }
+
+    method void findGetHit()
+    {
+        var Zombie zombie;
+        var Pea pea;
+        var int i;
+        var int j;
+        let i = 0;
+        let j = 0;
+        while (i < peacount) {
+            
+            while (j < zombiecount) {
+                let pea = peas[i];
+                let zombie = zombies[j];
+                if (GetHit(zombie, pea)) {
+                    do zombie.GetHit();
+                    do deletepea(i);
+                    let i = i - 1;
+                }
+                let j = j + 1;
+            }
+            let i = i + 1;
+        }
+        return;
+    }
+
+    method boolean GetHit(Zombie zombie, Pea pea)
+    {
+        if (~(pea.GetYoffset() = zombie.GetYoffset())) {
+            return false;
+        }
+        if (pea.GetXoffset() > (zombie.GetXoffset() - 20)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    method void shiftZombies()
+    {
+        var Zombie zombie;
+        var int i;
+        let i = 0;
+        while (i < zombiecount) {
+            let zombie = zombies[i];
+            do zombie.Move();
+            let i = i + 1;
+        }
+        return;
+    }
+
+    method void shiftpeas()
+    {
+        var Pea pea;
+        var int i;
+        let i = 0;
+        while (i < peacount) {
+            let pea = peas[i];
+            do pea.Move();
+            let i = i + 1;
+        }
+        return;
+    }
+
+    method void draw()
+    {
+        do shiftZombies();
+        do shiftpeas();
+        return;
+    }
+
+
+    method void disposedeadzombies()
+    {
+        var Zombie zombie;
+        var int i;
+        let i = 0;
+        while (i < zombiecount) {
+            let zombie = zombies[i];
+            if (zombie.Gethealth() < 1) {
+                do deletezombie(i);
+                let i = i - 1;  /////
+                //do zombie.dispose();
+            }
+            let i = i + 1;
+        }
+        return;
+    }
+
+    method void dispose()
+    {
+        var int i;
+        var Zombie zombie;
+        var PeaArcher peaarcher;
+        var SunFlower sunflower;
+        var Pea pea;
+        let i = 0;
+        while (i < zombiecount) {
+            let zombie = zombies[zombiecount];
+            do zombie.dispose();
+            let i = i + 1;
+        }
+        let i = 0;
+        while (i < peaarchercount) {
+            let peaarcher = peaarchers[peaarchercount];
+            do peaarcher.dispose();
+            let i = i + 1;
+        }
+        let i = 0;
+        while (i < sunflowercount) {
+            let sunflower = sunflowers[sunflowercount];
+            do sunflower.dispose();
+            let i = i + 1;
+        }
+        let i = 0;
+        while (i < peacount) {
+            let pea = peas[peacount];
+            do pea.dispose();
+            let i = i + 1;
+        }
+        do Memory.deAlloc(this);
+
+        return;
+    }
+
+    method void checkpea()
+    {
+        var Pea pea;
+        var int i;
+        let i = 0;
+        if (peacount = 0) {
+            return;
+        }
+        while (i < peacount) {
+            let pea = peas[i];
+            if (pea.GetXoffset() > 499) {
+                do deletepea(i);
+                let i = i - 1;
+            }
+            let i = i + 1;
+        }
+        return;
+    }
+
+    method void deletepea(int i)
+    {
+        var Pea pea;
+        let pea = peas[i];
+        do pea.erase();
+        do pea.dispose();
+        let peacount = peacount - 1;
+        while (i < peacount) {
+            let peas[i] = peas[i + 1];      
+            let i = i + 1;
+        }
+        
+        return;
+    }
+
+    method void updatesun(){
+        var int currentsun;
+        let currentsun = sun;
+        do Screen.setColor(false);
+        do Screen.drawRectangle(4,61,59,74);
+        if(currentsun = 0){
+            do drawzero(27,63);
+        }
+        if(currentsun > 0){
+            if(currentsun < 100){
+                do drawnumber(currentsun / 10, 24, 63);
+                do drawnumber(currentsun - currentsun / 10, 32, 63);
+            }
+            if(currentsun > 100){
+                if(currentsun < 1000){
+                    do drawnumber(currentsun / 100, 20, 63);
+                    do drawnumber((currentsun - ((currentsun / 100) * 100)) / 10, 28, 63);
+                    do drawnumber(currentsun - (((currentsun - ((currentsun / 100) * 100)) / 10) * 10) - ((currentsun / 100) * 100), 36, 63);
+                }
+            }
+            if(currentsun > 1000){
+                if(currentsun < 10000){
+                    do drawnumber(currentsun / 1000, 16, 63);
+                    do drawnumber((currentsun - ((currentsun / 1000)*1000)) / 100, 24, 63);
+                    do drawnumber(findhundred(), 32, 63);
+                    do drawnumber(findthousand(), 40, 63);
+                }
+            }
+        }
+        return;
+    }
+
+    method int findthousand(){
+        var int a;
+        var int b;
+        var int c;
+        var int d;
+        let a = sun;
+        let b = sun;
+        let c = sun;
+        let d = sun;
+        let a = a / 1000;
+        let b = ((b / 100) - (a * 10));
+        let c = c / 10 - (b * 10) - (a * 100);
+        let d = d - (a * 1000) - (b * 100) - (c * 10);
+        return d;
+    }
+
+    method int findhundred(){
+        var int a;
+        var int b;
+        var int c;
+        let a = sun;
+        let b = sun;
+        let c = sun;
+        let a = a / 1000;
+        let b = ((b / 100) - (a * 10));
+        let c = c / 10 - (b * 10) - (a * 100);
+        return c;
+    }
+
+    method void drawnumber(int a,int x,int y){
+        if(a = 0){do drawzero(x,y);}
+        if(a = 1){do drawone(x,y);}
+        if(a = 2){do drawtwo(x,y);}
+        if(a = 3){do drawthree(x,y);}
+        if(a = 4){do drawfour(x,y);}
+        if(a = 5){do drawfive(x,y);}
+        if(a = 6){do drawsix(x,y);}
+        if(a = 7){do drawseven(x,y);}
+        if(a = 8){do draweight(x,y);}
+        if(a = 9){do drawnine(x,y);}
+        return;
+    }
+
+    method void drawzero(int x,int y) {
+        do Screen.setColor(true);
+        do Screen.drawRectangle(x, y, x+6, y+8);
+        do Screen.setColor(false);
+        do Screen.drawRectangle(x+2, y+2, x+4, y+6);
+        return;
+    }
+
+    method void drawone(int x,int y) {
+        do Screen.setColor(true);
+        do Screen.drawRectangle(x+4, y, x+6, y+8);
+        return;
+    }
+
+    method void drawtwo(int x,int y) {
+        do Screen.setColor(true);
+        do Screen.drawRectangle(x, y, x+6, y+8);
+        do Screen.setColor(false);
+        do Screen.drawRectangle(x, y+2, x+4, y+3);
+        do Screen.drawRectangle(x+2, y+5, x+6, y+6);
+        return;
+    }
+
+    method void drawthree(int x,int y) {
+        do Screen.setColor(true);
+        do Screen.drawRectangle(x, y, x+6, y+8);
+        do Screen.setColor(false);
+        do Screen.drawRectangle(x, y+2, x+4, y+3);
+        do Screen.drawRectangle(x, y+6, x+4, y+7);
+        return;
+    }
+
+    method void drawfour(int x,int y) {
+        do Screen.setColor(true);
+        do Screen.drawRectangle(x, y, x+6, y+8);
+        do Screen.setColor(false);
+        do Screen.drawRectangle(x+2, y, x+4, y+3);
+        do Screen.drawRectangle(x, y+5, x+4, y+8);
+        return;
+    }
+
+    method void drawfive(int x,int y) {
+        do Screen.setColor(true);
+        do Screen.drawRectangle(x, y, x+6, y+8);
+        do Screen.setColor(false);
+        do Screen.drawRectangle(x+2, y+2, x+6, y+3);
+        do Screen.drawRectangle(x, y+5, x+4, y+6);
+        return;
+    }
+
+    method void drawsix(int x,int y) {
+        do Screen.setColor(true);
+        do Screen.drawRectangle(x, y, x+6, y+8);
+        do Screen.setColor(false);
+        do Screen.drawRectangle(x+2, y, x+6, y+2);
+        do Screen.drawRectangle(x+2, y+5, x+4, y+6);
+        return;
+    }
+
+    method void drawseven(int x,int y) {
+        do Screen.setColor(true);
+        do Screen.drawRectangle(x, y, x+6, y+8);
+        do Screen.setColor(false);
+        do Screen.drawRectangle(x, y+2, x+4, y+8);
+        return;
+    }
+
+    method void draweight(int x,int y) {
+        do Screen.setColor(true);
+        do Screen.drawRectangle(x, y, x+6, y+8);
+        do Screen.setColor(false);
+        do Screen.drawRectangle(x+2, y+2, x+4, y+3);
+        do Screen.drawRectangle(x+2, y+5, x+4, y+6);
+        return;
+    }
+    
+    method void drawnine(int x,int y) {
+        do Screen.setColor(true);
+        do Screen.drawRectangle(x, y, x+6, y+8);
+        do Screen.setColor(false);
+        do Screen.drawRectangle(x+2, y+2, x+4, y+3);
+        do Screen.drawRectangle(x, y+6, x+4, y+8);
+        return;
+    }
+
+    method void deletezombie(int i)
+    {
+        var Zombie zombie;
+        let zombie = zombies[i];
+        do zombie.EraseZombie();
+        do zombie.dispose();
+        let zombiecount = zombiecount - 1;
+        while (i < zombiecount) {
+            let zombies[i] = zombies[i + 1];
+            let i = i + 1;
+        }
+        
+        return;
+    }
+
+    method boolean producezombie(int z){
+        if(zcount[z] = 200){
+            let zcount[z] = 0;
+            return true;
+        }
+        let zcount[z] = zcount[z] + 1;
+        return false;
+    }
+}

@@ -1,0 +1,557 @@
+class FlappyBirdGame
+{
+    
+    /*
+    Create objects, handle inputs, and shift through game states.
+    */
+
+    field FlappyBird flappybird;            // FlappyBird object.
+    field Scoreboard scoreboard;            // Scoreboard object.
+    field int bird_wing_state;              // Track bird wing angle
+    field int bird_fall_count;              // Track bird downward
+    field int bird_initial_ycoordinate;     // Initial bird y-coordinate
+    field Array pipes;                      // Visible pipes on screen.
+    field int num_of_visible_pipes;         // Number of pipes visible.
+    field int dist_between_pipes;           // Interval between two pipes.
+    field int dist_after_last_pipe;         // Amount of space following last created pipe.
+    field int jumps;                        // Number of jumps made in game.
+    field int pipes_total_made;             // Number of pipes created.
+    field int flag;
+    field int old_score;
+    field int score;
+
+    /*
+    Construct flappy bird game.
+    */
+
+    constructor FlappyBirdGame new() 
+    {
+        let bird_initial_ycoordinate = 150;
+        let scoreboard = Scoreboard.new();
+        let pipes = Array.new(10);
+        let num_of_visible_pipes = 0;
+        let dist_between_pipes = 120;
+        let dist_after_last_pipe = 0;
+        let jumps = 1;
+        let pipes_total_made = 0;
+
+        return this;
+    }
+
+    /*
+    Display instructions.
+    */
+
+    method void displayInstructions()
+    {
+        do Output.moveCursor(8, 16);
+        do Output.printString("Welcome to Flappy Bird.");
+        do Output.moveCursor(9, 16);
+        do Output.printString("Please press spacebar to jump.");
+        do Output.moveCursor(10, 16);
+        do Output.printString("Please press 'q' to quit.");
+        do Output.moveCursor(11, 16);
+        do Output.printString("Get as much points as you can!");
+
+        return;
+    }
+
+    /*
+    Loop for executing game
+    */
+
+    method void execute() 
+    {
+        var char key;
+        var char last_key;
+
+        do SetallFieldsReady();
+        do WaitfortheGametostart();
+        let last_key = 32;
+
+        while (~(key = 81)) { // 'q' 
+            let score = CalculateFinalScore();
+
+            if (~(score = old_score)) {
+                let old_score = score;
+                do Output.moveCursor(5, 6);
+                do Screen.setColor(false);
+                do Screen.drawRectangle(15, 20, 85, 20);
+                do Output.printInt(score);
+            }
+
+            // Determine if new jump has occurred.
+            if ((key = 32) & ~(last_key = 32)) {      // 32 = space bar
+                if (flag = 0) {
+                    let flag = 1;
+                    do Screen.setColor(false);
+                    do Screen.drawRectangle(100, 0, 511, 150);
+                    do drawScoreBoard();
+                }
+                let jumps = jumps + 1;
+                do flappybird.moveUp();
+            } 
+            else {
+                do UpdateBirdFallState();
+                do CycleBirdWingState();
+            }
+
+            // If the bird collides with any of the pipes, display final score and end game
+            if (CheckCollision()) {
+                do DisplayFinalScore();
+                do Sys.wait(3000);
+                do SetallFieldsReady();
+                do WaitfortheGametostart();
+            }
+
+            // Draw current game
+            do draw();
+
+            // Check if any key is pressed
+            let last_key = key;
+            let key = Keyboard.keyPressed();
+            do Sys.wait(10);
+        }
+        return;
+    }
+
+    /*
+    Draw the bird before the game starts
+    */
+
+    method void WaitfortheGametostart()
+    {
+        var char key;
+        let key = Keyboard.keyPressed();
+
+        while (key = 0) {
+            do Sys.wait(10);
+            let key = Keyboard.keyPressed();
+            do flappybird.draw();
+            do CycleBirdWingState();
+        }
+
+        return;
+    }
+
+    /*
+    Set all fields into the state before the game starts
+    */
+
+    method void SetallFieldsReady()
+    {
+        var Pipe pipe;
+        var int i;
+        let i = 0;
+
+        do Whiteout();
+        do displayInstructions();
+
+        let flappybird = FlappyBird.new(bird_initial_ycoordinate); 
+        while (i < num_of_visible_pipes){
+            let pipe = pipes[i];
+            do pipe.dispose();
+            let i = i + 1;
+        }
+
+        let num_of_visible_pipes = 0;
+        let pipes_total_made = 0;
+        let bird_wing_state = 1;
+        let bird_fall_count = 1;
+        let dist_after_last_pipe = dist_between_pipes;
+        let flag = 0;
+        let score = 0;
+        let old_score = -1;
+
+        return;
+    }
+
+    /*
+    White out screen before starting a new game.
+    */
+
+    method void Whiteout()
+    {
+        do Screen.setColor(false);
+        do Screen.drawRectangle(0, 0, 511, 255);
+
+        return;
+    }
+
+    /*
+    Display final score to screen.
+    */
+
+    method void DisplayFinalScore()
+    {
+        var int score;
+        let score = 0;
+
+        let score = CalculateFinalScore();
+        do scoreboard.draw(score);
+
+        return;
+    }
+
+    /*
+    Update bird's rising/falling status.
+    */
+
+    method void UpdateBirdFallState()
+    {
+        // Only move bird after every five 'draw' cycles to prevent dropping too fast.
+        if (bird_fall_count = 5) {
+            do flappybird.moveDown();
+            let bird_fall_count = 1;
+        }
+        else {
+            let bird_fall_count = bird_fall_count + 1;
+        }
+
+        return;
+    }
+
+    /*
+    Cycle through the three states of the bird's wings.
+    */
+
+    method void CycleBirdWingState()
+    {
+        // Only cycle wings after every five 'draw' cycles to prevent changing too fast.
+        if (bird_wing_state = 5) {
+            do flappybird.ShiftWingState();
+            let bird_wing_state = 1;
+        } 
+        else {
+            let bird_wing_state = bird_wing_state + 1;
+        }
+
+        return;
+    }
+
+    /*
+    Draw objects which should be shown onscreen and update their coordinates.
+    */
+
+    method void draw()
+    {
+        var Pipe pipe;
+
+        // Moves pipes left.
+        do ShiftPipesLeft();
+        // Remove first pipe if no longer on screen.
+        do DisposePipeoutofScreen();
+        // Create new pipe object if existing last pipe has moved far enough.
+        do createNewPipe();
+
+        do flappybird.draw();
+
+        return;
+    }
+
+    /*
+    Draw pipes and shift their coordinates to the left.
+    */
+
+    method void ShiftPipesLeft()
+    {
+        var Pipe pipe;
+        var int i;
+
+        let i = 0;
+        while (i < num_of_visible_pipes) {
+            let pipe = pipes[i];
+            do pipe.draw();
+            do pipe.moveLeft();
+            let i = i + 1;
+        }
+
+        return;
+    }
+
+    /*
+    Remove Pipe object when it is out of screen.
+    */
+
+    method void DisposePipeoutofScreen()
+    {
+        var int i;
+        var Pipe pipe;
+
+        if (num_of_visible_pipes = 0) {
+            return;
+        }
+
+        let pipe = pipes[0];
+
+        if (pipe.Getxcoordinate() < 100) {
+            do pipe.dispose();
+            let num_of_visible_pipes = num_of_visible_pipes - 1;
+            let i = 0;
+            while (i < num_of_visible_pipes) {
+                let pipes[i] = pipes[i+1];
+                let i = i + 1;
+            }
+        }
+
+        return;
+    }
+
+    /*
+    Create new pipe and make it go on screen
+    */
+
+    method void createNewPipe()
+    {
+        var Pipe pipe;
+
+        if (dist_after_last_pipe = dist_between_pipes) {
+            let pipes[num_of_visible_pipes] = Pipe.new(jumps);
+            let num_of_visible_pipes = num_of_visible_pipes + 1;
+            let pipes_total_made = pipes_total_made + 1;
+            let dist_after_last_pipe = 0;
+        }
+        else {
+            let pipe = pipes[0];
+            let dist_after_last_pipe = dist_after_last_pipe + pipe.GetAmounttoShiftLeft();
+        }
+
+        return;
+    }
+
+    /*
+    Calculate final score when game ends
+    */
+
+    method int CalculateFinalScore()
+    {
+        var Pipe pipe;
+        var int i;
+        var int score;
+
+        let score = pipes_total_made;
+        let i = 0;
+        while (i < num_of_visible_pipes) {
+            let pipe = pipes[i];
+            if (flappybird.Getxcoordinate() < (pipe.Getxcoordinate() + pipe.GetWidth() + 1)) {
+                let score = score - 1;
+            }
+            let i = i + 1;
+        }
+
+        return score;
+    }
+
+    /*
+   Check if the bird has collided with a certain pipe or border
+    */
+
+    method boolean CheckCollision()
+    {
+        var Pipe pipe;
+        var int i;
+
+        let i = 0;
+        while (i < num_of_visible_pipes) {
+            let pipe = pipes[i];
+            if (Hitpipe(pipe)) {
+                return true;
+            }
+            let i = i + 1;
+        }
+
+        return false;
+    }
+
+    /*
+    Check if the bird has collided with a certain pipe
+    */
+
+    method boolean Hitpipe(Pipe pipe)
+    {
+        // Check if the bird has hit the top of the screen
+        if (flappybird.Getycoordinate() = 0) {
+            return true;
+        }
+
+        // Check if the bird has hit the bottom of the screen
+        if (flappybird.Getycoordinate() = 220) {
+            return true;
+        }
+
+        // Check if the bird is in front of the pipe
+        if (pipe.Getxcoordinate() > (flappybird.Getxcoordinate() + flappybird.Getxsize() + 1)) {
+            return false;
+        }
+
+        // Check if the bird has passed the pipe
+        if ((pipe.Getxcoordinate() + pipe.GetWidth()) < flappybird.Getxcoordinate()) {
+            return false;
+        }
+
+        // Check if the bird has hit the top session of the pipe
+        if (pipe.GetGapTop() > flappybird.Getycoordinate()) {
+        return true;
+        }
+
+        // Check if the bird has hit the bottom session of the pipe
+        if (pipe.GetGapBottom() < (flappybird.Getycoordinate() + flappybird.Getysize())) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /*
+    Dispose Flappybird and object to halt game
+    */
+
+    method void dispose() {
+        var Pipe pipe;
+        var int i;
+        let i = 0;
+        while (i < num_of_visible_pipes) {
+            let pipe = pipes[i];
+            do pipe.dispose();
+            let i = i + 1;
+        }
+        do Whiteout();
+        do scoreboard.dispose();
+        do flappybird.dispose();
+
+        do Memory.deAlloc(this);
+
+        return;
+    }
+
+    method void drawScoreBoard()
+    {
+        var int x;
+        var int y;
+        let x = 0;
+        let y = 10;
+        do Output.moveCursor(0, 2);
+        do Output.printString("ScoreBoard");
+
+        do Screen.setColor(true);
+        do Screen.drawLine(x + 2,y + 3,x + 96,y + 3);
+        do Screen.drawLine(x + 3,y + 8,x + 95,y + 8);
+        do Screen.drawLine(x + 2,y + 3,x + 2,y + 97);
+        do Screen.drawLine(x + 96,y + 3,x + 96,y + 97);
+        do Screen.drawLine(x + 2,y + 92,x + 96,y + 92);
+        do Screen.drawLine(x + 2,y + 97,x + 96,y + 97);
+        do Screen.drawLine(x + 7,y + 3,x + 7,y + 97);
+        do Screen.drawLine(x + 91,y + 3,x + 91,y + 97);
+
+        do Screen.drawLine(x + 3,y + 4,x + 6,y + 7);
+        do Screen.drawLine(x + 3,y + 9,x + 6,y + 12);
+        do Screen.drawLine(x + 3,y + 7,x + 6,y + 4);
+        do Screen.drawLine(x + 3,y + 12,x + 6,y + 9);
+        do Screen.drawLine(x + 3,y + 14,x + 6,y + 17);
+        do Screen.drawLine(x + 3,y + 19,x + 6,y + 22);
+        do Screen.drawLine(x + 3,y + 17,x + 6,y + 14);
+        do Screen.drawLine(x + 3,y + 22,x + 6,y + 19);
+        do Screen.drawLine(x + 3,y + 23,x + 6,y + 23);
+        do Screen.drawLine(x + 3,y + 13,x + 6,y + 13);
+        do Screen.drawLine(x + 3,y + 18,x + 6,y + 18);
+        do Screen.drawRectangle(x + 4, y + 24, x + 5, y + 76);
+        do Screen.drawLine(x + 3,y + 78,x + 6,y + 81);
+        do Screen.drawLine(x + 3,y + 81,x + 6,y + 78);
+        do Screen.drawLine(x + 3,y + 87,x + 6,y + 83);
+        do Screen.drawLine(x + 3,y + 83,x + 6,y + 87);
+        do Screen.drawLine(x + 3,y + 88,x + 6,y + 91);
+        do Screen.drawLine(x + 3,y + 91,x + 6,y + 88);
+        do Screen.drawLine(x + 3,y + 93,x + 6,y + 97);
+        do Screen.drawLine(x + 3,y + 97,x + 6,y + 93);
+        do Screen.drawLine(x + 3,y + 77,x + 6,y + 77);
+        do Screen.drawLine(x + 3,y + 82,x + 6,y + 82);
+        do Screen.drawLine(x + 3,y + 87,x + 6,y + 87);
+
+        do Screen.drawLine(x + 92,y + 4,x + 95,y + 7);
+        do Screen.drawLine(x + 92,y + 9,x + 95,y + 12);
+        do Screen.drawLine(x + 92,y + 7,x + 95,y + 4);
+        do Screen.drawLine(x + 92,y + 12,x + 95,y + 9);
+        do Screen.drawLine(x + 92,y + 14,x + 95,y + 17);
+        do Screen.drawLine(x + 92,y + 19,x + 95,y + 22);
+        do Screen.drawLine(x + 92,y + 17,x + 95,y + 14);
+        do Screen.drawLine(x + 92,y + 22,x + 95,y + 19);
+        do Screen.drawLine(x + 92,y + 23,x + 95,y + 23);
+        do Screen.drawLine(x + 92,y + 13,x + 95,y + 13);
+        do Screen.drawLine(x + 92,y + 18,x + 95,y + 18);
+        do Screen.drawRectangle(x + 93, y + 24, x + 94, y + 76);
+        do Screen.drawLine(x + 92,y + 78,x + 95,y + 81);
+        do Screen.drawLine(x + 92,y + 81,x + 95,y + 78);
+        do Screen.drawLine(x + 92,y + 87,x + 95,y + 83);
+        do Screen.drawLine(x + 92,y + 83,x + 95,y + 87);
+        do Screen.drawLine(x + 92,y + 88,x + 95,y + 91);
+        do Screen.drawLine(x + 92,y + 91,x + 95,y + 88);
+        do Screen.drawLine(x + 92,y + 93,x + 95,y + 97);
+        do Screen.drawLine(x + 92,y + 97,x + 95,y + 93);
+        do Screen.drawLine(x + 92,y + 77,x + 95,y + 77);
+        do Screen.drawLine(x + 92,y + 82,x + 95,y + 82);
+        do Screen.drawLine(x + 92,y + 87,x + 95,y + 87);
+
+        do Screen.drawLine(x + 8,y + 4,x + 11,y + 7);
+        do Screen.drawLine(x + 8,y + 7,x + 11,y + 4);
+        do Screen.drawLine(x + 8,y + 93,x + 11,y + 96);
+        do Screen.drawLine(x + 8,y + 96,x + 11,y + 93);
+        do Screen.drawLine(x + 90,y + 4,x + 87,y + 7);
+        do Screen.drawLine(x + 90,y + 7,x + 87,y + 4);
+        do Screen.drawLine(x + 90,y + 93,x + 87,y + 96);
+        do Screen.drawLine(x + 90,y + 96,x + 87,y + 93);
+        do Screen.drawLine(x + 12,y + 4,x + 12,y + 7);
+        do Screen.drawLine(x + 12,y + 93,x + 12,y + 96);
+        do Screen.drawLine(x + 86,y + 4,x + 86,y + 7);
+        do Screen.drawLine(x + 86,y + 93,x + 86,y + 96);
+
+        do Screen.drawLine(x + 13,y + 4,x + 16,y + 7);
+        do Screen.drawLine(x + 13,y + 7,x + 16,y + 4);
+        do Screen.drawLine(x + 13,y + 93,x + 16,y + 96);
+        do Screen.drawLine(x + 13,y + 96,x + 16,y + 93);
+        do Screen.drawLine(x + 82,y + 4,x + 85,y + 7);
+        do Screen.drawLine(x + 82,y + 7,x + 85,y + 4);
+        do Screen.drawLine(x + 82,y + 93,x + 85,y + 96);
+        do Screen.drawLine(x + 82,y + 96,x + 85,y + 93);
+        do Screen.drawLine(x + 17,y + 4,x + 17,y + 7);
+        do Screen.drawLine(x + 17,y + 93,x + 17,y + 96);
+        do Screen.drawLine(x + 81,y + 4,x + 81,y + 7);
+        do Screen.drawLine(x + 81,y + 93,x + 81,y + 96);
+
+        do Screen.drawLine(x + 18,y + 4,x + 21,y + 7);
+        do Screen.drawLine(x + 18,y + 7,x + 21,y + 4);
+        do Screen.drawLine(x + 18,y + 93,x + 21,y + 96);
+        do Screen.drawLine(x + 18,y + 96,x + 21,y + 93);
+        do Screen.drawLine(x + 80,y + 4,x + 77,y + 7);
+        do Screen.drawLine(x + 80,y + 7,x + 77,y + 4);
+        do Screen.drawLine(x + 80,y + 93,x + 77,y + 96);
+        do Screen.drawLine(x + 80,y + 96,x + 77,y + 93);
+        do Screen.drawLine(x + 22,y + 4,x + 22,y + 7);
+        do Screen.drawLine(x + 22,y + 93,x + 22,y + 96);
+        do Screen.drawLine(x + 76,y + 4,x + 76,y + 7);
+        do Screen.drawLine(x + 76,y + 93,x + 76,y + 96);
+
+        do Screen.drawLine(x + 24, y + 5, x + 26, y + 7);
+        do Screen.drawLine(x + 30, y + 5, x + 28, y + 7);
+        do Screen.drawPixel(x + 27, y + 5);
+        do Screen.drawLine(x + 25, y + 4, x + 26, y + 4);
+        do Screen.drawLine(x + 29, y + 4, x + 28, y + 4);
+        do Screen.drawLine(x + 68, y + 5, x + 70, y + 7);
+        do Screen.drawLine(x + 74, y + 5, x + 72, y + 7);
+        do Screen.drawPixel(x + 71, y + 5);
+        do Screen.drawLine(x + 69, y + 4, x + 70, y + 4);
+        do Screen.drawLine(x + 73, y + 4, x + 72, y + 4);
+
+        do Screen.drawLine(x + 24, y + 94, x + 26, y + 96);
+        do Screen.drawLine(x + 30, y + 94, x + 28, y + 96);
+        do Screen.drawPixel(x + 27, y + 94);
+        do Screen.drawLine(x + 25, y + 93, x + 26, y + 93);
+        do Screen.drawLine(x + 29, y + 93, x + 28, y + 93);
+        do Screen.drawLine(x + 68, y + 94, x + 70, y + 96);
+        do Screen.drawLine(x + 74, y + 94, x + 72, y + 96);
+        do Screen.drawPixel(x + 71, y + 94);
+        do Screen.drawLine(x + 69, y + 93, x + 70, y + 93);
+        do Screen.drawLine(x + 73, y + 93, x + 72, y + 93);
+        return;
+    }
+}
+

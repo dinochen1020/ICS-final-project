@@ -1,0 +1,15 @@
+class Mod
+{
+    /*
+    Mathematical Operation of MOD
+    */
+    
+    function int mod(int dividend, int divisor)
+    {
+        var int quotient;
+
+        let quotient = dividend / divisor;
+
+        return (dividend - (quotient * divisor));
+    }
+}

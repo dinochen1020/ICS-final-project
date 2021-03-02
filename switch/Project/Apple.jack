@@ -1,0 +1,103 @@
+class Apple {
+    field Apple mprev;
+    field Apple mnext;
+
+    // Location on the screen
+    field int mx, my;
+
+    /** Constructs a new apple with a given location and size. */
+    constructor Apple new(int Ax, int Ay) {
+        let mprev = null;
+        let mnext = null;
+        let mx = Ax;
+        let my = Ay;
+
+        do show();
+
+        return this;
+    }
+
+    method void setPrev(Apple s) {
+        let mprev = s;
+        return;
+    }
+
+    method void setNext(Apple s) {
+        let mnext = s;
+        return;
+    }
+
+    method int x() {
+        return mx;
+    }
+
+    method int y() {
+        return my;
+    }
+
+    method Square next() {
+        return mnext;
+    }
+
+    method Square prev() {
+        return mprev;
+    }
+
+    method void setPosition(int ax, int ay) {
+        do hide();
+        let mx = ax;
+        let my = ay;
+        do show();
+        return;
+    }
+
+    /** Deallocates the object's memory. */
+    method void dispose() {
+        if (~(mnext = null)) {
+            do mnext.dispose();
+        }
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    method void paint(boolean erase) {
+        do Screen.setColor(erase);
+        do Screen.drawLine(mx*Main.size() + 17, my*Main.size() + 1, mx*Main.size() + 21, my*Main.size() + 1);
+        do Screen.drawPixel(mx*Main.size() + 23, my*Main.size() + 2);
+        do Screen.drawLine(mx*Main.size() + 9, my*Main.size() + 12, mx*Main.size() + 12, my*Main.size() + 14);
+        do Screen.drawLine(mx*Main.size() + 17, my*Main.size() + 12, mx*Main.size() + 13, my*Main.size() + 14);
+        do Screen.drawLine(mx*Main.size() + 4, my*Main.size() + 8, mx*Main.size() + 7, my*Main.size() + 7);
+        do Screen.drawLine(mx*Main.size() + 19, my*Main.size() + 5, mx*Main.size() + 22, my*Main.size() + 2);
+        do Screen.drawLine(mx*Main.size() + 18, my*Main.size() + 5, mx*Main.size() + 15, my*Main.size() + 4);
+        do Screen.drawLine(mx*Main.size() + 16, my*Main.size() + 2, mx*Main.size() + 15, my*Main.size() + 3);
+        do Screen.drawLine(mx*Main.size() + 16, my*Main.size() + 6, mx*Main.size() + 15, my*Main.size() + 5);
+        do Screen.drawLine(mx*Main.size() + 14, my*Main.size() + 6, mx*Main.size() + 14, my*Main.size() + 9);
+        do Screen.drawLine(mx*Main.size() + 8, my*Main.size() + 7, mx*Main.size() + 11, my*Main.size() + 9);
+        do Screen.drawLine(mx*Main.size() + 15, my*Main.size() + 9, mx*Main.size() + 18, my*Main.size() + 7);
+        do Screen.drawLine(mx*Main.size() + 19, my*Main.size() + 7, mx*Main.size() + 23, my*Main.size() + 9);
+        do Screen.drawLine(mx*Main.size() + 13, my*Main.size() + 10, mx*Main.size() + 13, my*Main.size() + 11);
+        do Screen.drawLine(mx*Main.size() + 2, my*Main.size() + 10, mx*Main.size() + 1, my*Main.size() + 14);
+        do Screen.drawLine(mx*Main.size() + 24, my*Main.size() + 10, mx*Main.size() + 25, my*Main.size() + 15);
+        do Screen.drawLine(mx*Main.size() + 1, my*Main.size() + 15, mx*Main.size() + 2, my*Main.size() + 18);
+        do Screen.drawLine(mx*Main.size() + 22, my*Main.size() + 23, mx*Main.size() + 24, my*Main.size() + 18);
+        do Screen.drawLine(mx*Main.size() + 2, my*Main.size() + 19, mx*Main.size() + 5, my*Main.size() + 24);
+        do Screen.drawLine(mx*Main.size() + 6, my*Main.size() + 24, mx*Main.size() + 8, my*Main.size() + 26);
+        do Screen.drawLine(mx*Main.size() + 9, my*Main.size() + 26, mx*Main.size() + 13, my*Main.size() + 24);
+        do Screen.drawLine(mx*Main.size() + 14, my*Main.size() + 25, mx*Main.size() + 17, my*Main.size() + 26);
+        do Screen.drawLine(mx*Main.size() + 18, my*Main.size() + 26, mx*Main.size() + 20, my*Main.size() + 24);
+        do Screen.drawPixel(mx*Main.size() + 3, my*Main.size() + 9);
+        do Screen.drawLine(mx*Main.size() + 24, my*Main.size() + 17, mx*Main.size() + 25, my*Main.size() + 16);
+        do Screen.drawPixel(mx*Main.size() + 21, my*Main.size() + 24);
+        return;
+    }
+
+    method void hide() {
+        do paint(false);
+        return;
+    }
+
+    method void show() {
+        do paint(true);
+        return;
+    }
+}

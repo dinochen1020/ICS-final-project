@@ -1,0 +1,2322 @@
+function PlantVSZombieGame.new 0
+push constant 17
+call Memory.alloc 1
+pop pointer 0
+push constant 32
+pop this 0
+push constant 50
+call Array.new 1
+pop this 1
+push constant 0
+pop this 2
+push constant 50
+call Array.new 1
+pop this 3
+push constant 0
+pop this 4
+push constant 10
+call Array.new 1
+pop this 5
+push constant 0
+pop this 6
+push constant 10
+call Array.new 1
+pop this 7
+push constant 0
+pop this 8
+push constant 10
+call Array.new 1
+pop this 9
+push constant 0
+pop this 10
+push constant 5
+call Array.new 1
+pop this 11
+push constant 0
+push this 11
+add
+push constant 220
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push this 11
+add
+push constant 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+push this 11
+add
+push constant 220
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 3
+push this 11
+add
+push constant 220
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 4
+push this 11
+add
+push constant 220
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 300
+pop this 12
+push constant 300
+pop this 13
+push constant 0
+pop this 14
+push constant 0
+pop this 15
+push constant 0
+pop this 16
+push pointer 0
+return
+function PlantVSZombieGame.run 8
+push argument 0
+pop pointer 0
+push constant 1
+pop local 0
+call Map.Map 0
+pop temp 0
+label WHILE_EXP0
+push local 4
+push constant 81
+eq
+not
+not
+if-goto WHILE_END0
+push this 15
+push constant 1
+add
+pop this 15
+push this 14
+push constant 1
+add
+pop this 14
+push pointer 0
+call PlantVSZombieGame.calculatesun 1
+pop temp 0
+push this 12
+push this 13
+eq
+not
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push pointer 0
+call PlantVSZombieGame.updatesun 1
+pop temp 0
+label IF_FALSE0
+push this 16
+push constant 0
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push pointer 0
+call PlantVSZombieGame.updatesun 1
+pop temp 0
+push constant 1
+pop this 16
+label IF_FALSE1
+push this 12
+pop this 13
+push local 6
+push constant 83
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push local 4
+push constant 83
+eq
+not
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push this 12
+push constant 50
+gt
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push this 12
+push constant 50
+sub
+pop this 12
+push pointer 0
+call PlantVSZombieGame.updatesun 1
+pop temp 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push constant 283
+push constant 9
+push constant 301
+push constant 27
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push constant 286
+push constant 12
+push constant 301
+push constant 16
+call Screen.drawRectangle 4
+pop temp 0
+push constant 283
+push constant 19
+push constant 298
+push constant 24
+call Screen.drawRectangle 4
+pop temp 0
+push constant 4
+push constant 35
+call Output.moveCursor 2
+pop temp 0
+push constant 15
+call String.new 1
+push constant 87
+call String.appendChar 2
+push constant 104
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 114
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 112
+call String.appendChar 2
+push constant 108
+call String.appendChar 2
+push constant 97
+call String.appendChar 2
+push constant 110
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 63
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push constant 0
+call String.new 1
+call Keyboard.readInt 1
+pop local 0
+push constant 4
+push constant 50
+call Output.moveCursor 2
+pop temp 0
+push constant 0
+call String.new 1
+call Keyboard.readInt 1
+pop local 1
+push pointer 0
+push local 0
+push local 1
+call PlantVSZombieGame.createNewsunFlower 3
+pop temp 0
+label IF_FALSE4
+label IF_FALSE3
+label IF_FALSE2
+push local 6
+push constant 80
+eq
+if-goto IF_TRUE5
+goto IF_FALSE5
+label IF_TRUE5
+push local 4
+push constant 80
+eq
+not
+if-goto IF_TRUE6
+goto IF_FALSE6
+label IF_TRUE6
+push this 12
+push constant 100
+gt
+if-goto IF_TRUE7
+goto IF_FALSE7
+label IF_TRUE7
+push this 12
+push constant 100
+sub
+pop this 12
+push pointer 0
+call PlantVSZombieGame.updatesun 1
+pop temp 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push constant 283
+push constant 9
+push constant 301
+push constant 27
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push constant 286
+push constant 12
+push constant 298
+push constant 16
+call Screen.drawRectangle 4
+pop temp 0
+push constant 286
+push constant 19
+push constant 301
+push constant 27
+call Screen.drawRectangle 4
+pop temp 0
+push constant 4
+push constant 35
+call Output.moveCursor 2
+pop temp 0
+push constant 15
+call String.new 1
+push constant 87
+call String.appendChar 2
+push constant 104
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 114
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 112
+call String.appendChar 2
+push constant 108
+call String.appendChar 2
+push constant 97
+call String.appendChar 2
+push constant 110
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 63
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push constant 0
+call String.new 1
+call Keyboard.readInt 1
+pop local 0
+push constant 4
+push constant 50
+call Output.moveCursor 2
+pop temp 0
+push constant 0
+call String.new 1
+call Keyboard.readInt 1
+pop local 1
+push pointer 0
+push local 0
+push local 1
+call PlantVSZombieGame.createNewpeaArcher 3
+pop temp 0
+label IF_FALSE7
+label IF_FALSE6
+label IF_FALSE5
+push local 6
+push constant 73
+eq
+if-goto IF_TRUE8
+goto IF_FALSE8
+label IF_TRUE8
+push local 4
+push constant 73
+eq
+not
+if-goto IF_TRUE9
+goto IF_FALSE9
+label IF_TRUE9
+push this 12
+push constant 125
+gt
+if-goto IF_TRUE10
+goto IF_FALSE10
+label IF_TRUE10
+push this 12
+push constant 125
+sub
+pop this 12
+push pointer 0
+call PlantVSZombieGame.updatesun 1
+pop temp 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push constant 283
+push constant 9
+push constant 301
+push constant 27
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push constant 283
+push constant 12
+push constant 290
+push constant 24
+call Screen.drawRectangle 4
+pop temp 0
+push constant 294
+push constant 12
+push constant 301
+push constant 24
+call Screen.drawRectangle 4
+pop temp 0
+push constant 4
+push constant 35
+call Output.moveCursor 2
+pop temp 0
+push constant 15
+call String.new 1
+push constant 87
+call String.appendChar 2
+push constant 104
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 114
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 112
+call String.appendChar 2
+push constant 108
+call String.appendChar 2
+push constant 97
+call String.appendChar 2
+push constant 110
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 63
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push constant 0
+call String.new 1
+call Keyboard.readInt 1
+pop local 0
+push constant 4
+push constant 50
+call Output.moveCursor 2
+pop temp 0
+push constant 0
+call String.new 1
+call Keyboard.readInt 1
+pop local 1
+push pointer 0
+push local 0
+push local 1
+call PlantVSZombieGame.createNewicepeaArcher 3
+pop temp 0
+label IF_FALSE10
+label IF_FALSE9
+label IF_FALSE8
+push local 4
+pop local 6
+call Keyboard.keyPressed 0
+pop local 4
+push pointer 0
+call PlantVSZombieGame.findGetHit 1
+pop temp 0
+push pointer 0
+call PlantVSZombieGame.draw 1
+pop temp 0
+push pointer 0
+call PlantVSZombieGame.createNewpea 1
+pop temp 0
+push pointer 0
+call PlantVSZombieGame.checkpea 1
+pop temp 0
+push pointer 0
+call PlantVSZombieGame.disposedeadzombies 1
+pop temp 0
+push constant 0
+pop local 2
+label WHILE_EXP1
+push local 2
+push constant 5
+lt
+not
+if-goto WHILE_END1
+push pointer 0
+push local 2
+call PlantVSZombieGame.producezombie 2
+if-goto IF_TRUE11
+goto IF_FALSE11
+label IF_TRUE11
+push pointer 0
+push local 2
+call PlantVSZombieGame.createNewZomble 2
+pop temp 0
+label IF_FALSE11
+push local 2
+push constant 1
+add
+pop local 2
+goto WHILE_EXP1
+label WHILE_END1
+push constant 0
+pop local 3
+label WHILE_EXP2
+push local 3
+push this 4
+lt
+not
+if-goto WHILE_END2
+push local 3
+push this 3
+add
+pop pointer 1
+push that 0
+pop local 7
+push local 7
+call Zombie.GetXoffset 1
+push constant 10
+lt
+if-goto IF_TRUE12
+goto IF_FALSE12
+label IF_TRUE12
+push constant 20
+call Sys.wait 1
+pop temp 0
+push pointer 0
+call PlantVSZombieGame.Whiteout 1
+pop temp 0
+push pointer 0
+call PlantVSZombieGame.GameoverDisplay 1
+pop temp 0
+label WHILE_EXP3
+push local 5
+push constant 0
+eq
+not
+if-goto WHILE_END3
+call Keyboard.keyPressed 0
+pop local 5
+goto WHILE_EXP3
+label WHILE_END3
+push constant 0
+return
+label IF_FALSE12
+push local 3
+push constant 1
+add
+pop local 3
+goto WHILE_EXP2
+label WHILE_END2
+push constant 10
+call Sys.wait 1
+pop temp 0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
+function PlantVSZombieGame.calculatesun 0
+push argument 0
+pop pointer 0
+push this 14
+push constant 50
+gt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 12
+push constant 25
+add
+pop this 12
+push constant 0
+pop this 14
+label IF_FALSE0
+push this 15
+push constant 75
+gt
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 0
+pop this 15
+push this 12
+push this 6
+push constant 25
+call Math.multiply 2
+add
+pop this 12
+label IF_FALSE1
+push constant 0
+return
+function PlantVSZombieGame.createNewZomble 1
+push argument 0
+pop pointer 0
+push this 4
+push this 3
+add
+push argument 1
+call Zombie.new 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push this 4
+push constant 1
+add
+pop this 4
+push constant 0
+return
+function PlantVSZombieGame.createNewsunFlower 1
+push argument 0
+pop pointer 0
+push this 6
+push this 5
+add
+push argument 1
+push argument 2
+call SunFlower.new 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push this 6
+push constant 1
+add
+pop this 6
+push constant 0
+return
+function PlantVSZombieGame.createNewicepeaArcher 1
+push argument 0
+pop pointer 0
+push this 10
+push this 9
+add
+push argument 1
+push argument 2
+call IcePeaArcher.new 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push this 10
+push constant 1
+add
+pop this 10
+push constant 0
+return
+function PlantVSZombieGame.createNewpeaArcher 1
+push argument 0
+pop pointer 0
+push this 8
+push this 7
+add
+push argument 1
+push argument 2
+call PeaArcher.new 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push this 8
+push constant 1
+add
+pop this 8
+push constant 0
+return
+function PlantVSZombieGame.createNewpea 4
+push argument 0
+pop pointer 0
+push constant 0
+pop local 3
+label WHILE_EXP0
+push local 3
+push this 8
+lt
+not
+if-goto WHILE_END0
+push local 3
+push this 7
+add
+pop pointer 1
+push that 0
+pop local 1
+push local 1
+call PeaArcher.shoot 1
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 2
+push this 1
+add
+push local 1
+call PeaArcher.GetXoffset 1
+push constant 32
+add
+push local 1
+call PeaArcher.GetYoffset 1
+call Pea.new 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push this 2
+push constant 1
+add
+pop this 2
+goto IF_END0
+label IF_FALSE0
+push local 1
+call PeaArcher.addBulletFlag 1
+pop temp 0
+label IF_END0
+push local 3
+push constant 1
+add
+pop local 3
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+pop local 3
+label WHILE_EXP1
+push local 3
+push this 10
+lt
+not
+if-goto WHILE_END1
+push local 3
+push this 9
+add
+pop pointer 1
+push that 0
+pop local 2
+push local 2
+call IcePeaArcher.shoot 1
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push this 2
+push this 1
+add
+push local 2
+call IcePeaArcher.GetXoffset 1
+push constant 32
+add
+push local 2
+call IcePeaArcher.GetYoffset 1
+call Pea.new 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push this 2
+push constant 1
+add
+pop this 2
+goto IF_END1
+label IF_FALSE1
+push local 2
+call IcePeaArcher.addBulletFlag 1
+pop temp 0
+label IF_END1
+push local 3
+push constant 1
+add
+pop local 3
+goto WHILE_EXP1
+label WHILE_END1
+push constant 0
+return
+function PlantVSZombieGame.findGetHit 4
+push argument 0
+pop pointer 0
+push constant 0
+pop local 2
+push constant 0
+pop local 3
+label WHILE_EXP0
+push local 2
+push this 2
+lt
+not
+if-goto WHILE_END0
+label WHILE_EXP1
+push local 3
+push this 4
+lt
+not
+if-goto WHILE_END1
+push local 2
+push this 1
+add
+pop pointer 1
+push that 0
+pop local 1
+push local 3
+push this 3
+add
+pop pointer 1
+push that 0
+pop local 0
+push pointer 0
+push local 0
+push local 1
+call PlantVSZombieGame.GetHit 3
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push local 0
+call Zombie.GetHit 1
+pop temp 0
+push pointer 0
+push local 2
+call PlantVSZombieGame.deletepea 2
+pop temp 0
+push local 2
+push constant 1
+sub
+pop local 2
+label IF_FALSE0
+push local 3
+push constant 1
+add
+pop local 3
+goto WHILE_EXP1
+label WHILE_END1
+push local 2
+push constant 1
+add
+pop local 2
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
+function PlantVSZombieGame.GetHit 0
+push argument 0
+pop pointer 0
+push argument 2
+call Pea.GetYoffset 1
+push argument 1
+call Zombie.GetYoffset 1
+eq
+not
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+return
+label IF_FALSE0
+push argument 2
+call Pea.GetXoffset 1
+push argument 1
+call Zombie.GetXoffset 1
+push constant 20
+sub
+gt
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 0
+not
+return
+label IF_FALSE1
+push constant 0
+return
+function PlantVSZombieGame.shiftZombies 2
+push argument 0
+pop pointer 0
+push constant 0
+pop local 1
+label WHILE_EXP0
+push local 1
+push this 4
+lt
+not
+if-goto WHILE_END0
+push local 1
+push this 3
+add
+pop pointer 1
+push that 0
+pop local 0
+push local 0
+call Zombie.Move 1
+pop temp 0
+push local 1
+push constant 1
+add
+pop local 1
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
+function PlantVSZombieGame.shiftpeas 2
+push argument 0
+pop pointer 0
+push constant 0
+pop local 1
+label WHILE_EXP0
+push local 1
+push this 2
+lt
+not
+if-goto WHILE_END0
+push local 1
+push this 1
+add
+pop pointer 1
+push that 0
+pop local 0
+push local 0
+call Pea.Move 1
+pop temp 0
+push local 1
+push constant 1
+add
+pop local 1
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
+function PlantVSZombieGame.draw 0
+push argument 0
+pop pointer 0
+push pointer 0
+call PlantVSZombieGame.shiftZombies 1
+pop temp 0
+push pointer 0
+call PlantVSZombieGame.shiftpeas 1
+pop temp 0
+push constant 0
+return
+function PlantVSZombieGame.disposedeadzombies 2
+push argument 0
+pop pointer 0
+push constant 0
+pop local 1
+label WHILE_EXP0
+push local 1
+push this 4
+lt
+not
+if-goto WHILE_END0
+push local 1
+push this 3
+add
+pop pointer 1
+push that 0
+pop local 0
+push local 0
+call Zombie.Gethealth 1
+push constant 1
+lt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push pointer 0
+push local 1
+call PlantVSZombieGame.deletezombie 2
+pop temp 0
+push local 1
+push constant 1
+sub
+pop local 1
+label IF_FALSE0
+push local 1
+push constant 1
+add
+pop local 1
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
+function PlantVSZombieGame.dispose 5
+push argument 0
+pop pointer 0
+push constant 0
+pop local 0
+label WHILE_EXP0
+push local 0
+push this 4
+lt
+not
+if-goto WHILE_END0
+push this 4
+push this 3
+add
+pop pointer 1
+push that 0
+pop local 1
+push local 1
+call Zombie.dispose 1
+pop temp 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+pop local 0
+label WHILE_EXP1
+push local 0
+push this 8
+lt
+not
+if-goto WHILE_END1
+push this 8
+push this 7
+add
+pop pointer 1
+push that 0
+pop local 2
+push local 2
+call PeaArcher.dispose 1
+pop temp 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP1
+label WHILE_END1
+push constant 0
+pop local 0
+label WHILE_EXP2
+push local 0
+push this 6
+lt
+not
+if-goto WHILE_END2
+push this 6
+push this 5
+add
+pop pointer 1
+push that 0
+pop local 3
+push local 3
+call SunFlower.dispose 1
+pop temp 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP2
+label WHILE_END2
+push constant 0
+pop local 0
+label WHILE_EXP3
+push local 0
+push this 2
+lt
+not
+if-goto WHILE_END3
+push this 2
+push this 1
+add
+pop pointer 1
+push that 0
+pop local 4
+push local 4
+call Pea.dispose 1
+pop temp 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP3
+label WHILE_END3
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push pointer 0
+call PlantVSZombieGame.Whiteout 1
+pop temp 0
+push constant 0
+return
+function PlantVSZombieGame.Whiteout 0
+push argument 0
+pop pointer 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push constant 0
+push constant 0
+push constant 511
+push constant 255
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+return
+function PlantVSZombieGame.checkpea 2
+push argument 0
+pop pointer 0
+push constant 0
+pop local 1
+push this 2
+push constant 0
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+return
+label IF_FALSE0
+label WHILE_EXP0
+push local 1
+push this 2
+lt
+not
+if-goto WHILE_END0
+push local 1
+push this 1
+add
+pop pointer 1
+push that 0
+pop local 0
+push local 0
+call Pea.GetXoffset 1
+push constant 499
+gt
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push pointer 0
+push local 1
+call PlantVSZombieGame.deletepea 2
+pop temp 0
+push local 1
+push constant 1
+sub
+pop local 1
+label IF_FALSE1
+push local 1
+push constant 1
+add
+pop local 1
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
+function PlantVSZombieGame.deletepea 1
+push argument 0
+pop pointer 0
+push argument 1
+push this 1
+add
+pop pointer 1
+push that 0
+pop local 0
+push local 0
+call Pea.erase 1
+pop temp 0
+push local 0
+call Pea.dispose 1
+pop temp 0
+push this 2
+push constant 1
+sub
+pop this 2
+label WHILE_EXP0
+push argument 1
+push this 2
+lt
+not
+if-goto WHILE_END0
+push argument 1
+push this 1
+add
+push argument 1
+push constant 1
+add
+push this 1
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push argument 1
+push constant 1
+add
+pop argument 1
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
+function PlantVSZombieGame.updatesun 1
+push argument 0
+pop pointer 0
+push this 12
+pop local 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push constant 4
+push constant 61
+push constant 59
+push constant 74
+call Screen.drawRectangle 4
+pop temp 0
+push local 0
+push constant 0
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push pointer 0
+push constant 27
+push constant 63
+call PlantVSZombieGame.drawzero 3
+pop temp 0
+label IF_FALSE0
+push local 0
+push constant 0
+gt
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push local 0
+push constant 100
+lt
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push pointer 0
+push local 0
+push constant 10
+call Math.divide 2
+push constant 24
+push constant 63
+call PlantVSZombieGame.drawnumber 4
+pop temp 0
+push pointer 0
+push local 0
+push local 0
+sub
+push constant 10
+call Math.divide 2
+push constant 32
+push constant 63
+call PlantVSZombieGame.drawnumber 4
+pop temp 0
+label IF_FALSE2
+push local 0
+push constant 100
+gt
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push local 0
+push constant 1000
+lt
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push pointer 0
+push local 0
+push constant 100
+call Math.divide 2
+push constant 20
+push constant 63
+call PlantVSZombieGame.drawnumber 4
+pop temp 0
+push pointer 0
+push local 0
+push local 0
+push constant 100
+call Math.divide 2
+push constant 100
+call Math.multiply 2
+sub
+push constant 10
+call Math.divide 2
+push constant 28
+push constant 63
+call PlantVSZombieGame.drawnumber 4
+pop temp 0
+push pointer 0
+push local 0
+push local 0
+push local 0
+push constant 100
+call Math.divide 2
+push constant 100
+call Math.multiply 2
+sub
+push constant 10
+call Math.divide 2
+push constant 10
+call Math.multiply 2
+sub
+push local 0
+push constant 100
+call Math.divide 2
+push constant 100
+call Math.multiply 2
+sub
+push constant 36
+push constant 63
+call PlantVSZombieGame.drawnumber 4
+pop temp 0
+label IF_FALSE4
+label IF_FALSE3
+push local 0
+push constant 1000
+gt
+if-goto IF_TRUE5
+goto IF_FALSE5
+label IF_TRUE5
+push local 0
+push constant 10000
+lt
+if-goto IF_TRUE6
+goto IF_FALSE6
+label IF_TRUE6
+push pointer 0
+push local 0
+push constant 1000
+call Math.divide 2
+push constant 16
+push constant 63
+call PlantVSZombieGame.drawnumber 4
+pop temp 0
+push pointer 0
+push local 0
+push local 0
+push constant 1000
+call Math.divide 2
+push constant 1000
+call Math.multiply 2
+sub
+push constant 100
+call Math.divide 2
+push constant 24
+push constant 63
+call PlantVSZombieGame.drawnumber 4
+pop temp 0
+push pointer 0
+push pointer 0
+call PlantVSZombieGame.findhundred 1
+push constant 32
+push constant 63
+call PlantVSZombieGame.drawnumber 4
+pop temp 0
+push pointer 0
+push pointer 0
+call PlantVSZombieGame.findthousand 1
+push constant 40
+push constant 63
+call PlantVSZombieGame.drawnumber 4
+pop temp 0
+label IF_FALSE6
+label IF_FALSE5
+label IF_FALSE1
+push constant 0
+return
+function PlantVSZombieGame.findthousand 4
+push argument 0
+pop pointer 0
+push this 12
+pop local 0
+push this 12
+pop local 1
+push this 12
+pop local 2
+push this 12
+pop local 3
+push local 0
+push constant 1000
+call Math.divide 2
+pop local 0
+push local 1
+push constant 100
+call Math.divide 2
+push local 0
+push constant 10
+call Math.multiply 2
+sub
+pop local 1
+push local 2
+push constant 10
+call Math.divide 2
+push local 1
+push constant 10
+call Math.multiply 2
+sub
+push local 0
+push constant 100
+call Math.multiply 2
+sub
+pop local 2
+push local 3
+push local 0
+push constant 1000
+call Math.multiply 2
+sub
+push local 1
+push constant 100
+call Math.multiply 2
+sub
+push local 2
+push constant 10
+call Math.multiply 2
+sub
+pop local 3
+push local 3
+return
+function PlantVSZombieGame.findhundred 3
+push argument 0
+pop pointer 0
+push this 12
+pop local 0
+push this 12
+pop local 1
+push this 12
+pop local 2
+push local 0
+push constant 1000
+call Math.divide 2
+pop local 0
+push local 1
+push constant 100
+call Math.divide 2
+push local 0
+push constant 10
+call Math.multiply 2
+sub
+pop local 1
+push local 2
+push constant 10
+call Math.divide 2
+push local 1
+push constant 10
+call Math.multiply 2
+sub
+push local 0
+push constant 100
+call Math.multiply 2
+sub
+pop local 2
+push local 2
+return
+function PlantVSZombieGame.drawnumber 0
+push argument 0
+pop pointer 0
+push argument 1
+push constant 0
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push pointer 0
+push argument 2
+push argument 3
+call PlantVSZombieGame.drawzero 3
+pop temp 0
+label IF_FALSE0
+push argument 1
+push constant 1
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push pointer 0
+push argument 2
+push argument 3
+call PlantVSZombieGame.drawone 3
+pop temp 0
+label IF_FALSE1
+push argument 1
+push constant 2
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push pointer 0
+push argument 2
+push argument 3
+call PlantVSZombieGame.drawtwo 3
+pop temp 0
+label IF_FALSE2
+push argument 1
+push constant 3
+eq
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push pointer 0
+push argument 2
+push argument 3
+call PlantVSZombieGame.drawthree 3
+pop temp 0
+label IF_FALSE3
+push argument 1
+push constant 4
+eq
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push pointer 0
+push argument 2
+push argument 3
+call PlantVSZombieGame.drawfour 3
+pop temp 0
+label IF_FALSE4
+push argument 1
+push constant 5
+eq
+if-goto IF_TRUE5
+goto IF_FALSE5
+label IF_TRUE5
+push pointer 0
+push argument 2
+push argument 3
+call PlantVSZombieGame.drawfive 3
+pop temp 0
+label IF_FALSE5
+push argument 1
+push constant 6
+eq
+if-goto IF_TRUE6
+goto IF_FALSE6
+label IF_TRUE6
+push pointer 0
+push argument 2
+push argument 3
+call PlantVSZombieGame.drawsix 3
+pop temp 0
+label IF_FALSE6
+push argument 1
+push constant 7
+eq
+if-goto IF_TRUE7
+goto IF_FALSE7
+label IF_TRUE7
+push pointer 0
+push argument 2
+push argument 3
+call PlantVSZombieGame.drawseven 3
+pop temp 0
+label IF_FALSE7
+push argument 1
+push constant 8
+eq
+if-goto IF_TRUE8
+goto IF_FALSE8
+label IF_TRUE8
+push pointer 0
+push argument 2
+push argument 3
+call PlantVSZombieGame.draweight 3
+pop temp 0
+label IF_FALSE8
+push argument 1
+push constant 9
+eq
+if-goto IF_TRUE9
+goto IF_FALSE9
+label IF_TRUE9
+push pointer 0
+push argument 2
+push argument 3
+call PlantVSZombieGame.drawnine 3
+pop temp 0
+label IF_FALSE9
+push constant 0
+return
+function PlantVSZombieGame.drawzero 0
+push argument 0
+pop pointer 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push argument 1
+push argument 2
+push argument 1
+push constant 6
+add
+push argument 2
+push constant 8
+add
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push argument 1
+push constant 2
+add
+push argument 2
+push constant 2
+add
+push argument 1
+push constant 4
+add
+push argument 2
+push constant 6
+add
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+return
+function PlantVSZombieGame.drawone 0
+push argument 0
+pop pointer 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push argument 1
+push constant 4
+add
+push argument 2
+push argument 1
+push constant 6
+add
+push argument 2
+push constant 8
+add
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+return
+function PlantVSZombieGame.drawtwo 0
+push argument 0
+pop pointer 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push argument 1
+push argument 2
+push argument 1
+push constant 6
+add
+push argument 2
+push constant 8
+add
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push argument 1
+push argument 2
+push constant 2
+add
+push argument 1
+push constant 4
+add
+push argument 2
+push constant 3
+add
+call Screen.drawRectangle 4
+pop temp 0
+push argument 1
+push constant 2
+add
+push argument 2
+push constant 5
+add
+push argument 1
+push constant 6
+add
+push argument 2
+push constant 6
+add
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+return
+function PlantVSZombieGame.drawthree 0
+push argument 0
+pop pointer 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push argument 1
+push argument 2
+push argument 1
+push constant 6
+add
+push argument 2
+push constant 8
+add
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push argument 1
+push argument 2
+push constant 2
+add
+push argument 1
+push constant 4
+add
+push argument 2
+push constant 3
+add
+call Screen.drawRectangle 4
+pop temp 0
+push argument 1
+push argument 2
+push constant 6
+add
+push argument 1
+push constant 4
+add
+push argument 2
+push constant 7
+add
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+return
+function PlantVSZombieGame.drawfour 0
+push argument 0
+pop pointer 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push argument 1
+push argument 2
+push argument 1
+push constant 6
+add
+push argument 2
+push constant 8
+add
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push argument 1
+push constant 2
+add
+push argument 2
+push argument 1
+push constant 4
+add
+push argument 2
+push constant 3
+add
+call Screen.drawRectangle 4
+pop temp 0
+push argument 1
+push argument 2
+push constant 5
+add
+push argument 1
+push constant 4
+add
+push argument 2
+push constant 8
+add
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+return
+function PlantVSZombieGame.drawfive 0
+push argument 0
+pop pointer 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push argument 1
+push argument 2
+push argument 1
+push constant 6
+add
+push argument 2
+push constant 8
+add
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push argument 1
+push constant 2
+add
+push argument 2
+push constant 2
+add
+push argument 1
+push constant 6
+add
+push argument 2
+push constant 3
+add
+call Screen.drawRectangle 4
+pop temp 0
+push argument 1
+push argument 2
+push constant 5
+add
+push argument 1
+push constant 4
+add
+push argument 2
+push constant 6
+add
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+return
+function PlantVSZombieGame.drawsix 0
+push argument 0
+pop pointer 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push argument 1
+push argument 2
+push argument 1
+push constant 6
+add
+push argument 2
+push constant 8
+add
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push argument 1
+push constant 2
+add
+push argument 2
+push argument 1
+push constant 6
+add
+push argument 2
+push constant 2
+add
+call Screen.drawRectangle 4
+pop temp 0
+push argument 1
+push constant 2
+add
+push argument 2
+push constant 5
+add
+push argument 1
+push constant 4
+add
+push argument 2
+push constant 6
+add
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+return
+function PlantVSZombieGame.drawseven 0
+push argument 0
+pop pointer 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push argument 1
+push argument 2
+push argument 1
+push constant 6
+add
+push argument 2
+push constant 8
+add
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push argument 1
+push argument 2
+push constant 2
+add
+push argument 1
+push constant 4
+add
+push argument 2
+push constant 8
+add
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+return
+function PlantVSZombieGame.draweight 0
+push argument 0
+pop pointer 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push argument 1
+push argument 2
+push argument 1
+push constant 6
+add
+push argument 2
+push constant 8
+add
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push argument 1
+push constant 2
+add
+push argument 2
+push constant 2
+add
+push argument 1
+push constant 4
+add
+push argument 2
+push constant 3
+add
+call Screen.drawRectangle 4
+pop temp 0
+push argument 1
+push constant 2
+add
+push argument 2
+push constant 5
+add
+push argument 1
+push constant 4
+add
+push argument 2
+push constant 6
+add
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+return
+function PlantVSZombieGame.drawnine 0
+push argument 0
+pop pointer 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push argument 1
+push argument 2
+push argument 1
+push constant 6
+add
+push argument 2
+push constant 8
+add
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push argument 1
+push constant 2
+add
+push argument 2
+push constant 2
+add
+push argument 1
+push constant 4
+add
+push argument 2
+push constant 3
+add
+call Screen.drawRectangle 4
+pop temp 0
+push argument 1
+push argument 2
+push constant 6
+add
+push argument 1
+push constant 4
+add
+push argument 2
+push constant 8
+add
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+return
+function PlantVSZombieGame.deletezombie 1
+push argument 0
+pop pointer 0
+push argument 1
+push this 3
+add
+pop pointer 1
+push that 0
+pop local 0
+push local 0
+call Zombie.EraseZombie 1
+pop temp 0
+push local 0
+call Zombie.dispose 1
+pop temp 0
+push this 4
+push constant 1
+sub
+pop this 4
+label WHILE_EXP0
+push argument 1
+push this 4
+lt
+not
+if-goto WHILE_END0
+push argument 1
+push this 3
+add
+push argument 1
+push constant 1
+add
+push this 3
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push argument 1
+push constant 1
+add
+pop argument 1
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
+function PlantVSZombieGame.producezombie 0
+push argument 0
+pop pointer 0
+push argument 1
+push this 11
+add
+pop pointer 1
+push that 0
+push constant 200
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push argument 1
+push this 11
+add
+push constant 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 0
+not
+return
+label IF_FALSE0
+push argument 1
+push this 11
+add
+push argument 1
+push this 11
+add
+pop pointer 1
+push that 0
+push constant 1
+add
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 0
+return
+function PlantVSZombieGame.GameoverDisplay 0
+push argument 0
+pop pointer 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push constant 145
+push constant 45
+push constant 176
+push constant 52
+call Screen.drawRectangle 4
+pop temp 0
+push constant 169
+push constant 53
+push constant 184
+push constant 68
+call Screen.drawRectangle 4
+pop temp 0
+push constant 137
+push constant 53
+push constant 152
+push constant 108
+call Screen.drawRectangle 4
+pop temp 0
+push constant 145
+push constant 109
+push constant 184
+push constant 116
+call Screen.drawRectangle 4
+pop temp 0
+push constant 169
+push constant 85
+push constant 184
+push constant 108
+call Screen.drawRectangle 4
+pop temp 0
+push constant 161
+push constant 85
+push constant 168
+push constant 92
+call Screen.drawRectangle 4
+pop temp 0
+push constant 201
+push constant 61
+push constant 216
+push constant 116
+call Screen.drawRectangle 4
+pop temp 0
+push constant 209
+push constant 53
+push constant 240
+push constant 60
+call Screen.drawRectangle 4
+pop temp 0
+push constant 217
+push constant 45
+push constant 232
+push constant 52
+call Screen.drawRectangle 4
+pop temp 0
+push constant 233
+push constant 61
+push constant 248
+push constant 116
+call Screen.drawRectangle 4
+pop temp 0
+push constant 217
+push constant 85
+push constant 232
+push constant 92
+call Screen.drawRectangle 4
+pop temp 0
+push constant 264
+push constant 45
+push constant 279
+push constant 116
+call Screen.drawRectangle 4
+pop temp 0
+push constant 280
+push constant 61
+push constant 287
+push constant 68
+call Screen.drawRectangle 4
+pop temp 0
+push constant 288
+push constant 69
+push constant 295
+push constant 92
+call Screen.drawRectangle 4
+pop temp 0
+push constant 296
+push constant 61
+push constant 303
+push constant 68
+call Screen.drawRectangle 4
+pop temp 0
+push constant 304
+push constant 45
+push constant 319
+push constant 116
+call Screen.drawRectangle 4
+pop temp 0
+push constant 335
+push constant 45
+push constant 351
+push constant 116
+call Screen.drawRectangle 4
+pop temp 0
+push constant 352
+push constant 45
+push constant 383
+push constant 53
+call Screen.drawRectangle 4
+pop temp 0
+push constant 352
+push constant 77
+push constant 375
+push constant 85
+call Screen.drawRectangle 4
+pop temp 0
+push constant 352
+push constant 109
+push constant 383
+push constant 116
+call Screen.drawRectangle 4
+pop temp 0
+push constant 145
+push constant 132
+push constant 176
+push constant 139
+call Screen.drawRectangle 4
+pop temp 0
+push constant 169
+push constant 140
+push constant 184
+push constant 195
+call Screen.drawRectangle 4
+pop temp 0
+push constant 137
+push constant 140
+push constant 152
+push constant 195
+call Screen.drawRectangle 4
+pop temp 0
+push constant 145
+push constant 196
+push constant 176
+push constant 203
+call Screen.drawRectangle 4
+pop temp 0
+push constant 201
+push constant 132
+push constant 216
+push constant 187
+call Screen.drawRectangle 4
+pop temp 0
+push constant 209
+push constant 188
+push constant 240
+push constant 195
+call Screen.drawRectangle 4
+pop temp 0
+push constant 217
+push constant 196
+push constant 232
+push constant 203
+call Screen.drawRectangle 4
+pop temp 0
+push constant 233
+push constant 132
+push constant 248
+push constant 187
+call Screen.drawRectangle 4
+pop temp 0
+push constant 264
+push constant 132
+push constant 279
+push constant 203
+call Screen.drawRectangle 4
+pop temp 0
+push constant 280
+push constant 132
+push constant 311
+push constant 139
+call Screen.drawRectangle 4
+pop temp 0
+push constant 280
+push constant 164
+push constant 303
+push constant 171
+call Screen.drawRectangle 4
+pop temp 0
+push constant 280
+push constant 196
+push constant 311
+push constant 203
+call Screen.drawRectangle 4
+pop temp 0
+push constant 335
+push constant 132
+push constant 351
+push constant 203
+call Screen.drawRectangle 4
+pop temp 0
+push constant 352
+push constant 132
+push constant 375
+push constant 139
+call Screen.drawRectangle 4
+pop temp 0
+push constant 369
+push constant 140
+push constant 383
+push constant 163
+call Screen.drawRectangle 4
+pop temp 0
+push constant 352
+push constant 164
+push constant 375
+push constant 171
+call Screen.drawRectangle 4
+pop temp 0
+push constant 360
+push constant 172
+push constant 375
+push constant 179
+call Screen.drawRectangle 4
+pop temp 0
+push constant 368
+push constant 180
+push constant 383
+push constant 203
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+return

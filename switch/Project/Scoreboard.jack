@@ -1,0 +1,523 @@
+class Scoreboard
+{
+    /*
+    Draw score during and after the game
+    */
+
+    field int score;                      // Final score.
+    field int space_between_characters;   // Space between characters.
+    field int default_x_coordinate;       // Default x-coordinate for start of Scoreboard image.
+    field int score_x_coordinate;         // Current scoreboard draw x_coordinate.
+    field int score_y_coordinate;         // Current scoreboard draw y_coordinate.
+    field int actual_pixel_size;          // Actual pixel size.
+
+    /*
+    Construct new scoreboard
+    */
+
+    constructor Scoreboard new()
+    {
+        let space_between_characters = 15;
+        let default_x_coordinate = 50;
+        let score_y_coordinate = 100;
+        let actual_pixel_size = 4;
+
+        return this;
+    }
+
+    /*
+    Draw score.
+    */
+
+    method void draw(int score)
+    {
+        let score_x_coordinate = default_x_coordinate;
+        do DrawCharctersScore();
+        do drawScore(score);
+
+        return;
+    }
+
+    /*
+    Draw charaters: 'SCORE:'
+    */
+
+    method void DrawCharctersScore()
+    {
+        do blackout();
+        do drawS();
+        do drawC();
+        do drawZero();  //Simply use zero for 'O'
+        do drawR();
+        do drawE();
+        do drawColon();
+
+        return;
+    }
+
+    /*
+    Draw actual score number.
+    */
+
+    method void drawScore(int score)
+    {
+        var Array digits;
+        var int digit;
+        var int i;
+
+        let digits = getScoreDigits(score);
+        let i = 1;
+        while (i < (digits[0] + 1)) {
+            let digit = digits[i];
+            if (digit = 0)   {do drawZero();}
+            if (digit = 1)   {do drawOne();}
+            if (digit = 2)   {do drawTwo();}
+            if (digit = 3)   {do drawThree();}
+            if (digit = 4)   {do drawFour();}
+            if (digit = 5)   {do drawFive();}
+            if (digit = 6)   {do drawSix();}
+            if (digit = 7)   {do drawSeven();}
+            if (digit = 8)   {do drawEight();}
+            if (digit = 9)   {do drawNine();}
+
+            let i = i + 1;
+        }
+
+        return;
+    }
+
+    /*
+    Get array of specific score digits.
+    */
+
+    method Array getScoreDigits(int score)
+    {
+        var int remainder;
+        var Array digits;
+        let digits = Array.new(5);
+
+        if (score > 999) {
+            let score = 1000;     // Set maximum score as 1000 (We guess that nobody can make it through 1000)
+            let digits[0] = 4;    // Number of digits
+            let digits[1] = 1;
+            let digits[2] = 0;
+            let digits[3] = 0;
+            let digits[4] = 0;
+
+            return digits;
+        }
+
+        if (score > 99) {
+            let digits[0] = 3;    // Number of digits
+            let digits[1] = score/100;  // Calculate hundreds-place digit.
+            let remainder = Mod.mod(score, 100);
+            let digits[2] = remainder/10; // Calculate tens-place digit.
+            let digits[3] = Mod.mod(remainder, 10); // Calculate ones-place digit.
+
+            return digits;
+        }
+
+        if (score > 9) {
+            let digits[0] = 2;    // Number of digits to draw.
+            let digits[1] = score/10; // Calculate tens-place digit.
+            let digits[2] = Mod.mod(score, 10); // Calculate ones-place digit.
+
+            return digits;
+        }
+
+        let digits[0] = 1;    // Number of digits to draw.
+        let digits[1] = score; // Calculate ones-place digit.
+
+        return digits;
+    }
+
+    /*
+    Black out screen before printing score.
+    */
+
+    method void blackout()
+    {
+        do Screen.setColor(true);
+        do Screen.drawRectangle(0, 0, 511, 255);
+
+        return;
+    }
+
+    /*
+    Draw 'S'.
+    */
+    
+    method void drawS()
+    {
+        var int width;
+        var int height;
+
+        let width = 5 * actual_pixel_size;
+        let height = 7 * actual_pixel_size;
+
+        do Screen.setColor(false);
+        do Screen.drawRectangle(score_x_coordinate + (actual_pixel_size * 1),score_y_coordinate,score_x_coordinate + (actual_pixel_size * 5),score_y_coordinate + (actual_pixel_size * 1));
+        do Screen.drawRectangle(score_x_coordinate,score_y_coordinate + (actual_pixel_size * 1),score_x_coordinate + (actual_pixel_size * 1),score_y_coordinate + (actual_pixel_size * 3));
+        do Screen.drawRectangle(score_x_coordinate + (actual_pixel_size * 1),score_y_coordinate + (actual_pixel_size * 3),score_x_coordinate + (actual_pixel_size * 4),score_y_coordinate + (actual_pixel_size * 4));
+        do Screen.drawRectangle(score_x_coordinate + (actual_pixel_size * 4),score_y_coordinate + (actual_pixel_size * 4),score_x_coordinate + (actual_pixel_size * 5),score_y_coordinate + (actual_pixel_size * 6));
+        do Screen.drawRectangle(score_x_coordinate,score_y_coordinate + (actual_pixel_size * 6),score_x_coordinate + (actual_pixel_size * 4),score_y_coordinate + (actual_pixel_size * 7));
+
+        let score_x_coordinate = score_x_coordinate + width + space_between_characters;
+
+        return;
+    }
+
+    /*
+    Draw 'C'.
+    */
+
+    method void drawC()
+    {
+        var int width;
+        var int height;
+
+        let width = 5 * actual_pixel_size;
+        let height = 7 * actual_pixel_size;
+
+        do Screen.setColor(false);
+        do Screen.drawRectangle(score_x_coordinate + (actual_pixel_size * 1),score_y_coordinate,score_x_coordinate + (actual_pixel_size * 5),score_y_coordinate + (actual_pixel_size * 1));
+        do Screen.drawRectangle(score_x_coordinate,score_y_coordinate + (actual_pixel_size * 1),score_x_coordinate + (actual_pixel_size * 1),score_y_coordinate + (actual_pixel_size * 6));
+        do Screen.drawRectangle(score_x_coordinate + (actual_pixel_size * 1),score_y_coordinate + (actual_pixel_size * 6),score_x_coordinate + (actual_pixel_size * 5),score_y_coordinate + (actual_pixel_size * 7));
+
+        let score_x_coordinate = score_x_coordinate + width + space_between_characters;
+
+        return;
+    }
+
+    /*
+    Draw 'R'.
+    */
+
+    method void drawR()
+    {
+        var int width;
+        var int height;
+
+        let width = 5 * actual_pixel_size;
+        let height = 7 * actual_pixel_size;
+
+        do Screen.setColor(false);
+        do Screen.drawRectangle(score_x_coordinate + actual_pixel_size,score_y_coordinate,score_x_coordinate + (actual_pixel_size * 4),score_y_coordinate + actual_pixel_size);
+        do Screen.drawRectangle(score_x_coordinate,score_y_coordinate,score_x_coordinate + actual_pixel_size,score_y_coordinate + (actual_pixel_size * 7));
+        do Screen.drawRectangle(score_x_coordinate + (actual_pixel_size * 4),score_y_coordinate + (actual_pixel_size * 1),score_x_coordinate + (actual_pixel_size * 5),score_y_coordinate + (actual_pixel_size * 3));
+        do Screen.drawRectangle(score_x_coordinate + (actual_pixel_size * 1),score_y_coordinate + (actual_pixel_size * 3),score_x_coordinate + (actual_pixel_size * 4),score_y_coordinate + (actual_pixel_size * 4));
+        do Screen.drawRectangle(score_x_coordinate + (actual_pixel_size * 4),score_y_coordinate + (actual_pixel_size * 4),score_x_coordinate + (actual_pixel_size * 5),score_y_coordinate + (actual_pixel_size * 7));
+
+        let score_x_coordinate = score_x_coordinate + width + space_between_characters;
+
+        return;
+    }
+
+    /*
+    Draw 'E'.
+    */
+
+    method void drawE()
+    {
+        var int width;
+        var int height;
+
+        let width = 5 * actual_pixel_size;
+        let height = 7 * actual_pixel_size;
+
+        do Screen.setColor(false);
+        do Screen.drawRectangle(score_x_coordinate,score_y_coordinate,score_x_coordinate + (actual_pixel_size * 5),score_y_coordinate + (actual_pixel_size * 1));
+        do Screen.drawRectangle(score_x_coordinate,score_y_coordinate,score_x_coordinate + (actual_pixel_size * 1),score_y_coordinate + (actual_pixel_size * 7));
+        do Screen.drawRectangle(score_x_coordinate,score_y_coordinate + (actual_pixel_size * 3),score_x_coordinate + (actual_pixel_size * 4),score_y_coordinate + (actual_pixel_size * 4));
+        do Screen.drawRectangle(score_x_coordinate,score_y_coordinate + (actual_pixel_size * 6),score_x_coordinate + (actual_pixel_size * 5),score_y_coordinate + (actual_pixel_size * 7));
+
+        let score_x_coordinate = score_x_coordinate + width + space_between_characters;
+
+        return;
+    }
+
+    /*
+    Draw ':'.
+    */
+
+    method void drawColon()
+    {
+        var int width;
+        var int height;
+
+        let width = 1 * actual_pixel_size;
+        let height = 7 * actual_pixel_size;
+
+        do Screen.setColor(false);
+        do Screen.drawRectangle(score_x_coordinate + (actual_pixel_size * 0),score_y_coordinate + (actual_pixel_size * 1),score_x_coordinate + (actual_pixel_size * 1),score_y_coordinate + (actual_pixel_size * 2));
+        do Screen.drawRectangle(score_x_coordinate + (actual_pixel_size * 0),score_y_coordinate + (actual_pixel_size * 4),score_x_coordinate + (actual_pixel_size * 1),score_y_coordinate + (actual_pixel_size * 5));
+
+        let score_x_coordinate = score_x_coordinate + width + space_between_characters;
+
+        return;
+
+    }
+
+    /*
+    Draw '0'.
+    */
+
+    method void drawZero()
+    {
+        var int width;
+        var int height;
+
+        let width = 5 * actual_pixel_size;
+        let height = 7 * actual_pixel_size;
+
+        do Screen.setColor(false);
+        do Screen.drawRectangle(score_x_coordinate, score_y_coordinate, score_x_coordinate + width, score_y_coordinate + height);
+        do Screen.setColor(true);
+        do Screen.drawRectangle(score_x_coordinate,score_y_coordinate,score_x_coordinate + actual_pixel_size,score_y_coordinate + actual_pixel_size);
+        do Screen.drawRectangle(score_x_coordinate + width - actual_pixel_size,score_y_coordinate,score_x_coordinate + width,score_y_coordinate + actual_pixel_size);
+        do Screen.drawRectangle(score_x_coordinate,score_y_coordinate + height - actual_pixel_size,score_x_coordinate + actual_pixel_size,score_y_coordinate + height);
+        do Screen.drawRectangle(score_x_coordinate + width - actual_pixel_size,score_y_coordinate + height - actual_pixel_size,score_x_coordinate + width,score_y_coordinate + height);
+        do Screen.drawRectangle(score_x_coordinate + actual_pixel_size,score_y_coordinate + actual_pixel_size,score_x_coordinate + width - actual_pixel_size,score_y_coordinate + height - actual_pixel_size);
+
+        let score_x_coordinate = score_x_coordinate + width + space_between_characters;
+
+        return;
+    }
+
+    /*
+    Draw '1'.
+    */
+
+    method void drawOne()
+    {
+        var int width;
+        var int height;
+
+        let width = 5 * actual_pixel_size;
+        let height = 7 * actual_pixel_size;
+
+        do Screen.setColor(false);
+        do Screen.drawRectangle(score_x_coordinate, score_y_coordinate, score_x_coordinate + width, score_y_coordinate + height);
+        do Screen.setColor(true);
+        do Screen.drawRectangle(score_x_coordinate,score_y_coordinate,score_x_coordinate + (actual_pixel_size * 2),score_y_coordinate + actual_pixel_size);
+        do Screen.setColor(true);
+        do Screen.drawRectangle(score_x_coordinate,score_y_coordinate + (actual_pixel_size * 2),score_x_coordinate + (actual_pixel_size * 2),score_y_coordinate + height - actual_pixel_size);
+        do Screen.setColor(true);
+        do Screen.drawRectangle(score_x_coordinate + (actual_pixel_size * 3),score_y_coordinate,score_x_coordinate + width,score_y_coordinate + height - actual_pixel_size);
+
+        let score_x_coordinate = score_x_coordinate + width + space_between_characters;
+
+        return;
+    }
+
+    /*
+    Draw '2'.
+    */
+
+    method void drawTwo()
+    {
+        var int width;
+        var int height;
+
+        let width = 5 * actual_pixel_size;
+        let height = 7 * actual_pixel_size;
+
+        do Screen.setColor(false);
+        do Screen.drawRectangle(score_x_coordinate + actual_pixel_size,score_y_coordinate,score_x_coordinate + (actual_pixel_size * 4),score_y_coordinate + actual_pixel_size);
+        do Screen.drawRectangle(score_x_coordinate,score_y_coordinate + actual_pixel_size,score_x_coordinate + actual_pixel_size,score_y_coordinate + (actual_pixel_size * 2));
+        do Screen.drawRectangle(score_x_coordinate + (actual_pixel_size * 4),score_y_coordinate + actual_pixel_size,score_x_coordinate + (actual_pixel_size * 5),score_y_coordinate + (actual_pixel_size * 2));
+        do Screen.drawRectangle(score_x_coordinate + (actual_pixel_size * 3),score_y_coordinate + (actual_pixel_size * 2),score_x_coordinate + (actual_pixel_size * 4),score_y_coordinate + (actual_pixel_size * 3));
+        do Screen.drawRectangle(score_x_coordinate + (actual_pixel_size * 2),score_y_coordinate + (actual_pixel_size * 3),score_x_coordinate + (actual_pixel_size * 3),score_y_coordinate + (actual_pixel_size * 4));
+        do Screen.drawRectangle(score_x_coordinate + (actual_pixel_size * 1),score_y_coordinate + (actual_pixel_size * 4),score_x_coordinate + (actual_pixel_size * 2),score_y_coordinate + (actual_pixel_size * 5));
+        do Screen.drawRectangle(score_x_coordinate,score_y_coordinate + (actual_pixel_size * 5),score_x_coordinate + (actual_pixel_size * 1),score_y_coordinate + (actual_pixel_size * 6));
+        do Screen.drawRectangle(score_x_coordinate,score_y_coordinate + (actual_pixel_size * 6),score_x_coordinate + (actual_pixel_size * 5),score_y_coordinate + (actual_pixel_size * 7));
+
+        let score_x_coordinate = score_x_coordinate + width + space_between_characters;
+
+        return;
+    }
+
+    /*
+    Draw '3'.
+    */
+
+    method void drawThree()
+    {
+        var int width;
+        var int height;
+
+        let width = 5 * actual_pixel_size;
+        let height = 7 * actual_pixel_size;
+
+        do Screen.setColor(false);
+        do Screen.drawRectangle(score_x_coordinate + actual_pixel_size,score_y_coordinate,score_x_coordinate + (actual_pixel_size * 4),score_y_coordinate + actual_pixel_size);
+        do Screen.drawRectangle(score_x_coordinate,score_y_coordinate + actual_pixel_size,score_x_coordinate + actual_pixel_size,score_y_coordinate + (actual_pixel_size * 2));
+        do Screen.drawRectangle(score_x_coordinate + (actual_pixel_size * 4),score_y_coordinate + (actual_pixel_size * 1),score_x_coordinate + (actual_pixel_size * 5),score_y_coordinate + (actual_pixel_size * 3));
+        do Screen.drawRectangle(score_x_coordinate + (actual_pixel_size * 2),score_y_coordinate + (actual_pixel_size * 3),score_x_coordinate + (actual_pixel_size * 4),score_y_coordinate + (actual_pixel_size * 4));
+        do Screen.drawRectangle(score_x_coordinate + (actual_pixel_size * 4),score_y_coordinate + (actual_pixel_size * 4),score_x_coordinate + (actual_pixel_size * 5),score_y_coordinate + (actual_pixel_size * 6));
+        do Screen.drawRectangle(score_x_coordinate + (actual_pixel_size * 0),score_y_coordinate + (actual_pixel_size * 5),score_x_coordinate + (actual_pixel_size * 1),score_y_coordinate + (actual_pixel_size * 6));
+        do Screen.drawRectangle(score_x_coordinate + (actual_pixel_size * 1),score_y_coordinate + (actual_pixel_size * 6),score_x_coordinate + (actual_pixel_size * 4),score_y_coordinate + (actual_pixel_size * 7));
+
+        let score_x_coordinate = score_x_coordinate + width + space_between_characters;
+
+        return;
+    }
+
+    /*
+    Draw '4'.
+    */
+
+    method void drawFour()
+    {
+        var int width;
+        var int height;
+
+        let width = 5 * actual_pixel_size;
+        let height = 7 * actual_pixel_size;
+
+        do Screen.setColor(false);
+        do Screen.drawRectangle(score_x_coordinate,score_y_coordinate,score_x_coordinate + (actual_pixel_size * 1),score_y_coordinate + (actual_pixel_size * 5));
+        do Screen.setColor(false);
+        do Screen.drawRectangle(score_x_coordinate,score_y_coordinate + (actual_pixel_size * 4),score_x_coordinate + (actual_pixel_size * 5),score_y_coordinate + (actual_pixel_size * 5));
+        do Screen.setColor(false);
+        do Screen.drawRectangle(score_x_coordinate + (actual_pixel_size * 2),score_y_coordinate + (actual_pixel_size * 3),score_x_coordinate + (actual_pixel_size * 3),score_y_coordinate + (actual_pixel_size * 7));
+
+        let score_x_coordinate = score_x_coordinate + width + space_between_characters;
+
+        return;
+
+    }
+
+    /*
+    Draw '5'.
+    */
+
+    method void drawFive()
+    {
+        var int width;
+        var int height;
+
+        let width = 5 * actual_pixel_size;
+        let height = 7 * actual_pixel_size;
+
+        do Screen.setColor(false);
+        do Screen.drawRectangle(score_x_coordinate,score_y_coordinate,score_x_coordinate + (actual_pixel_size * 5),score_y_coordinate + (actual_pixel_size * 1));
+        do Screen.drawRectangle(score_x_coordinate,score_y_coordinate,score_x_coordinate + (actual_pixel_size * 1),score_y_coordinate + (actual_pixel_size * 4));
+        do Screen.drawRectangle(score_x_coordinate,score_y_coordinate + (actual_pixel_size * 3),score_x_coordinate + (actual_pixel_size * 4),score_y_coordinate + (actual_pixel_size * 4));
+        do Screen.drawRectangle(score_x_coordinate + (actual_pixel_size * 4),score_y_coordinate + (actual_pixel_size * 4),score_x_coordinate + (actual_pixel_size * 5),score_y_coordinate + (actual_pixel_size * 6));
+        do Screen.drawRectangle(score_x_coordinate,score_y_coordinate + (actual_pixel_size * 6),score_x_coordinate + (actual_pixel_size * 4),score_y_coordinate + (actual_pixel_size * 7));
+
+        let score_x_coordinate = score_x_coordinate + width + space_between_characters;
+
+        return;
+    }
+
+    /*
+    Draw '6'.
+    */
+
+    method void drawSix()
+    {
+        var int width;
+        var int height;
+
+        let width = 5 * actual_pixel_size;
+        let height = 7 * actual_pixel_size;
+
+        do Screen.setColor(false);
+        do Screen.drawRectangle(score_x_coordinate + actual_pixel_size,score_y_coordinate,score_x_coordinate + (actual_pixel_size * 4),score_y_coordinate + actual_pixel_size);
+        do Screen.drawRectangle(score_x_coordinate,score_y_coordinate + actual_pixel_size,score_x_coordinate + (actual_pixel_size * 1),score_y_coordinate + (actual_pixel_size * 6));
+        do Screen.drawRectangle(score_x_coordinate + (actual_pixel_size * 4),score_y_coordinate + (actual_pixel_size * 1),score_x_coordinate + (actual_pixel_size * 5),score_y_coordinate + (actual_pixel_size * 2));
+        do Screen.drawRectangle(score_x_coordinate + (actual_pixel_size * 1),score_y_coordinate + (actual_pixel_size * 3),score_x_coordinate + (actual_pixel_size * 4),score_y_coordinate + (actual_pixel_size * 4));
+        do Screen.drawRectangle(score_x_coordinate + (actual_pixel_size * 4),score_y_coordinate + (actual_pixel_size * 4),score_x_coordinate + (actual_pixel_size * 5),score_y_coordinate + (actual_pixel_size * 6));
+        do Screen.drawRectangle(score_x_coordinate + (actual_pixel_size * 1),score_y_coordinate + (actual_pixel_size * 6),score_x_coordinate + (actual_pixel_size * 4),score_y_coordinate + (actual_pixel_size * 7));
+
+        let score_x_coordinate = score_x_coordinate + width + space_between_characters;
+
+        return;
+    }
+
+    /*
+    Draw '7'.
+    */
+
+    method void drawSeven()
+    {
+        var int width;
+        var int height;
+
+        let width = 5 * actual_pixel_size;
+        let height = 7 * actual_pixel_size;
+
+        do Screen.setColor(false);
+        do Screen.drawRectangle(score_x_coordinate,score_y_coordinate,score_x_coordinate + (actual_pixel_size * 5),score_y_coordinate + actual_pixel_size);
+        do Screen.drawRectangle(score_x_coordinate + (actual_pixel_size * 4),score_y_coordinate + (actual_pixel_size * 1),score_x_coordinate + (actual_pixel_size * 5),score_y_coordinate + (actual_pixel_size * 2));
+        do Screen.drawRectangle(score_x_coordinate + (actual_pixel_size * 3),score_y_coordinate + (actual_pixel_size * 2),score_x_coordinate + (actual_pixel_size * 4),score_y_coordinate + (actual_pixel_size * 3));
+        do Screen.drawRectangle(score_x_coordinate + (actual_pixel_size * 2),score_y_coordinate + (actual_pixel_size * 3),score_x_coordinate + (actual_pixel_size * 3),score_y_coordinate + (actual_pixel_size * 7));
+
+        let score_x_coordinate = score_x_coordinate + width + space_between_characters;
+
+        return;
+    }
+
+    /*
+    Draw '8'.
+    */
+
+    method void drawEight()
+    {
+        var int width;
+        var int height;
+
+        let width = 5 * actual_pixel_size;
+        let height = 7 * actual_pixel_size;
+
+        do Screen.setColor(false);
+        do Screen.drawRectangle(score_x_coordinate + actual_pixel_size,score_y_coordinate,score_x_coordinate + (actual_pixel_size * 4),score_y_coordinate + actual_pixel_size);
+        do Screen.drawRectangle(score_x_coordinate,score_y_coordinate + actual_pixel_size,score_x_coordinate + actual_pixel_size,score_y_coordinate + (actual_pixel_size * 3));
+        do Screen.drawRectangle(score_x_coordinate + (actual_pixel_size * 4),score_y_coordinate + (actual_pixel_size * 1),score_x_coordinate + (actual_pixel_size * 5),score_y_coordinate + (actual_pixel_size * 3));
+        do Screen.drawRectangle(score_x_coordinate + (actual_pixel_size * 1),score_y_coordinate + (actual_pixel_size * 3),score_x_coordinate + (actual_pixel_size * 4),score_y_coordinate + (actual_pixel_size * 4));
+        do Screen.drawRectangle(score_x_coordinate + (actual_pixel_size * 4),score_y_coordinate + (actual_pixel_size * 4),score_x_coordinate + (actual_pixel_size * 5),score_y_coordinate + (actual_pixel_size * 6));
+        do Screen.drawRectangle(score_x_coordinate + (actual_pixel_size * 0),score_y_coordinate + (actual_pixel_size * 4),score_x_coordinate + (actual_pixel_size * 1),score_y_coordinate + (actual_pixel_size * 6));
+        do Screen.drawRectangle(score_x_coordinate + (actual_pixel_size * 1),score_y_coordinate + (actual_pixel_size * 6),score_x_coordinate + (actual_pixel_size * 4),score_y_coordinate + (actual_pixel_size * 7));
+
+        let score_x_coordinate = score_x_coordinate + width + space_between_characters;
+
+        return;
+    }
+
+    /*
+    Draw '9'.
+    */
+
+    method void drawNine()
+    {
+        var int width;
+        var int height;
+
+        let width = 5 * actual_pixel_size;
+        let height = 7 * actual_pixel_size;
+
+        do Screen.setColor(false);
+        do Screen.drawRectangle(score_x_coordinate + actual_pixel_size,score_y_coordinate,score_x_coordinate + (actual_pixel_size * 4),score_y_coordinate + actual_pixel_size);
+        do Screen.drawRectangle(score_x_coordinate,score_y_coordinate + actual_pixel_size,score_x_coordinate + actual_pixel_size,score_y_coordinate + (actual_pixel_size * 3));
+        do Screen.drawRectangle(score_x_coordinate + (actual_pixel_size * 4),score_y_coordinate + (actual_pixel_size * 1),score_x_coordinate + (actual_pixel_size * 5),score_y_coordinate + (actual_pixel_size * 3));
+        do Screen.drawRectangle(score_x_coordinate + (actual_pixel_size * 1),score_y_coordinate + (actual_pixel_size * 3),score_x_coordinate + (actual_pixel_size * 4),score_y_coordinate + (actual_pixel_size * 4));
+        do Screen.drawRectangle(score_x_coordinate + (actual_pixel_size * 4),score_y_coordinate + (actual_pixel_size * 4),score_x_coordinate + (actual_pixel_size * 5),score_y_coordinate + (actual_pixel_size * 6));
+        do Screen.drawRectangle(score_x_coordinate + (actual_pixel_size * 0),score_y_coordinate + (actual_pixel_size * 5),score_x_coordinate + (actual_pixel_size * 1),score_y_coordinate + (actual_pixel_size * 6));
+        do Screen.drawRectangle(score_x_coordinate + (actual_pixel_size * 1),score_y_coordinate + (actual_pixel_size * 6),score_x_coordinate + (actual_pixel_size * 4),score_y_coordinate + (actual_pixel_size * 7));
+
+        let score_x_coordinate = score_x_coordinate + width + space_between_characters;
+
+        return;
+    }
+
+    /*
+    Dispose Scoreboard object.
+    */
+
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+}

@@ -1,0 +1,82 @@
+class Switch
+{   
+    field int iniarrow_x;
+    field int inirectangle_x;
+    field int inichop_x;
+    field int iniarrow_y;
+    field int inirectangle_y;
+    field int inichop_y;
+    field int x;
+    field int y;
+
+    constructor Switch new()
+    {
+        let iniarrow_x = 74;
+        let inirectangle_x = 44;
+        let inichop_x = 79;
+        let iniarrow_y = 190;
+        let inirectangle_y = 44;
+        let inichop_y = 124;
+        let x = 0;
+        let y = 0;
+        
+        return this;
+    }
+
+    method void choose()
+    {
+        var int ID;
+        var char key;
+        do GameSwitcher.new(0,0);
+        do ChooseRectangle.new(inirectangle_x, inirectangle_y);
+        do Arrow.new(iniarrow_x, iniarrow_y);
+        let ID = 1;
+        while (~(key = 81)) {
+            let key = Keyboard.keyPressed();
+            /*do Output.moveCursor(10,10);
+            do Output.printInt(9876);*/
+            if (key = 68){
+                if(~(ID = 3)){
+                do ChooseRectangle.old(inirectangle_x + ((ID - 1) * 156), inirectangle_y);
+                do Arrow.old(iniarrow_x + ((ID - 1) * 156), iniarrow_y);
+                let ID = ID + 1;
+                do ChooseRectangle.new(inirectangle_x + ((ID - 1) * 156), inirectangle_y);
+                do Arrow.new(iniarrow_x + ((ID - 1) * 156), iniarrow_y);
+                do Sys.wait(125);
+                }
+            }
+            if (key = 65){
+                if(~(ID = 1)){
+                do ChooseRectangle.old(inirectangle_x + ((ID - 1) * 156), inirectangle_y);
+                do Arrow.old(iniarrow_x + ((ID - 1) * 156), iniarrow_y);
+                let ID = ID - 1;
+                do ChooseRectangle.new(inirectangle_x + ((ID - 1) * 156), inirectangle_y);
+                do Arrow.new(iniarrow_x + ((ID - 1) * 156), iniarrow_y);
+                do Sys.wait(125);
+                }
+            }
+            if (key = 83){
+                do Chop.new(inichop_x + ((ID - 1) * 156), inichop_y);
+                do Sys.wait(500);
+                do whiteout();
+                return;
+            }
+            
+        }
+        return;
+    }
+    method void whiteout(){
+      do Screen.setColor(false);
+      do Screen.drawRectangle(x,y,x+511,y+255);
+      return;
+   }
+
+   method void dispose(){
+      do GameSwitcher.dis();
+      do Chop.dis();
+      do Arrow.dis();
+      do ChooseRectangle.dis();
+      do Memory.deAlloc(this);
+      return;
+   }
+}

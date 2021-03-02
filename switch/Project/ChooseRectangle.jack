@@ -1,0 +1,47 @@
+class ChooseRectangle {
+
+   field int x, y; 
+
+   constructor ChooseRectangle new(int Ax, int Ay) {
+      let x = Ax;
+      let y = Ay;
+      do draw();
+      return this;
+   }
+
+   constructor ChooseRectangle old(int Ax, int Ay) {
+      let x = Ax;
+      let y = Ay;
+      do erase();
+      return this;
+   }
+
+   constructor ChooseRectangle dis(){
+      do dispose();
+      return this;
+   }
+
+   method void dispose() {
+      do Memory.deAlloc(this);
+      return;
+   }
+
+   method void draw() {
+      do Screen.setColor(true);
+      do Screen.drawLine(x , y, x, y + 135);
+      do Screen.drawLine(x + 110, y, x + 110, y + 135);
+      do Screen.drawLine(x, y, x + 110, y);
+      do Screen.drawLine(x, y + 135, x + 110, y + 135);
+      
+      return;
+   }
+   method void erase() {
+      do Screen.setColor(false);
+      do Screen.drawLine(x , y, x, y + 135);
+      do Screen.drawLine(x + 110, y, x + 110, y + 135);
+      do Screen.drawLine(x, y, x + 110, y);
+      do Screen.drawLine(x , y + 135, x + 110, y + 135);
+      
+      return;
+   }
+} 

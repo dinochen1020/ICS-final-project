@@ -1,0 +1,391 @@
+ class FlappyBird {
+   /*Draw the flappy bird*/
+
+  field int x_coordinate;       // X-coordinate of the bird
+  field int y_coordinate;       // Y-coordinate of the bird
+  field int bird_x_size;        // Width of the bird
+  field int bird_y_size;        // Height of the bird
+  field int wing_status;        // Display wing status
+  field Array up_image;         // Image for wing `up` state.
+  field Array mid_image;        // Image for wing `middle` state.
+  field Array down_image;       // Image for wing `down` state.
+  field Array bird_image;       // Image for current wing state.
+
+  /*
+  Construct a flappy bird
+  */
+
+  constructor FlappyBird new(int altitude) {
+    let y_coordinate = altitude;
+    let x_coordinate = 160;
+    let bird_x_size = 32;
+    let bird_y_size = 32;
+
+    let wing_status = 1;
+    do BuildUpImage();
+    do BuildMidImage();
+    do BuildDownImage();
+    do draw();
+    return this;
+  }
+
+  /*
+  Move bird image upward.
+  */
+
+  method void moveUp()
+  {
+    do erase();
+    if (y_coordinate > 30){
+      let y_coordinate = y_coordinate - 30;
+    }
+    else{
+      let y_coordinate = 0;
+    }
+    return;
+  }
+
+  /*
+  Move bird image downward.
+  */
+
+  method void moveDown()
+  {
+    do erase();
+    if (y_coordinate < (255 - bird_y_size - 5)){
+      let y_coordinate = y_coordinate + 5;
+    }
+    else{ 
+      let y_coordinate = 255 - bird_y_size;
+    }
+    return;
+  }
+
+  /*
+  Erase bird image.
+  */
+
+  method void erase()
+  {
+    do Screen.setColor(false);
+    do Screen.drawRectangle(x_coordinate, y_coordinate, x_coordinate + bird_x_size, y_coordinate + bird_y_size);
+
+    return;
+  }
+
+  /*
+  Build image for a bird whose wings are in the up status.
+  */
+
+  method void BuildUpImage() {
+
+    let up_image = Array.new(48);
+    /*first half*/
+    let up_image[0] = 0;
+    let up_image[1] = 28;
+    let up_image[2] = 34;
+    let up_image[3] = 67;
+    let up_image[4] = 132;
+    let up_image[5] = 280;
+    let up_image[6] = 609;
+    let up_image[7] = 1024;
+    let up_image[8] = 2048;
+    let up_image[9] = 4096;
+    let up_image[10] = 8192;
+    let up_image[11] = 14462;
+    let up_image[12] = 31999;
+    let up_image[13] = 24522;
+    let up_image[14] = 21642;
+    let up_image[15] = 21266;
+    let up_image[16] = 19533;
+    let up_image[17] = 20512;
+    let up_image[18] = 24992;
+    let up_image[19] = 24128;
+    let up_image[20] = 9088;
+    let up_image[21] = 4096;
+    let up_image[22] = 2048;
+    let up_image[23] = 2047;
+    /*second half*/
+    let up_image[24] = 0;
+    let up_image[25] = 0;
+    let up_image[26] = 0;
+    let up_image[27] = -16384;
+    let up_image[28] = 8192;
+    let up_image[29] = 8192;
+    let up_image[30] = -16384;
+    let up_image[31] = 8192;
+    let up_image[32] = 4096;
+    let up_image[33] = 4096;
+    let up_image[34] = 3840;
+    let up_image[35] = 28928;
+    let up_image[36] = -32512;
+    let up_image[37] = 512;
+    let up_image[38] = 7680;
+    let up_image[39] = 8704;
+    let up_image[40] = -15360;
+    let up_image[41] = 1024;
+    let up_image[42] = 1024;
+    let up_image[43] = 2048;
+    let up_image[44] = 4096;
+    let up_image[45] = 8192;
+    let up_image[46] = -16384;
+    let up_image[47] = 0;
+    return;
+  }
+
+  /*
+  Build image for a bird whose wings are in the mid status.
+  */
+
+  method void BuildMidImage() {
+
+    let mid_image = Array.new(48);
+    /*first half*/
+    let mid_image[0] = 0;
+    let mid_image[1] = 28;
+    let mid_image[2] = 34;
+    let mid_image[3] = 67;
+    let mid_image[4] = 132;
+    let mid_image[5] = 280;
+    let mid_image[6] = 609;
+    let mid_image[7] = 1024;
+    let mid_image[8] = 2048;
+    let mid_image[9] = 4096;
+    let mid_image[10] = 8192;
+    let mid_image[11] = 14462;
+    let mid_image[12] = 31998;
+    let mid_image[13] = 24520;
+    let mid_image[14] = 21640;
+    let mid_image[15] = 21265;
+    let mid_image[16] = 19554;
+    let mid_image[17] = 20514;
+    let mid_image[18] = 24994;
+    let mid_image[19] = 24129;
+    let mid_image[20] = 9088;
+    let mid_image[21] = 4096;
+    let mid_image[22] = 2048;
+    let mid_image[23] = 2047;
+    /*second half*/
+    let mid_image[24] = 0;
+    let mid_image[25] = 0;
+    let mid_image[26] = 0;
+    let mid_image[27] = -16384;
+    let mid_image[28] = 8192;
+    let mid_image[29] = 8192;
+    let mid_image[30] = -16384;
+    let mid_image[31] = 8192;
+    let mid_image[32] = 4096;
+    let mid_image[33] = 4096;
+    let mid_image[34] = 2048;
+    let mid_image[35] = 2048;
+    let mid_image[36] = 1536;
+    let mid_image[37] = 3840;
+    let mid_image[38] = 28928;
+    let mid_image[39] = -32512;
+    let mid_image[40] = 512;
+    let mid_image[41] = 7680;
+    let mid_image[42] = 9216;
+    let mid_image[43] = -14336;
+    let mid_image[44] = 4096;
+    let mid_image[45] = 8192;
+    let mid_image[46] = -16384;
+    let mid_image[47] = 0;
+    return;
+  }
+
+  /*
+  Build image for a bird whose wings are in the down status.
+  */
+  method void BuildDownImage() {
+
+    let down_image = Array.new(48);
+    /*first half*/
+    let down_image[0] = 0;
+    let down_image[1] = 28;
+    let down_image[2] = 34;
+    let down_image[3] = 67;
+    let down_image[4] = 132;
+    let down_image[5] = 280;
+    let down_image[6] = 609;
+    let down_image[7] = 1024;
+    let down_image[8] = 2048;
+    let down_image[9] = 4096;
+    let down_image[10] = 8192;
+    let down_image[11] = 14462;
+    let down_image[12] = 31998;
+    let down_image[13] = 24520;
+    let down_image[14] = 21640;
+    let down_image[15] = 21265;
+    let down_image[16] = 19554;
+    let down_image[17] = 20514;
+    let down_image[18] = 24994;
+    let down_image[19] = 24129;
+    let down_image[20] = 9088;
+    let down_image[21] = 4096;
+    let down_image[22] = 2048;
+    let down_image[23] = 2047;
+    /*second half*/
+    let down_image[24] = 0;
+    let down_image[25] = 0;
+    let down_image[26] = 0;
+    let down_image[27] = -16384;
+    let down_image[28] = 8192;
+    let down_image[29] = 8192;
+    let down_image[30] = -16384;
+    let down_image[31] = 8192;
+    let down_image[32] = 4096;
+    let down_image[33] = 4096;
+    let down_image[34] = 2048;
+    let down_image[35] = 2048;
+    let down_image[36] = 1024;
+    let down_image[37] = 1024;
+    let down_image[38] = 1024;
+    let down_image[39] = -15360;
+    let down_image[40] = 14336;
+    let down_image[41] = 1536;
+    let down_image[42] = 256;
+    let down_image[43] = -16128;
+    let down_image[44] = 14592;
+    let down_image[45] = 9728;
+    let down_image[46] = -16384;
+    let down_image[47] = 0;
+    return;
+  }
+
+  /*
+  Shift bird wing state to next.
+  */
+
+  method void ShiftWingState()
+  {
+    if (wing_status = 3){
+      let wing_status = 1;
+    }
+    else{ 
+      let wing_status = wing_status + 1;
+    }
+    return;
+  }
+
+  /*
+  Return image coordinates for current wing state.
+  */
+
+  method Array GetBirdWingStatus()
+  {
+    if (wing_status = 1){
+      return up_image;
+    }
+    if (wing_status = 2){
+      return mid_image;
+    }
+    return down_image;
+  }
+
+  /*
+  Draw a flappy bird.
+  */
+
+  method void draw() {
+    var int memAddress;
+    let memAddress = (16384 + (y_coordinate * 32) + (x_coordinate/16));
+
+    let bird_image = GetBirdWingStatus();
+
+    do Memory.poke(memAddress+0, bird_image[24]);
+    do Memory.poke(memAddress+1, bird_image[0]);
+    do Memory.poke(memAddress+32, bird_image[25]);
+    do Memory.poke(memAddress+33, bird_image[1]);
+    do Memory.poke(memAddress+64, bird_image[26]);
+    do Memory.poke(memAddress+65, bird_image[2]);
+    do Memory.poke(memAddress+96, bird_image[27]);
+    do Memory.poke(memAddress+97, bird_image[3]);
+    do Memory.poke(memAddress+128, bird_image[28]);
+    do Memory.poke(memAddress+129, bird_image[4]);
+    do Memory.poke(memAddress+160, bird_image[29]);
+    do Memory.poke(memAddress+161, bird_image[5]);
+    do Memory.poke(memAddress+192, bird_image[30]);
+    do Memory.poke(memAddress+193, bird_image[6]);
+    do Memory.poke(memAddress+224, bird_image[31]);
+    do Memory.poke(memAddress+225, bird_image[7]);
+    do Memory.poke(memAddress+256, bird_image[32]);
+    do Memory.poke(memAddress+257, bird_image[8]);
+    do Memory.poke(memAddress+288, bird_image[33]);
+    do Memory.poke(memAddress+289, bird_image[9]);
+    do Memory.poke(memAddress+320, bird_image[34]);
+    do Memory.poke(memAddress+321, bird_image[10]);
+    do Memory.poke(memAddress+352, bird_image[35]);
+    do Memory.poke(memAddress+353, bird_image[11]);
+    do Memory.poke(memAddress+384, bird_image[36]);
+    do Memory.poke(memAddress+385, bird_image[12]);
+    do Memory.poke(memAddress+416, bird_image[37]);
+    do Memory.poke(memAddress+417, bird_image[13]);
+    do Memory.poke(memAddress+448, bird_image[38]);
+    do Memory.poke(memAddress+449, bird_image[14]);
+    do Memory.poke(memAddress+480, bird_image[39]);
+    do Memory.poke(memAddress+481, bird_image[15]);
+    do Memory.poke(memAddress+512, bird_image[40]);
+    do Memory.poke(memAddress+513, bird_image[16]);
+    do Memory.poke(memAddress+544, bird_image[41]);
+    do Memory.poke(memAddress+545, bird_image[17]);
+    do Memory.poke(memAddress+576, bird_image[42]);
+    do Memory.poke(memAddress+577, bird_image[18]);
+    do Memory.poke(memAddress+608, bird_image[43]);
+    do Memory.poke(memAddress+609, bird_image[19]);
+    do Memory.poke(memAddress+640, bird_image[44]);
+    do Memory.poke(memAddress+641, bird_image[20]);
+    do Memory.poke(memAddress+672, bird_image[45]);
+    do Memory.poke(memAddress+673, bird_image[21]);
+    do Memory.poke(memAddress+704, bird_image[46]);
+    do Memory.poke(memAddress+705, bird_image[22]);
+    do Memory.poke(memAddress+736, bird_image[47]);
+    do Memory.poke(memAddress+737, bird_image[23]);
+
+    return;
+  }
+
+  /*
+  Get image X-coordinate.
+  */
+
+  method int Getxcoordinate()
+  {
+    return x_coordinate;
+  }
+
+  /*
+  Get image Y-coordinate.
+  */
+
+  method int Getycoordinate()
+  {
+    return y_coordinate;
+  }
+
+  /*
+  Get image width.
+  */
+
+  method int Getxsize()
+  {
+    return bird_x_size;
+  }
+
+  /*
+  Get image height.
+  */
+
+  method int Getysize()
+  {
+    return bird_y_size;
+  }
+
+  /*
+  Dispose of Bird object.
+  */
+
+  method void dispose() {
+     do Memory.deAlloc(this);
+     return;
+  }
+}
